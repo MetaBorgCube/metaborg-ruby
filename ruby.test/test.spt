@@ -1,0 +1,7 @@
+module test
+
+language Ruby
+
+test parse [[
+
+]] parse succeeds

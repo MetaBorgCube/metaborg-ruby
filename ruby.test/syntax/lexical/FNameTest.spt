@@ -1,0 +1,5 @@
+module FNameTest
+
+language Ruby
+
+start symbol FName

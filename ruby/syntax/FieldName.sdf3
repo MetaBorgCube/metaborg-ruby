@@ -1,0 +1,36 @@
+module FieldName
+
+imports
+	Common
+
+lexical syntax
+
+	FName = ID
+	FName = ".."
+	FName = "|"
+	FName = "^"
+	FName = "&"
+	FName = "<=>"
+	FName = "=="
+	FName = "==="
+	FName = "=~"  // Does it also support '˜' ?
+	FName = ">"
+	FName = ">="
+	FName = "<"
+	FName = "<="
+	FName = "+"
+	FName = "-"
+	FName = "*"
+	FName = "/"
+	FName = "%"
+	FName = "**"
+	FName = "<<"
+	FName = ">>"
+	FName = "~" // Does it also support '˜' ?
+	FName = "+@"
+	FName = "-@"
+	FName = "[]"
+	FName = "[]="
+	
+	
+	

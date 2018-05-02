@@ -1,0 +1,12 @@
+module Argument
+
+imports
+
+context-free syntax
+
+	Arg.Plus = <<Arg> + <Arg>>
+	Arg.Min = <<Arg> - <Arg>>
+	Arg.Times = <<Arg> * <Arg>>
+	Arg.Quotient = <<Arg> / <Arg>>
+	
+	// Much more

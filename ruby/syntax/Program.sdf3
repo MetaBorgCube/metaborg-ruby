@@ -1,0 +1,10 @@
+module Program
+
+imports
+	Statement
+
+context-free syntax
+
+	Program.Program = <
+		<Statement>
+	>

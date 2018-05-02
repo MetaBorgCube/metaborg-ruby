@@ -1,0 +1,9 @@
+module Statement
+
+imports
+	Common
+	FieldName
+
+context-free syntax
+
+	Statement.Alias = <alias <FName> <FName>>

@@ -1,0 +1,5 @@
+module IDTest
+
+language Ruby
+
+start symbol ID

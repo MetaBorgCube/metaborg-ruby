@@ -1,0 +1,16 @@
+module Expression
+
+imports
+	Argument
+
+context-free syntax
+
+	Exp.Return = <return <Exp>>
+	Exp.Yield = <yield <Exp>>
+	
+	// Operators
+	
+	Exp.Or = <<Exp> or <Exp>>
+	Exp.And = <<Exp> and <Exp>>
+	Exp.Not = <not <Exp>>
+	Exp.Arg = <<Arg>>
