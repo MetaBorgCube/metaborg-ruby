@@ -3,12 +3,17 @@ module Ruby
 imports
   
   Common
+  FieldName
   Program
   Statement
   Expression
   Argument
   
+  
 lexical start-symbols
+
+  ID
+  FName
 
 context-free start-symbols
   

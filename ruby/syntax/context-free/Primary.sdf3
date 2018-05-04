@@ -1,0 +1,13 @@
+module Primary
+
+imports
+	Common
+	Literal
+	Variable
+	
+// Primary stands for the primary expressions in Ruby 
+context-free syntax
+
+	Prim.Literal = <<Lit>>
+	Prim.Var = <<Var>>
+	Prim.Const = <<Prim> :: <ID>>

@@ -1,0 +1,13 @@
+module VarName
+
+imports
+	Common
+	Global
+
+lexical syntax
+
+	VarName = Global
+	VarName = "@"ID // TO DO : no spacing allowed.
+	VarName = ID
+	
+	

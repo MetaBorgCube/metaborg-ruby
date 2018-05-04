@@ -1,0 +1,10 @@
+module Literal
+
+imports
+	Common
+
+context-free syntax
+
+	// LITERAL = numeric | SYMBOL | STRING | STRING2 | HERE_DOC | REGEXP
+	Lit.Num = < numeric >
+	Lit.String = < <STRING> >
