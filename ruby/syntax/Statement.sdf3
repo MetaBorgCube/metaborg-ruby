@@ -6,4 +6,4 @@ imports
 
 context-free syntax
 
-	Statement.Alias = <alias <FName> <FName>>
+	Stmt.Alias = <alias <FName> <FName>>

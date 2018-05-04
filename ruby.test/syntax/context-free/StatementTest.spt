@@ -1,0 +1,17 @@
+module StatementTest
+
+language Ruby
+
+start symbol Stmt
+
+// -----------------------------------------
+// alias
+// -----------------------------------------
+
+test Alias ID to ID [[alias testVar testVar2]] parse succeeds
+test Alias same ID [[alias testVar testVar]] parse succeeds
+test Alias ID to special token[[alias testVar +]] parse succeeds
+test Alias special token to ID[[alias + testVar]] parse succeeds
+test Alias special token to special token [[alias - +]] parse succeeds
+test Alias same token [[alias + +]] parse succeeds
+test Alias ID to keyword [[alias testVar if]] parse fails
