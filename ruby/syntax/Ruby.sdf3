@@ -13,6 +13,6 @@ lexical start-symbols
 context-free start-symbols
   
   Program
-  Statement
+  Stmt
   Exp
   Arg

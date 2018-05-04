@@ -6,5 +6,5 @@ imports
 context-free syntax
 
 	Program.Program = <
-		<Statement>
+		<Stmt>
 	>
