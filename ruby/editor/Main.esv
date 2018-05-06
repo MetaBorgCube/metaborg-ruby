@@ -7,7 +7,6 @@ imports
 
 language
 
-  extensions : rub
+  extensions : rb
 
   provider : target/metaborg/stratego.ctree
-  provider : target/metaborg/stratego-javastrat.jar
