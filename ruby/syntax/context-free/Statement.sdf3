@@ -1,8 +1,7 @@
 module Statement
 
 imports
-	Common
-	FieldName
+	FunctionName
 
 context-free syntax
 
