@@ -1,0 +1,18 @@
+module Symbol
+
+imports
+
+	FunctionName
+	VarName
+	
+sorts
+
+	SYMBOL
+
+lexical syntax
+
+	// Ambiguous: FName and VarName have overlap
+	SYMBOL = ":" FName
+	SYMBOL = ":" VarName
+	
+	

@@ -2,9 +2,15 @@ module Literal
 
 imports
 	Common
+	Symbol
+	
+sorts
+
+	Literal
 
 context-free syntax
 
 	// LITERAL = numeric | SYMBOL | STRING | STRING2 | HERE_DOC | REGEXP
-	Lit.Num = < numeric >
-	Lit.String = < <STRING> >
+	Literal.Num = < numeric >
+	Literal.String = < <STRING> >
+	Literal.Symbol = <<SYMBOL>>
