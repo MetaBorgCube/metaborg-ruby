@@ -7,4 +7,4 @@ lexical syntax
 	
 	Global = "$"ID       // TO DO: I believe spacing between the dollar and ID should not be allowed!
 	Global = "$any_char"
-	Gloabl = "$-any_char"
+	Global = "$-any_char"
