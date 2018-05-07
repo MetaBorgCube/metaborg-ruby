@@ -1,0 +1,27 @@
+module NumberDocExamples
+
+language Ruby
+
+start symbol NUMBER
+
+// Examples found in the official Ruby language documentation:
+// http://ruby-doc.org/core-2.5.0/doc/syntax/literals_rdoc.html#label-Numbers
+
+test example [[1234]] parse succeeds
+test example [[1_234]] parse succeeds
+test example [[12.34]] parse succeeds
+test example [[1234e-2]] parse succeeds
+test example [[1.234E1]] parse succeeds
+test example [[0d170]] parse succeeds
+test example [[0D170]] parse succeeds
+test example [[0xaa]] parse succeeds
+test example [[0xAa]] parse succeeds
+test example [[0xAA]] parse succeeds
+test example [[0Xaa]] parse succeeds
+test example [[0XAa]] parse succeeds
+test example [[0XaA]] parse succeeds
+test example [[0252]] parse succeeds
+test example [[0o252]] parse succeeds
+test example [[0O252]] parse succeeds
+test example [[0b10101010]] parse succeeds
+test example [[0B10101010]] parse succeeds

@@ -1,0 +1,11 @@
+module NumberValid
+
+language Ruby
+
+start symbol NUMBER
+
+test zero
+  [[0]] parse succeeds
+  
+test fourty two
+  [[42]] parse succeeds
