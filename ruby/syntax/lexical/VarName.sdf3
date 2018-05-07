@@ -1,13 +1,13 @@
 module VarName
 
 imports
-	Common
+	Identifier
 	Global
 
 lexical syntax
 
 	VarName = Global
-	VarName = "@"ID // TO DO : no spacing allowed.
+	VarName = "@" ID
 	VarName = ID
 	
 	

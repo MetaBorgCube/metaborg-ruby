@@ -1,26 +1,20 @@
-module Common
+module Identifier
+
+sorts
+
+  ID
 
 lexical syntax
 
-  ID             = [a-zA-Z] [a-zA-Z0-9]* 
-  INT            = "-"? [0-9]+ 
-  STRING         = "\"" StringChar* "\"" 
-  StringChar     = ~[\"\n] 
-  StringChar     = "\\\"" 
-  StringChar     = BackSlashChar 
-  BackSlashChar  = "\\" 
-  LAYOUT         = [\ \t\n\r] 
-  CommentChar    = [\*] 
-  LAYOUT         = "/*" InsideComment* "*/" 
-  InsideComment  = ~[\*] 
-  InsideComment  = CommentChar 
-  LAYOUT         = "//" ~[\n\r]* NewLineEOF 
-  NewLineEOF     = [\n\r] 
-  NewLineEOF     = EOF 
-  EOF            =  
+  ID = [a-zA-Z\_] [a-zA-Z0-9\_]*
+
+lexical restrictions
+
+  ID -/- [a-zA-Z0-9\_]
   
+lexical syntax 
 
-
+  // Reserved keywords
   ID = "__LINE__" 		{reject}
   ID = "__ENCODING__" 	{reject}
   ID = "__FILE__" 		{reject}
@@ -62,28 +56,3 @@ lexical syntax
   ID = "when" 			{reject}
   ID = "while" 			{reject}
   ID = "yield" 			{reject} 
-  
-
-lexical restrictions
-
-  // Ensure greedy matching for lexicals
-  
-  CommentChar   -/- [\/]
-  INT           -/- [0-9]
-  ID            -/- [a-zA-Z0-9\_]
-  
-  // EOF may not be followed by any char
-  
-  EOF           -/- ~[]
-  
-  // Backslash chars in strings may not be followed by " 
-  
-  BackSlashChar -/- [\"]
-
-context-free restrictions
-
-  // Ensure greedy matching for comments
-  
-  LAYOUT? -/- [\ \t\n\r]
-  LAYOUT? -/- [\/].[\/]
-  LAYOUT? -/- [\/].[\*]

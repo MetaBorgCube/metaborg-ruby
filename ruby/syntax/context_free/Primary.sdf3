@@ -1,7 +1,7 @@
 module Primary
 
 imports
-	Common
+	Identifier
 	Literal
 	Variable
 	

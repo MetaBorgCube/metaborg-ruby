@@ -1,36 +1,36 @@
 module FunctionName
 
 imports
-	Common
+	Identifier
 
 lexical syntax
 
-	FName = ID
-	FName = ".."
-	FName = "|"
-	FName = "^"
-	FName = "&"
-	FName = "<=>"
-	FName = "=="
-	FName = "==="
-	FName = "=~"
-	FName = ">"
-	FName = ">="
-	FName = "<"
-	FName = "<="
-	FName = "+"
-	FName = "-"
-	FName = "*"
-	FName = "/"
-	FName = "%"
-	FName = "**"
-	FName = "<<"
-	FName = ">>"
-	FName = "~"
-	FName = "+@"
-	FName = "-@"
-	FName = "[]"
-	FName = "[]="
+	FNAME = ID
+	FNAME = ".."
+	FNAME = "|"
+	FNAME = "^"
+	FNAME = "&"
+	FNAME = "<=>"
+	FNAME = "=="
+	FNAME = "==="
+	FNAME = "=~"
+	FNAME = ">"
+	FNAME = ">="
+	FNAME = "<"
+	FNAME = "<="
+	FNAME = "+"
+	FNAME = "-"
+	FNAME = "*"
+	FNAME = "/"
+	FNAME = "%"
+	FNAME = "**"
+	FNAME = "<<"
+	FNAME = ">>"
+	FNAME = "~"
+	FNAME = "+@"
+	FNAME = "-@"
+	FNAME = "[]"
+	FNAME = "[]="
 	
 	
 	

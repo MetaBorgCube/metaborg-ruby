@@ -1,0 +1,13 @@
+module Numeric
+
+sorts
+
+	NUMERIC
+	
+lexical syntax
+
+	NUMERIC = [0-9]* // make this way more accurate and support floats
+	
+lexical restrictions
+
+	NUMERIC -/- [0-9]

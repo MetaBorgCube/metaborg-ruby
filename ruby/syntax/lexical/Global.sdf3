@@ -1,10 +1,10 @@
 module Global
 
 imports
-	Common
+	Identifier
 
 lexical syntax
 	
-	Global = "$"ID       // TO DO: I believe spacing between the dollar and ID should not be allowed!
-	Global = "$any_char"
-	Global = "$-any_char"
+	Global = "$" ID
+	Global = "$any_char" // TODO actually match any character
+	Global = "$-any_char" // TODO actually match any character
