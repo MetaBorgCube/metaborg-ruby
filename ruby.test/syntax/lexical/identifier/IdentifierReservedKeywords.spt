@@ -1,0 +1,49 @@
+module IdentifierReservedKeywords
+
+language Ruby
+
+start symbol ID
+
+// Automatically generated from doc/reserved-keywords.txt
+
+test reserved keyword __LINE__ [[ __LINE__ ]] parse fails
+test reserved keyword __ENCODING__ [[ __ENCODING__ ]] parse fails
+test reserved keyword __FILE__ [[ __FILE__ ]] parse fails
+test reserved keyword BEGIN [[ BEGIN ]] parse fails
+test reserved keyword END [[ END ]] parse fails
+test reserved keyword alias [[ alias ]] parse fails
+test reserved keyword and [[ and ]] parse fails
+test reserved keyword begin [[ begin ]] parse fails
+test reserved keyword break [[ break ]] parse fails
+test reserved keyword case [[ case ]] parse fails
+test reserved keyword class [[ class ]] parse fails
+test reserved keyword def [[ def ]] parse fails
+test reserved keyword defined? [[ defined? ]] parse fails
+test reserved keyword do [[ do ]] parse fails
+test reserved keyword else [[ else ]] parse fails
+test reserved keyword elseif [[ elseif ]] parse fails
+test reserved keyword end [[ end ]] parse fails
+test reserved keyword ensure [[ ensure ]] parse fails
+test reserved keyword for [[ for ]] parse fails
+test reserved keyword false [[ false ]] parse fails
+test reserved keyword if [[ if ]] parse fails
+test reserved keyword in [[ in ]] parse fails
+test reserved keyword module [[ module ]] parse fails
+test reserved keyword next [[ next ]] parse fails
+test reserved keyword nil [[ nil ]] parse fails
+test reserved keyword not [[ not ]] parse fails
+test reserved keyword or [[ or ]] parse fails
+test reserved keyword redo [[ redo ]] parse fails
+test reserved keyword rescue [[ rescue ]] parse fails
+test reserved keyword retry [[ retry ]] parse fails
+test reserved keyword return [[ return ]] parse fails
+test reserved keyword self [[ self ]] parse fails
+test reserved keyword super [[ super ]] parse fails
+test reserved keyword then [[ then ]] parse fails
+test reserved keyword true [[ true ]] parse fails
+test reserved keyword undef [[ undef ]] parse fails
+test reserved keyword unless [[ unless ]] parse fails
+test reserved keyword until [[ until ]] parse fails
+test reserved keyword when [[ when ]] parse fails
+test reserved keyword while [[ while ]] parse fails
+test reserved keyword yield [[ yield ]] parse fails

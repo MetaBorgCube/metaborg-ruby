@@ -1,0 +1,39 @@
+module IdentifierValid
+
+language Ruby
+
+start symbol ID
+
+// valid identifiers
+test single character identifier lowercase
+  [[x]] parse succeeds
+
+test single character identifier uppercase
+  [[X]] parse succeeds
+  
+test lowercase identifier
+  [[identifier]] parse succeeds
+  
+test identifier starting with underscore
+  [[_identifier]] parse succeeds
+  
+test snake case identifier
+  [[snake_case]] parse succeeds
+  
+test camel case identifier first lower
+  [[camelCase]] parse succeeds
+  
+test camel case identifier first upper
+  [[CamelCase]] parse succeeds
+  
+test inverse camel case
+  [[cAMELcASE]] parse succeeds
+  
+test upper case identifier
+  [[UPPER_CASE]] parse succeeds
+  
+test valid identifier with digit
+  [[identifier42]] parse succeeds
+  
+test valid identifier with everything
+  [[Identifier_42]] parse succeeds

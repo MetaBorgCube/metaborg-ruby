@@ -1,0 +1,54 @@
+module IdentifierInvalid
+
+language Ruby
+
+start symbol ID
+	
+	// invalid identifiers
+	test number
+	  [[1234]] parse fails
+	
+	test identifier starting with digit
+	  [[2invalid]] parse fails
+	  
+	test identifier with invalid special character
+	  [[invalid$]] parse fails
+	  
+	test identifier with invalid parentheses
+	  [[invalid()]] parse fails
+	  
+	test identifier with invalid curly braces
+	  [[invalid{}]] parse fails
+	  
+	test identifier with invalid square brackets
+	  [[[invalid[]]]] parse fails
+	  
+	// special characters
+	test special character ! [[[[ ! ]]]] parse fails
+	test special character @ [[[[ @ ]]]] parse fails
+	test special character # [[[[ # ]]]] parse fails
+	test special character $ [[[[ $ ]]]] parse fails
+	test special character % [[[[ % ]]]] parse fails
+	test special character ^ [[[[ ^ ]]]] parse fails
+	test special character & [[[[ & ]]]] parse fails
+	test special character * [[[[ * ]]]] parse fails
+	test special character ( [[[[ ( ]]]] parse fails
+	test special character ) [[[[ ) ]]]] parse fails
+	test special character + [[[[ + ]]]] parse fails
+	test special character = [[[[ = ]]]] parse fails
+	test special character open bracket [[[[ [ ]]]] parse fails
+	test special character close bracket [[[[ ] ]]]] parse fails
+	test special character { [[[[ { ]]]] parse fails
+	test special character } [[[[ } ]]]] parse fails
+	test special character | [[[[ | ]]]] parse fails
+	test special character \ [[[[ \ ]]]] parse fails
+	test special character / [[[[ / ]]]] parse fails
+	test special character ? [[[[ ? ]]]] parse fails
+	test special character . [[[[ . ]]]] parse fails
+	test special character , [[[[ , ]]]] parse fails
+	test special character ; [[[[ ; ]]]] parse fails
+	test special character : [[[[ : ]]]] parse fails
+	test special character < [[[[ < ]]]] parse fails
+	test special character > [[[[ > ]]]] parse fails
+	test special character ' [[[[ ' ]]]] parse fails
+	test special character " [[[[ " ]]]] parse fails
