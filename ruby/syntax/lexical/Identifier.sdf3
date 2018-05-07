@@ -15,6 +15,10 @@ lexical restrictions
 lexical syntax 
 
   // Reserved keywords
+  // Sources:
+  // http://ruby-doc.org/core-2.5.0/doc/keywords_rdoc.html
+  // https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.2)
+  // http://www.java2s.com/Code/Ruby/Language-Basics/Rubysreservedwords.htm
   ID = "__LINE__" 		{reject}
   ID = "__ENCODING__" 	{reject}
   ID = "__FILE__" 		{reject}

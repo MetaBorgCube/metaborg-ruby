@@ -4,9 +4,7 @@ language Ruby
 
 start symbol Stmt
 
-// -----------------------------------------
-// alias
-// -----------------------------------------
+// ALIAS
 
 test Alias ID to ID [[alias testVar testVar2]] parse succeeds
 test Alias same ID [[alias testVar testVar]] parse succeeds
