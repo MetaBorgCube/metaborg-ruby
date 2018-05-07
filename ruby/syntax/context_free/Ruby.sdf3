@@ -4,16 +4,17 @@ imports
   
   Whitespace
   Identifier
+  Number
   FunctionName
   Program
   Statement
   Expression
   Argument
   
-  
 lexical start-symbols
 
   ID
+  NUMBER
   FNAME
 
 context-free start-symbols

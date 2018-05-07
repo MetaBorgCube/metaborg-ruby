@@ -1,7 +1,7 @@
 module Literal
 
 imports
-	Numeric
+	Number
 	String
 	Symbol
 	
@@ -12,6 +12,6 @@ sorts
 context-free syntax
 
 	// LITERAL = numeric | SYMBOL | STRING | STRING2 | HERE_DOC | REGEXP
-	Literal.Num = <<NUMERIC>>
+	Literal.Num = <<NUMBER>>
 	Literal.String = < <STRING> >
 	Literal.Symbol = <<SYMBOL>>
