@@ -1,2 +1,3 @@
 target
 .project
+ruby.example/*.aterm
