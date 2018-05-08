@@ -1,1 +1,2 @@
-alias a b
+alias a ab; 
+alias b s;

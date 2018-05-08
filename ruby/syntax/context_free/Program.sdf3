@@ -1,10 +1,10 @@
 module Program
 
 imports
-	Statement
+	CompoundStatement
 
 context-free syntax
 
 	Program.Program = <
-		<Stmt>
+		<CStmt>
 	>
