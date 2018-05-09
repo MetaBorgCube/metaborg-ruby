@@ -9,24 +9,7 @@ context-free syntax
 
 	CStmt.Stmt = <<StatementList?> <T*>>
 	
-	StatementList = <<Stmt> <StatementListEnd*>>
-	StatementListEnd = 
+	StatementList.Head = <<Stmt> <StatementListEnd*>>
+	StatementListEnd.Trailer = 
 		<<T+>
 		 <Stmt>>
-		
-	
-	
-	
-//		compound-statement ::
-//	statement-list ?
-//	separator-list ?
-//	19
-//	20 statement-list ::
-//	statement ( separator-list statement )
-//	∗
-//	21
-//	22 separator-list ::
-//	separator + 23
-//	24 separator ::
-//	25 ;
-//	26 | [ line-terminator here ]
