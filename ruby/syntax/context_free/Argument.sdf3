@@ -5,8 +5,6 @@ imports
 	Primary
 
 // TODO: Test Arguments
-// Precedence source: https://ruby-doc.org/core-2.2.0/doc/syntax/precedence_rdoc.html
-// Associativity source: https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
 
 context-free syntax
 

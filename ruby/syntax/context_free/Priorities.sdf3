@@ -4,6 +4,9 @@ imports
 	Argument
 	Expression
 	
+// Precedence source: http://ruby-doc.org/core-2.5.1/doc/syntax/precedence_rdoc.html
+// Associativity source: https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
+	
 context-free priorities
 
 	{right: 
