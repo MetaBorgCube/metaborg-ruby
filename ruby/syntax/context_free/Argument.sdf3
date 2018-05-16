@@ -1,12 +1,51 @@
 module Argument
 
 imports
+	LeftHandSide
+	Primary
 
 context-free syntax
+
+	Arg.Assign = <<LHS> = <Arg>>
+//	Arg.LHSOp = <<LHS> <OP_ASSIGN> <Arg>> TODO
+	
+	Arg.RangeInc = <<Arg> .. <Arg>>
+	Arg.RangeExc = <<Arg> ... <Arg>>
 
 	Arg.Plus = <<Arg> + <Arg>>
 	Arg.Min = <<Arg> - <Arg>>
 	Arg.Times = <<Arg> * <Arg>>
 	Arg.Quotient = <<Arg> / <Arg>>
+	Arg.Modulo = <<Arg> % <Arg>>
+	Arg.Power = <<Arg> ** <Arg>>
+	Arg.UnPlus = <+ <Arg>>
+	Arg.UnMin = <- <Arg>>
+	
+	Arg.BitOr = <<Arg> | <Arg>>
+	Arg.BitXOr = <<Arg> ^ <Arg>>
+	Arg.BitAnd = <<Arg> & <Arg>>
+	
+	Arg.SpaceShip = [[Arg] <=> [Arg]]
+	Arg.Greater = [[Arg] > [Arg]]
+	Arg.GreaterEq = [[Arg] >= [Arg]]
+	Arg.Lesser = [[Arg] < [Arg]]
+	Arg.LesserEq = [[Arg] <= [Arg]]
+	Arg.Equals = <<Arg> == <Arg>>
+	Arg.CaseEq = <<Arg> === <Arg>>
+	Arg.NotEq = <<Arg> != <Arg>>
+	Arg.PatternMatch = <<Arg> =~ <Arg>>
+	Arg.NotPatternMatch = <<Arg> !~ <Arg>>
+	
+	Arg.Not = <!<Arg>>
+	Arg.BitNot = <~<Arg>>
+	
+	Arg.BitShiftLeft = [[Arg] << [Arg]]
+	Arg.BitShiftRight = [[Arg] >> [Arg]]
+	
+	Arg.BoolAnd = <<Arg> && <Arg>>
+	Arg.BoolOr = <<Arg> || <Arg>>
+	
+	Arg.Defined = <defined? <Arg>>
+	Arg.Primary = <<Primary>>
 	
 	// Much more
