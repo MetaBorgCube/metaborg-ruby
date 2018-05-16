@@ -4,6 +4,10 @@ imports
 	LeftHandSide
 	Primary
 
+// TODO: Test Arguments
+// Precedence source: https://ruby-doc.org/core-2.2.0/doc/syntax/precedence_rdoc.html
+// Associativity source: https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
+
 context-free syntax
 
 	Arg.Assign = <<LHS> = <Arg>>
@@ -13,9 +17,9 @@ context-free syntax
 	Arg.RangeExc = <<Arg> ... <Arg>>
 
 	Arg.Plus = <<Arg> + <Arg>>
-	Arg.Min = <<Arg> - <Arg>>
+	Arg.Minus = <<Arg> - <Arg>>
 	Arg.Times = <<Arg> * <Arg>>
-	Arg.Quotient = <<Arg> / <Arg>>
+	Arg.Division = <<Arg> / <Arg>>
 	Arg.Modulo = <<Arg> % <Arg>>
 	Arg.Power = <<Arg> ** <Arg>>
 	Arg.UnPlus = <+ <Arg>>
@@ -36,7 +40,7 @@ context-free syntax
 	Arg.PatternMatch = <<Arg> =~ <Arg>>
 	Arg.NotPatternMatch = <<Arg> !~ <Arg>>
 	
-	Arg.Not = <!<Arg>>
+	Arg.BoolNot = <!<Arg>>
 	Arg.BitNot = <~<Arg>>
 	
 	Arg.BitShiftLeft = [[Arg] << [Arg]]
@@ -47,5 +51,7 @@ context-free syntax
 	
 	Arg.Defined = <defined? <Arg>>
 	Arg.Primary = <<Primary>>
+		
+		
 	
-	// Much more
+	
