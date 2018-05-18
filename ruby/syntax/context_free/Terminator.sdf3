@@ -1,0 +1,6 @@
+module Terminator
+
+context-free syntax
+
+	T.SemiColon = ";"
+	T.NewLine = [\n] // Does not work?!

@@ -4,6 +4,16 @@ language Ruby
 
 start symbol Stmt
 
+// EXP
+// TODO
+
+// UNDEF
+
+test Undef ID [[undef testName]] parse succeeds
+test Undef special token [[undef +]] parse succeeds
+test Undef number [[undef 1]] parse fails
+test Undef symbol [[undef :symb]] parse fails
+
 // ALIAS
 
 test Alias ID to ID [[alias testVar testVar2]] parse succeeds
@@ -13,3 +23,37 @@ test Alias special token to ID[[alias + testVar]] parse succeeds
 test Alias special token to special token [[alias - +]] parse succeeds
 test Alias same token [[alias + +]] parse succeeds
 test Alias ID to keyword [[alias testVar if]] parse fails
+test Alias number to ID [[alias 1 testVar]] parse fails
+test Alias ID to number [[alias testVar 1]] parse fails
+test Alias number to number [[alias 1 2]] parse fails
+
+// Logic Statement
+// TODO
+
+// BEGIN
+
+test Begin compound single statement [[BEGIN { alias a b }]] parse succeeds
+test Begin compound multipe statements [[
+	BEGIN {
+		alias a b;
+		alias c b;
+	}
+]] parse succeeds
+test Begin number [[BEGIN { 1 }]] parse fails
+test Begin token [[BEGIN { $ }]] parse fails
+test Begin symbol [[BEGIN { :testSymbol }]] parse fails
+test Begin lowercase [[begin { alias a b }]] parse fails
+
+// END
+
+test End compound single statement [[END { alias a b }]] parse succeeds
+test End compound multipe statements [[
+	END {
+		alias a b;
+		alias c b;
+	}
+]] parse succeeds
+test End number [[END { 1 }]] parse fails
+test End token [[END { $ }]] parse fails
+test End symbol [[END { :testSymbol }]] parse fails
+test End lowercase [[end { alias a b }]] parse fails

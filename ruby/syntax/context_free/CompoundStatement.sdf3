@@ -1,0 +1,15 @@
+module CompoundStatement
+
+imports
+	Statement
+	Expression
+	Terminator
+
+context-free syntax
+
+	CStmt.Stmt = <<StatementList?> <T*>>
+	
+	StatementList.Head = <<Stmt> <StatementListEnd*>>
+	StatementListEnd.Trailer = 
+		<<T+>
+		 <Stmt>>
