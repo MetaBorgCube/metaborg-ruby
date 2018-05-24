@@ -1,0 +1,13 @@
+module FunctionName
+
+imports
+	Identifier
+	Operator
+
+lexical syntax
+
+	FNAME = ID
+	FNAME = OPERATOR-METHOD-NAME
+	
+	
+	
