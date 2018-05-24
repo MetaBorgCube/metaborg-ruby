@@ -7,7 +7,7 @@ imports
 
 context-free syntax
 
-	CStmt.Stmt = <<StatementList?> <T*>>
+	CStmt.CStmt = <<StatementList?> <T*>>
 	
 	StatementList.Head = <<Stmt> <StatementListEnd*>>
 	StatementListEnd.Trailer = 
