@@ -1,0 +1,19 @@
+module IdentifierClassVariableValidTest
+
+language Ruby
+
+start symbol IDENTIFIER
+
+// valid identifiers
+test method name identifier with exclamation mark
+  [[method!]] parse succeeds
+  
+test method name identifier with question mark
+  [[method?]] parse succeeds
+  
+test assignment method name identifier
+  [[method=]] parse succeeds
+
+// should support US-ASCII-compatible extended characters (where eight bit is set)
+//test supports extended characters
+//  [[こんにちは]] parse succeeds

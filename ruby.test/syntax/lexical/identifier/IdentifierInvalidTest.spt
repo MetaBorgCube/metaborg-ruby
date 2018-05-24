@@ -1,8 +1,8 @@
-module IdentifierInvalid
+module IdentifierInvalidTest
 
 language Ruby
 
-start symbol ID
+start symbol IDENTIFIER
 	
 	// invalid identifiers
 	test number

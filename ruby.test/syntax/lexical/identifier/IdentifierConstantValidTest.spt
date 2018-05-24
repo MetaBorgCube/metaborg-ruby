@@ -1,0 +1,15 @@
+module IdentifierConstantValidTest
+
+language Ruby
+
+start symbol IDENTIFIER
+
+// valid identifiers
+test upper case identifier
+  [[UPPER_CASE]] parse succeeds
+  
+test camel case identifier first upper
+  [[CamelCase]] parse succeeds
+  
+test valid identifier with everything
+  [[Identifier_42]] parse succeeds
