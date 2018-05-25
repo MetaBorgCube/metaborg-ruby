@@ -1,0 +1,75 @@
+module NumberInvalidTest
+
+language Ruby
+
+start symbol NUMBER
+
+// Examples found in the official Ruby language documentation:
+// http://ruby-doc.org/core-2.5.0/doc/syntax/literals_rdoc.html#label-Numbers
+
+test identifier
+  [[abc]] parse fails
+test invalid encoding character
+  [[0y1234]] parse fails
+test binary encoding other than zero and one
+  [[0b2]] parse fails
+test binary encoding including other than zero and one
+  [[0b10101267450101]] parse fails
+test starting with underscore
+  [[_123]] parse fails
+test ending with underscore
+  [[123_]] parse fails
+test sign in number
+  [[12-3]] parse fails
+test double sign
+  [[--123]] parse fails
+test space after sign
+  [[- 123]] parse fails
+test space in number
+  [[12 34]] parse fails
+test double decimal separator
+  [[1.2.3]] parse fails
+test double consecutive decimal separator
+  [[1..3]] parse fails
+test hexadecimal encoding without value
+  [[0x]] parse fails
+test binary encoding without value
+  [[0b]] parse fails
+test octal encoding without value
+  [[0o]] parse fails
+test multiple zeroes followed by exponent
+  [[000e1]] parse fails
+test no zero before decimal separator
+  [[.5]] parse fails
+test fractional part after multiple zeroes
+  [[00.0]] parse fails
+test thousand separator before decimal separator
+  [[1_.0]] parse fails
+test thousand separator after decimal separator
+  [[1._0]] parse fails
+test thousand separator before exponent
+  [[1.0_e1]] parse fails
+test thousand separator after exponent
+  [[1.0e_1]] parse fails
+test exponent after decimal separator
+  [[1.e1]] parse fails
+test exponent before decimal separator
+  [[1e.1]] parse fails
+test hexadecimal with invalid letter as value
+  [[0xz]] parse fails
+test hexadecimal including invalid letter in value
+  [[0x123Qabc]] parse fails
+test octal with invalid number as value
+  [[0o8]] parse fails
+test octal with letter as value
+  [[0oa]] parse fails
+test octal inluding invalid number in value
+  [[0o1293]] parse fails
+test octal inluding letter in value
+  [[0o12b3]] parse fails
+test decimal with letter as
+  [[0da]] parse fails
+test decimal inluding letter in value
+  [[0d12b3]] parse fails
+test fraction after exponent
+  [[123e456.789]] parse fails

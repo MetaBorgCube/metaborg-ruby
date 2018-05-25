@@ -1,8 +1,8 @@
-module IdentifierReservedKeywords
+module IdentifierReservedKeywordsTest
 
 language Ruby
 
-start symbol ID
+start symbol IDENTIFIER
 
 // Automatically generated from doc/reserved-keywords.txt
 

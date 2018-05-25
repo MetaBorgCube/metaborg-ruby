@@ -16,6 +16,7 @@ lexical start-symbols
   ID
   NUMBER
   FNAME
+  IDENTIFIER
 
 context-free start-symbols
   

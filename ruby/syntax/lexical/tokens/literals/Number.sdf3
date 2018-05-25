@@ -71,5 +71,5 @@ lexical syntax
 	
 lexical restrictions
 
-	// TODO
+	NUMBER -/- [0-9]
 	
