@@ -1,0 +1,3 @@
+Program(
+  CStmt(Some(Head(Alias("b", "b"), [])), [])
+)

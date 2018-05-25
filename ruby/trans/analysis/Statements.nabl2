@@ -11,9 +11,9 @@ rules
 		[[statement ^ (s)]].
 
 	// Evaluates to nil
-	[[ CompoundStatement(None()) ^ (s) ]] := true.
+	[[ CStmt(None(),_) ^ (s) ]] := true.
 
-	[[ CompoundStatement(Some(Head(stmt1, trailerList))) ^ (s) ]] :=
+	[[ CStmt(Some(Head(stmt1, trailerList)),_) ^ (s) ]] :=
 		[[stmt1 ^ (s)]],
 		Map1(Right)[[trailerList ^ (s)]].
 
