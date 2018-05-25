@@ -6,6 +6,6 @@ imports
 
 context-free syntax
 	
-	Var.Name = < <VARNAME> >
+	Var.Var = < <VARNAME> >
 	Var.Null = <nil>
 	Var.Self = <self>
