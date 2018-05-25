@@ -1,0 +1,50 @@
+module analysis/Statements
+
+imports
+
+  signatures/-
+  analysis/-
+  
+rules
+
+	Right[[Trailer(_, statement)]] := 
+		[[statement ^ (s)]].
+
+	// Evaluates to nil
+	[[ CompoundStatement(None()) ^ (s) ]] := true.
+
+	[[ CompoundStatement(Some(Head(stmt1, trailerList))) ^ (s) ]] :=
+		[[stmt1 ^ (s)]],
+		Map1(Right)[[trailerList ^ (s)]].
+
+	[[ Alias(fname1, fname2) ^ (s) ]] := 
+		FunctionVar{fname1} -> s,
+		FunctionVar{fname1} |-> d | error "Cannot find function name",
+		FunctionVar{fname2} -> s,
+		FunctionVar{fname2} |-> d | error "Cannot find function name".
+		
+	[[ Undef(fname) ^ (s) ]] := 
+		FunctionVar{fname} -> s,
+		FunctionVar{fname} |-> d | error "Cannot find function name".
+		
+	[[ If(statement, e) ^ (s) ]] :=
+		[[statement ^ (s)]],
+		[[e ^ (s)]].
+		
+	[[ While(statement, e) ^ (s) ]] :=
+		[[statement ^ (s)]],
+		[[e ^ (s)]].
+	
+	[[ Unless(statement, e) ^ (s) ]] :=
+		[[statement ^ (s)]],
+		[[e ^ (s)]].
+		
+	[[ Until(statement, e) ^ (s) ]] :=
+		[[statement ^ (s)]],
+		[[e ^ (s)]].
+	
+	[[ Begin(cstatement) ^ (s) ]] :=
+		[[cstatement ^ (s)]].
+		
+	[[ End(cstatement) ^ (s) ]] :=
+		[[cstatement ^ (s)]].

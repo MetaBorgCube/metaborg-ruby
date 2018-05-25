@@ -10,7 +10,7 @@ context-free syntax
 	// LeftHandSide is defined as the left hand side of 
 	// an assignment expression.
 	
-	LHS.Var = <<Var>>
+	LHS.LHSVar = <<Var>>
 	LHS.CallArgs = <<Primary> [<Arg>]> // TODO [ no line-terminator here ] [ no whitespace here ]!
 	LHS.MethodCallDot = <<Primary>.<ID>> // TODO [ no line-terminator here ]!
 	LHS.MethodCallColon = <<Primary>::<ID>> // TODO only 'constant-ids'.

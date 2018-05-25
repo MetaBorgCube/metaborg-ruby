@@ -1,0 +1,19 @@
+module analysis/Ruby
+
+imports
+
+  signatures/-
+  analysis/-
+  
+signature
+  name resolution
+        namespaces // ... space separated list of namespaces ...
+        	Var
+        	FunctionVar
+
+rules
+
+  init ^ (s) := new s.
+
+  [[ Program(compoundStatement) ^ (s) ]] := 
+		[[compoundStatement ^ (s)]].
