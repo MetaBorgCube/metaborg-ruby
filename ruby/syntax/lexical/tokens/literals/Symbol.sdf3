@@ -1,0 +1,33 @@
+module Symbol
+
+imports
+
+  Identifier
+  String
+  Keyword
+  Operator
+	
+sorts
+
+	SYMBOL
+
+lexical syntax
+
+  // Sources:
+  // - https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.6.6)
+
+	SYMBOL = SYMBOL-LITERAL
+	//SYMBOL = DYNAMIC-SYMBOL
+	
+	// Symbol Literal
+	
+	SYMBOL-LITERAL = ":" SYMBOL-NAME
+	
+	SYMBOL-NAME = IDENTIFIER
+	SYMBOL-NAME = OPERATOR-METHOD-NAME
+	SYMBOL-NAME = KEYWORD
+	
+	// Dynamic Symbol
+	
+	//DYNAMIC-SYMBOL = "" 
+	

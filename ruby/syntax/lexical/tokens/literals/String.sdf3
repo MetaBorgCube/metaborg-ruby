@@ -1,0 +1,15 @@
+module String
+
+lexical syntax
+
+  STRING         = "\"" StringChar* "\"" 
+  StringChar     = ~[\"\n] 
+  StringChar     = "\\\"" 
+  StringChar     = BackSlashChar 
+  BackSlashChar  = "\\"
+  
+lexical restrictions
+
+  // Backslash chars in strings may not be followed by " 
+  
+  BackSlashChar -/- [\"]

@@ -1,0 +1,6 @@
+module Terminator
+
+lexical syntax
+
+	T.SemiColon = ";"
+	T.NewLine = [\n]

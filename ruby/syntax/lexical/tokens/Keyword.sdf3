@@ -1,0 +1,53 @@
+module Keyword
+
+lexical syntax
+
+  // Keywords
+  // Sources:
+  // http://ruby-doc.org/core-2.5.0/doc/keywords_rdoc.html
+  // https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.2)
+  // http://www.java2s.com/Code/Ruby/Language-Basics/Rubysreservedwords.htm
+  KEYWORD = "__LINE__"
+  KEYWORD = "__ENCODING__"
+  KEYWORD = "__FILE__"
+  KEYWORD = "BEGIN"
+  KEYWORD = "END"
+  KEYWORD = "alias"
+  KEYWORD = "and"
+  KEYWORD = "begin"
+  KEYWORD = "break"
+  KEYWORD = "case"
+  KEYWORD = "class"
+  KEYWORD = "def"
+  KEYWORD = "defined?"
+  KEYWORD = "do"
+  KEYWORD = "else"
+  KEYWORD = "elseif"
+  KEYWORD = "end"
+  KEYWORD = "ensure"
+  KEYWORD = "for"
+  KEYWORD = "false"
+  KEYWORD = "if"
+  KEYWORD = "in"
+  KEYWORD = "module"
+  KEYWORD = "next"
+  KEYWORD = "nil"
+  KEYWORD = "not"
+  KEYWORD = "or"
+  KEYWORD = "redo"
+  KEYWORD = "rescue"
+  KEYWORD = "retry"
+  KEYWORD = "return"
+  KEYWORD = "self"
+  KEYWORD = "super"
+  KEYWORD = "then"
+  KEYWORD = "true"
+  KEYWORD = "undef"
+  KEYWORD = "unless"
+  KEYWORD = "until"
+  KEYWORD = "when"
+  KEYWORD = "while"
+  KEYWORD = "yield"
+	
+	
+	

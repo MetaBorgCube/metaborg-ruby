@@ -1,0 +1,9 @@
+module Operation
+
+imports
+
+  Identifier
+  
+lexical syntax
+
+  OPERATION = ID [\?\!]?

@@ -1,11 +1,11 @@
 module Variable
 
 imports
+
 	VarName
 
 context-free syntax
-	// VARNAME | nil | self
 	
-	Var.Name = < <VarName> >
+	Var.Name = < <VARNAME> >
 	Var.Null = <nil>
 	Var.Self = <self>

@@ -1,7 +1,8 @@
 module Literal
 
 imports
-	Common
+	Number
+	String
 	Symbol
 	
 sorts
@@ -11,6 +12,6 @@ sorts
 context-free syntax
 
 	// LITERAL = numeric | SYMBOL | STRING | STRING2 | HERE_DOC | REGEXP
-	Literal.Num = < numeric >
+	Literal.Num = <<NUMBER>>
 	Literal.String = < <STRING> >
 	Literal.Symbol = <<SYMBOL>>

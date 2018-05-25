@@ -1,0 +1,26 @@
+module NumberValidTest
+
+language Ruby
+
+start symbol NUMBER
+
+test zero
+  [[0]] parse succeeds
+ 
+test multiple zeroes
+  [[000]] parse succeeds
+  
+test multiple zeroes separated by thousand separators
+  [[0_00]] parse succeeds
+  
+test zero with exponent
+  [[0e1]] parse succeeds
+  
+test fourty two
+  [[42]] parse succeeds
+  
+test decimal
+  [[0.5]] parse succeeds
+  
+test decimal separator in fractional part
+  [[0.0_5]] parse succeeds

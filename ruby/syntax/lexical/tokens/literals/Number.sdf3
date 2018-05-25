@@ -1,0 +1,75 @@
+module Number
+
+// Sources:
+// - http://ruby-doc.org/core-2.5.0/doc/syntax/literals_rdoc.html#label-Numbers
+// - https://www.ipa.go.jp/files/000011432.pdf (Chapter 8.7.6.2)
+
+sorts
+
+	NUMBER
+	
+lexical syntax
+
+	NUMBER = SignedNumber
+	NUMBER = UnsignedNumber
+	
+	SignedNumber = [\+\-] UnsignedNumber
+	UnsignedNumber = IntegerLiteral
+	UnsignedNumber = FloatLiteral
+	
+	
+	// INTEGER
+	
+	IntegerLiteral = DecimalIntegerLiteral
+	IntegerLiteral = BinaryIntegerLiteral
+	IntegerLiteral = OctalIntegerLiteral
+	IntegerLiteral = HexadecimalIntegerLiteral
+	
+	// - Integer (Decimal)
+	
+	DecimalIntegerLiteral = UnprefixedDecimalIntegerLiteral
+	DecimalIntegerLiteral = PrefixedDecimalIntegerLiteral
+	
+	UnprefixedDecimalIntegerLiteral = "0"
+	UnprefixedDecimalIntegerLiteral = [1-9] ("_"? [0-9])*
+	
+	PrefixedDecimalIntegerLiteral = "0" [dD] DigitDecimalPart
+	
+	DigitDecimalPart = [0-9] ("_"? [0-9])*
+	
+	// - Integer (Binary)
+	
+	BinaryIntegerLiteral = "0" [bB] [01] ("_"? [01])*
+	
+	// - Integer (Octal)
+	
+	OctalIntegerLiteral = "0" [\_oO]? [0-7] ("_"? [0-7])*
+	
+	// - Integer (Hexadecimal)
+	
+	HexadecimalIntegerLiteral = "0" [xX] [0-9a-fA-F] ("_"? [0-9a-fA-F])*
+	
+	
+	// FLOAT
+	
+	FloatLiteral = FloatLiteralWithoutExponent
+	FloatLiteral = FloatLiteralWithExponent
+	
+	// - Float (Without Exponent)
+	
+	FloatLiteralWithoutExponent = UnprefixedDecimalIntegerLiteral "." DigitDecimalPart
+	
+	// - Float (With Exponent)
+	
+	FloatLiteralWithExponent = SignificantPart ExponentPart
+	
+	SignificantPart = FloatLiteralWithoutExponent
+	SignificantPart = UnprefixedDecimalIntegerLiteral
+	
+	ExponentPart = [eE] [\+\-]? DigitDecimalPart
+	
+	
+lexical restrictions
+
+	NUMBER -/- [0-9]
+	

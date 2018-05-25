@@ -1,0 +1,71 @@
+module Primary
+
+imports
+	Identifier
+	Literal
+	Variable
+	
+// Primary stands for the primary expressions in Ruby 
+context-free syntax
+
+	Primary.Literal = <<Literal>>
+	Primary.Var = <<Var>>
+	Primary.Const = <<Primary> :: <ID>>
+	
+//	PRIMARY: "(" COMPSTMT ")"
+//	| LITERAL
+//	| VARIABLE
+//	| PRIMARY :: IDENTIFIER
+//	| :: IDENTIFIER
+//	| PRIMARY "[" [ARGS] "]"
+//	| "[" [ARGS [,]] "]"
+//	| "{" [ARGS | ASSOCS [,]] "}"
+//	| return ["(" [CALL_ARGS] ")"]
+//	| yield ["(" [CALL_ARGS] ")"]
+//	| defined? "(" ARG ")"
+//	| FUNCTION
+//	| FUNCTION "{" ["|" [BLOCK_VAR] "|"] COMPSTMT "}"
+//	| if EXPR THEN
+//	COMPSTMT
+//	{elsif EXPR THEN
+//	COMPSTMT}
+//	[else
+//	COMPSTMT]
+//	end
+//	| unless EXPR THEN
+//	COMPSTMT
+//	[else
+//	COMPSTMT]
+//	end
+//	| while EXPR DO COMPSTMT end
+//	| until EXPR DO COMPSTMT end
+//	| case COMPSTMT
+//	when WHEN_ARGS THEN COMPSTMT
+//	{when WHEN_ARGS THEN COMPSTMT}
+//	[else
+//	COMPSTMT]
+//	end
+//	| for BLOCK_VAR in EXPR DO
+//	COMPSTMT
+//	end
+//	| begin
+//	COMPSTMT
+//	{rescue [ARGS] DO
+//	COMPSTMT}
+//	[else
+//	COMPSTMT]
+//	[ensure
+//	COMPSTMT]
+//	end
+//	| class IDENTIFIER [< IDENTIFIER]
+//	COMPSTMT
+//	end
+//	| module IDENTIFIER
+//	COMPSTMT
+//	end
+//	| def FNAME ARGDECL
+//	COMPSTMT
+//	end
+//	| def SINGLETON (. | ::) FNAME ARGDECL
+//	COMPSTMT
+//	end

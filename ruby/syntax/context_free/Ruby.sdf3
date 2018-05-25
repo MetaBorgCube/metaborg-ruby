@@ -2,18 +2,21 @@ module Ruby
 
 imports
   
-  Common
+  Whitespace
+  Identifier
+  Number
   FunctionName
   Program
   Statement
   Expression
   Argument
   
-  
 lexical start-symbols
 
   ID
-  FName
+  NUMBER
+  FNAME
+  IDENTIFIER
 
 context-free start-symbols
   

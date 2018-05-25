@@ -1,0 +1,58 @@
+module Argument
+
+imports
+	LeftHandSide
+	Primary
+
+// TODO: Test Arguments
+
+context-free syntax
+
+	Arg = "("Arg")"								{bracket}
+
+	Arg.Assign = <<LHS> = <Arg>> 				{right}
+//	Arg.LHSOp = <<LHS> <OP_ASSIGN> <Arg>> TODO
+	
+	Arg.RangeInc = <<Arg> .. <Arg>>				{non-assoc}
+	Arg.RangeExc = <<Arg> ... <Arg>>			{non-assoc}
+
+	Arg.Plus = <<Arg> + <Arg>> 					{left}
+	Arg.Minus = <<Arg> - <Arg>> 				{left}
+	Arg.Times = <<Arg> * <Arg>>					{left}
+	Arg.Division = <<Arg> / <Arg>> 				{left}
+	Arg.Modulo = <<Arg> % <Arg>>				{left}
+	Arg.Power = <<Arg> ** <Arg>>				{right}
+	Arg.UnPlus = <+ <Arg>>						{right}
+	Arg.UnMin = <- <Arg>>						{right}
+	
+	Arg.BitOr = <<Arg> | <Arg>>					{left}
+	Arg.BitXOr = <<Arg> ^ <Arg>>				{left}
+	Arg.BitAnd = <<Arg> & <Arg>>				{left}
+	
+	Arg.SpaceShip = [[Arg] <=> [Arg]] 			{non-assoc}
+	Arg.Greater = [[Arg] > [Arg]]				{left}
+	Arg.GreaterEq = [[Arg] >= [Arg]] 			{left}
+	Arg.Lesser = [[Arg] < [Arg]] 				{left}
+	Arg.LesserEq = [[Arg] <= [Arg]]				{left}
+	Arg.Equals = <<Arg> == <Arg>> 				{non-assoc}
+	Arg.CaseEq = <<Arg> === <Arg>> 				{non-assoc}
+	Arg.NotEq = <<Arg> != <Arg>> 				{non-assoc}
+	Arg.PatternMatch = <<Arg> =~ <Arg>> 		{non-assoc}
+	Arg.NotPatternMatch = <<Arg> !~ <Arg>> 		{non-assoc}
+	
+	Arg.BoolNot = <!<Arg>>						{right}
+	Arg.BitNot = <~<Arg>>						{right}
+	
+	Arg.BitShiftLeft = [[Arg] << [Arg]] 		{left}
+	Arg.BitShiftRight = [[Arg] >> [Arg]] 		{left}
+	
+	Arg.BoolAnd = <<Arg> && <Arg>> 				{left}
+	Arg.BoolOr = <<Arg> || <Arg>> 				{left}
+	
+	Arg.Defined = <defined? <Arg>> 				{non-assoc}
+	
+	Arg.Primary = <<Primary>>
+		
+		
+	
+	

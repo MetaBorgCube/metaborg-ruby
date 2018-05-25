@@ -1,9 +1,0 @@
-module Statement
-
-imports
-	FunctionName
-	Literal
-
-context-free syntax
-
-	Stmt.Alias = <alias <FName> <FName>>

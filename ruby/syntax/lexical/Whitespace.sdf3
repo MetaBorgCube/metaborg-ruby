@@ -1,0 +1,37 @@
+module Whitespace
+
+lexical syntax
+
+  // Layout whitespace
+  LAYOUT = [\ \t\r]
+  
+  // Block comment whitespace
+  CommentChar    = [\*]
+  BlockComment   = "/*" (InsideComment | BlockComment)* "*/"
+  InsideComment  = ~[\*]
+  InsideComment  = CommentChar
+  
+  // Line comment whitespace
+  LAYOUT         = "//" ~[\n\r]* NewLineEOF
+  LAYOUT = BlockComment
+  
+  // New line or end of file utility
+  NewLineEOF     = [\n\r]
+  NewLineEOF     = EOF
+  EOF            =
+  
+lexical restrictions
+
+  // Ensure greedy matching for lexicals
+  
+  CommentChar   -/- [\/]
+  
+  // EOF may not be followed by any char
+  
+  EOF -/- ~[]
+
+context-free restrictions
+
+  LAYOUT? -/- [\ \t\r]
+  LAYOUT? -/- [\/].[\/]
+  LAYOUT? -/- [\/].[\*]

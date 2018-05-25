@@ -10,7 +10,7 @@ context-free syntax
 	
 	// Operators
 	
-	Exp.Or = <<Exp> or <Exp>>
-	Exp.And = <<Exp> and <Exp>>
-	Exp.Not = <not <Exp>>
-	Exp.Arg = <<Arg>>
+	Exp.Or = <<Exp> or <Exp>>		{left}
+	Exp.And = <<Exp> and <Exp>>		{left}
+	Exp.Not = <not <Exp>>			{right}
+	Exp.Arg = <<Arg>>				
