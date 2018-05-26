@@ -1,0 +1,8 @@
+module BodyStatement
+
+imports
+  CompoundStatement
+
+context-free syntax
+
+  BStmt.BodyStmt = <<CStmt> >

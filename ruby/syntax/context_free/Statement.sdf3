@@ -24,4 +24,4 @@ context-free syntax
 	
 	//Stmt.Comman = <<LHS> = <Command> [do [| [<BlockVar>] |] <CStmt> end]>
 	
-	
+	Stmt.Body = <<CStmt> >
