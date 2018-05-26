@@ -12,6 +12,13 @@ context-free syntax
 	Primary.VarRef = <<Var>>
 	Primary.Const = <<Primary> :: <ID>>
 	
+	// TODO: no line-terminator between class-name and superclass
+	Primary.Class = 
+	 < class 
+	 
+	   end
+	 > 
+	
 //	PRIMARY: "(" COMPSTMT ")"
 //	| LITERAL
 //	| VARIABLE

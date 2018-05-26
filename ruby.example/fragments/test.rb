@@ -1,1 +1,1 @@
-alias a b
+a = 2;
