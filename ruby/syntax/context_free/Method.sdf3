@@ -16,13 +16,13 @@ context-free syntax
   MethodName.MethodOp = <<OPERATOR-METHOD-NAME>>
   MethodName.Keyword = <<KEYWORD>>
 
-  MethodInvocationWithParentheses.Command = <<Command>>
-  MethodInvocationWithParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
-  MethodInvocationWithParentheses.ChainedCommandLong = 
+  MethodInvocationWithoutParentheses.Command = <<Command>>
+  MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
+  MethodInvocationWithoutParentheses.ChainedCommandLong = 
     <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgWithoutParentheses>>
-  MethodInvocationWithParentheses.Return = <<ReturnWithArgument>>
-  MethodInvocationWithParentheses.Break = <<BreakWithArgument>>
-  MethodInvocationWithParentheses.Next = <<NextWithArgument>>
+  MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>>
+  MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>>
+  MethodInvocationWithoutParentheses.Next = <<NextWithArgument>>
   
   BlockSymbol.Period = "."
   BlockSymbol.DoubleColon = "::"

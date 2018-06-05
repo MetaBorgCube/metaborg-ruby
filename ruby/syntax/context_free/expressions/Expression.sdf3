@@ -1,16 +1,9 @@
 module Expression
 
 imports
-	Argument
+	KeywordExpression
 
 context-free syntax
-
-	Exp.Return = <return <Exp>>
-	Exp.Yield = <yield <Exp>>
+	// General expression	
+	Exp.Keyword = <<KeywordExp>>
 	
-	// Operators
-	
-	Exp.Or = <<Exp> or <Exp>>		{left}
-	Exp.And = <<Exp> and <Exp>>		{left}
-	Exp.Not = <not <Exp>>			{right}
-	Exp.Arg = <<Arg>>

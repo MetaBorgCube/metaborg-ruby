@@ -7,7 +7,7 @@ imports
   
 rules
 
-	Right[[Trailer(_, statement)]] := 
+	Right[[Trailer(_, statement) ^ (s) ]] := 
 		[[statement ^ (s)]].
 
 	// Evaluates to nil
