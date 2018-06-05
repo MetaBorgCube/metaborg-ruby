@@ -13,4 +13,4 @@ context-free syntax
 	Exp.Or = <<Exp> or <Exp>>		{left}
 	Exp.And = <<Exp> and <Exp>>		{left}
 	Exp.Not = <not <Exp>>			{right}
-	Exp.Arg = <<Arg>>				
+	Exp.Arg = <<Arg>>
