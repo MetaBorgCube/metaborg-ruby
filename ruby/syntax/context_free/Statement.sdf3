@@ -23,5 +23,3 @@ context-free syntax
 	Stmt.End = <END { <CStmt> }> // Object finalizer
 	
 	//Stmt.Comman = <<LHS> = <Command> [do [| [<BlockVar>] |] <CStmt> end]>
-	
-	Stmt.Body = <<CStmt> >
