@@ -1,0 +1,10 @@
+module ClassTest
+
+language Ruby
+
+start symbol Program
+
+test Classname lowercase [[ class testName; end ]] parse fails
+test Classname correct [[ class TestName; end ]] parse succeeds
+
+test Superclass correct [[ class TestName < SuperName; end ]] parse succeeds
