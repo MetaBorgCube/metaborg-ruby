@@ -1,0 +1,24 @@
+module Class
+
+imports
+  BodyStatement
+  Expression
+  Identifier
+  Primary
+  Separator
+
+context-free syntax
+
+  ClassDef.Class = 
+   < class <ClassPath> <SuperClass?> <Sep>
+     <BStmt>
+     end
+   >
+
+  ClassPath.TopClassPath = <:: <ClassName>>
+  ClassPath.ClassName = ClassName
+  ClassName.ClassName = CONSTANT-IDENTIFIER
+  // TODO: no line separater between Primary and "::"
+  ClassPath.NestedClassPath = <<Primary> :: <ClassName>>
+  
+  SuperClass.Super = [ < [Exp]]

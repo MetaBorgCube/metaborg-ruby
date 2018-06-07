@@ -1,3 +1,3 @@
-class Test
+class testname :: TestName 
 
 end

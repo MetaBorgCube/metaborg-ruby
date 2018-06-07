@@ -1,0 +1,26 @@
+module Primary
+
+imports
+  BodyStatement
+  Class
+  CompoundStatement
+	Identifier
+	If
+  Expression
+	Literal
+	Separator
+	Statement
+	Variable
+	
+// Primary stands for the primary expressions in Ruby 
+context-free syntax
+
+	Primary.Literal = Literal
+	Primary.VarRef = Var
+	Primary.Const = <<Primary> :: <ID>>
+	Primary.If = IfExp
+	
+	// TODO: no line-terminator between class-name and superclass
+	Primary.ClassPrim = ClassDef
+	
+	
