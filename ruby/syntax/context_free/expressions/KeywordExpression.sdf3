@@ -12,10 +12,10 @@ context-free syntax
 	KeywordExp.KeyAnd = KeywordANDExp
 
 	KeywordNOTExp.Method = <<MethodInvocationWithoutParentheses>>
-	KeywordNOTExp.NotMethod = <!<MethodInvocationWithoutParentheses>>
+	KeywordNOTExp.NotMethod = <!<MethodInvocationWithoutParentheses>>	{right}
 	KeywordNOTExp.OpExp = <<OpExp>>
-	KeywordNOTExp.Not = <not <KeywordNOTExp>>
+	KeywordNOTExp.Not = <not <KeywordNOTExp>>							{right}
 	
-	KeywordORExp.Or = <<Exp> or <KeywordORExp>>
+	KeywordORExp.Or = <<Exp> or <KeywordORExp>>							{left}
 	
-	KeywordANDExp.And = <<Exp> and <KeywordNOTExp>>
+	KeywordANDExp.And = <<Exp> and <KeywordNOTExp>>						{left}

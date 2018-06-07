@@ -1,5 +1,1 @@
-class TestClass < Superclassf
-
-
-
-end
+class test; end

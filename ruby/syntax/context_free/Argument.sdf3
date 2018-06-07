@@ -55,15 +55,13 @@ context-free syntax
 	
 	Arg.Primary = <<Primary>>
 	
-	
-	
 	ArgWithoutParentheses.ArgList = <<ArgList>> // TODO cannot begin with '{'
 	
 	// TODO 
 	ArgList.Block =  <<BlockArg>>
-	ArgList.Splatting =
-	ArgList.OpList =
-	ArgList.OpListParentheses = 
+	ArgList.Splatting = "@#$@#$@#$@" // TODO
+	ArgList.OpList =	"@#$@#$@" // TODO
+	ArgList.OpListParentheses = "@#$@#$@" // TODO
 	ArgList.Command = <<Command>>
 	
 	BlockArg.BlockArg = <& <OpExp>>
@@ -77,7 +75,7 @@ context-free syntax
 	BreakWithArgument.BreakWithArg = <break <JumpArg>>
 	
 	NextWithoutArgument.NextWithoutArg = <next>
-  NextWithArgument.NextWithArg = <next <JumpArg>>
+  	NextWithArgument.NextWithArg = <next <JumpArg>>
 	
 	
 		

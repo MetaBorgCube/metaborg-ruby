@@ -23,12 +23,12 @@ context-free syntax
   ScopedConstantAssignmentExp.NoPrimaryExp = 
     <:: <CONSTANT-IDENTIFIER> = <OpExp>> 
     
-  SingleIndexingAssignmentExp.PrimaryIndex =
+  SingleIndexingAssignmentExp.PrimaryIndex = "@#$@#" // TODO
   
-  SingleMethodAssignmentExp.LocalVar =
-  SingleMethodAssignmentExp.ConstantVar =
+  SingleMethodAssignmentExp.LocalVar = "@#$@#" // TODO
+  SingleMethodAssignmentExp.ConstantVar = "@#$@#" // TODO
   
   
   
-  AssignmentExp.Abbreviated =
+  AssignmentExp.Abbreviated = "@#$@#" // TODO
   

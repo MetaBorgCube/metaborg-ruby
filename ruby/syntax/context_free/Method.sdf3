@@ -27,5 +27,5 @@ context-free syntax
   BlockSymbol.Period = "."
   BlockSymbol.DoubleColon = "::"
   
-  ChainedCommandWithDoBlock.ChainedCommand = 
+  ChainedCommandWithDoBlock.ChainedCommand = "@#$@$@#" //TODO
 
