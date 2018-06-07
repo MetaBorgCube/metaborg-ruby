@@ -15,12 +15,13 @@ imports
 // Primary stands for the primary expressions in Ruby 
 context-free syntax
 
-	Primary.Literal = Literal
-	Primary.VarRef = Var
-	Primary.Const = <<Primary> :: <ID>>
-	Primary.If = IfExp
+	Primary.LiteralPrim = Literal
+	Primary.VarRefPrim = Var
+	Primary.ConstPrim = <<Primary> :: <ID>>
+	Primary.IfPrim = IfExp
 	
 	// TODO: no line-terminator between class-name and superclass
 	Primary.ClassPrim = ClassDef
+	Primary.SingletonClassPrim = SingletonClassDef
 	
 	

@@ -22,3 +22,11 @@ context-free syntax
   ClassPath.NestedClassPath = <<Primary> :: <ClassName>>
   
   SuperClass.Super = [ < [Exp]]
+  
+  
+  SingletonClassDef.SingletonClass = 
+    [class << [Exp] [Sep] 
+      [SingletonClassBody]
+    ]
+    
+  SingletonClassBody.ClassBody = BStmt
