@@ -1,21 +1,6 @@
 Program(
-  amb(
-    [ CStmt(
-        Some(Head(Alias("a", "b"), []))
-      , [";"]
-      )
-    , CStmt(
-        Some(
-          Head(
-            Alias("a", "b")
-          , [Trailer(
-               [";"]
-             , Exp(Keyword(KeyNot(Method(Command(SuperArg())))))
-             )]
-          )
-        )
-      , []
-      )
-    ]
+  CStmt(
+    Some(Head(Alias("a", "b"), []))
+  , [";"]
   )
 )

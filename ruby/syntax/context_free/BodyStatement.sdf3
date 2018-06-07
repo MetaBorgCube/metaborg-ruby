@@ -16,5 +16,5 @@ context-free syntax
   EnsureClause.Ensure = <ensure <CStmt>>
   
   ExceptionClassList.OpExp = <<OpExp>>
-  ExceptionClassList.MultipleRHS = << >> //TODO
+  ExceptionClassList.MultipleRHS = "@#$@#$" //TODO
   ExceptionVar.ExceptionAssign = [=> [LHS]]

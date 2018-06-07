@@ -1,3 +1,5 @@
 alias a b;
-alias b b
-alias b a; 
+alias a a
+alias a a
+alias b a;
+alias b c
