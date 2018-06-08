@@ -23,7 +23,6 @@ context-free syntax
   
   SuperClass.Super = [ < [Exp]]
   
-  
   SingletonClassDef.SingletonClass = 
     [class << [Exp] [Sep] 
       [SingletonClassBody]

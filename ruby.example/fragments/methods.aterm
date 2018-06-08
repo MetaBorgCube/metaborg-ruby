@@ -1,0 +1,46 @@
+Program(
+  CStmt(
+    Some(
+      Head(
+        Exp(
+          PrimaryExp(
+            MethodPrim(
+              Method(
+                DefMethodName(Id(LocalVar("test")))
+              , ParamsWithParantheses(
+                  Some(
+                    MandatoryParams(
+                      Params([MandatoryParam("test3")])
+                    , Some(
+                        OptionalOptionalParams(
+                          Params(
+                            [ OptionalParam(
+                                Name("test2")
+                              , UnOp(
+                                  amb(
+                                    [ UnExp(Primary(VarRefPrim(Var("testVar"))))
+                                    , UnMinExp(Power(UnExp(Primary(VarRefPrim(Var("testVar"))))))
+                                    ]
+                                  )
+                                )
+                              )
+                            ]
+                          )
+                        )
+                      )
+                    , None()
+                    , None()
+                    )
+                  )
+                )
+              , Body(BodyStmt(CStmt(None(), []), [], None(), None()))
+              )
+            )
+          )
+        )
+      , []
+      )
+    )
+  , []
+  )
+)

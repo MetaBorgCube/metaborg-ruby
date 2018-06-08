@@ -1,0 +1,21 @@
+module ClassTest
+
+language Ruby
+
+start symbol Program
+
+test Methodname lowercase [[def test; end]] parse succeeds
+test Methodname CamelCase [[def TestName; end]] parse succeeds
+test Methodname snake [[def test_name; end]] parse succeeds
+test Methodname Camel Snake [[def Test_Name; end]] parse succeeds
+test Methodname Camel Snake [[def Test_Name; end]] parse succeeds
+test Methodname number [[def 1234; end]] parse fails
+
+test Method parantheses [[def method(); end]] parse succeeds
+test Method parantheses spaces [[def method ( ) ; end]] parse succeeds
+test Method no separator whitespace [[def method() end]] parse succeeds
+test Method no separator no parentheses [[def methodName end]] parse fails
+
+test Method mandatory [[def method(param1); end]] parse succeeds
+test Method mandatory list [[def method(param1, param2); end]] parse succeeds
+test Method mandatory, optional  [[def method(param1, param2); end]] parse succeeds

@@ -10,5 +10,5 @@ context-free syntax
 	Exp.Keyword = KeywordExp
 	
 	Exp.OperatorExp = OpExp
-	Exp.PrimaryExp = Primary
+	Exp.PrimaryExp = Primary     {prefer}
 	

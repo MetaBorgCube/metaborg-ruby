@@ -1,0 +1,23 @@
+module Module
+
+imports
+  BodyStatement
+  Identifier
+  Primary
+
+context-free syntax
+
+  ModuleDef.Module = 
+   < module <ModulePath> <ModuleBody> end >
+   
+  ModuleName.ModuleName = CONSTANT-IDENTIFIER
+
+  ModulePath.TopPath = TopModulePath
+  ModulePath.Name = ModuleName
+  ModulePath.Nested = NestedModulePath
+
+  TopModulePath.ModuleTopPath = <:: <ModuleName>>
+  
+  NestedModulePath.NestedModulePath = <<Primary> :: <ModuleName>>
+  
+  ModuleBody.ModuleBody = BStmt
