@@ -1,1 +1,1 @@
-def test(test3, test2 = testVar) end
+def test(test3, *) end

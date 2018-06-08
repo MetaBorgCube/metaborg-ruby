@@ -1,4 +1,4 @@
-module ClassTest
+module MethodTest
 
 language Ruby
 
@@ -18,4 +18,49 @@ test Method no separator no parentheses [[def methodName end]] parse fails
 
 test Method mandatory [[def method(param1); end]] parse succeeds
 test Method mandatory list [[def method(param1, param2); end]] parse succeeds
-test Method mandatory, optional  [[def method(param1, param2); end]] parse succeeds
+test Method mandatory, optional  [[def method(param1, param2 = testVar); end]] parse succeeds
+test Method mandatory list, optional list
+  [[ def method(param1, param2, param3 = varName1, param4 = varName2); end ]] parse succeeds
+test Method mandatory, optional, array
+  [[ def method(param1, param2 = varName1, * arrayName); end]] parse succeeds
+test Method mandatory, optional, array star
+  [[ def method(param1, param2 = varName1, *); end]] parse succeeds
+test Method mandatory, optional, more than one *
+  [[ def method(param1, param2 = varName1, *, *); end]] parse fails
+test Method mandatory, array [[def method(param1, *); end]] parse succeeds
+test Method mandatory, optional, array, proc
+  [[ def method(param1, param2 = varName1, *, & procName); end]] parse succeeds
+test Method mandatory, more than one proc fails
+  [[ def method(param1, & proc1, & proc2); end]] parse fails
+  
+test Method optional 
+  [[ def method(param1 = var1); end ]] parse succeeds
+test Method optional array
+  [[ def method(param1 = var1, *); end ]] parse succeeds
+test Method optional array proc
+  [[ def method(param1 = var2, *, &proc1); end]] parse succeeds
+test Method optional proc
+  [[ def method(param1 = var1, &proc1); end]] parse succeeds
+test Method optional before mandatory fails
+  [[ def method(param1 = var1, param2); end]] parse fails
+
+test Method array
+  [[ def method(*param1); end ]] parse succeeds
+test Method array *
+  [[ def method(*); end ]] parse succeeds
+test Method array proc
+  [[ def method(*, &proc1); end ]] parse succeeds
+test Method array before mandatory
+  [[ def method(*, param1); end ]] parse fails
+test Method array before optional
+  [[ def method(*, param1 = param2); end ]] parse fails
+test Method array list fails
+  [[ def method(*, *); end ]] parse fails
+  
+test Method proc
+  [[ def method(&proc1); end ]] parse succeeds
+test Method proc list fails
+  [[ def method(&proc1, &proc2); end ]] parse fails
+  
+test Method reverse parameters fails
+  [[ def method(&proc1, *, param1 = param2, param3); end ]] parse fails
