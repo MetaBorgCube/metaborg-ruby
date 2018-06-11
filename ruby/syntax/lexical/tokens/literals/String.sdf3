@@ -2,6 +2,11 @@ module String
 
 lexical syntax
 
+  // Sources:
+  // - https://github.com/ruby/ruby/blob/trunk/doc/syntax/literals.rdoc#strings
+  // - http://ruby-doc.org/core-2.5.0/doc/syntax/literals_rdoc.html#label-Strings
+  // - https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.6.3)
+
   STRING = SingleQuotedString
   
   // Single Quoted String
