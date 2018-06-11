@@ -6,3 +6,4 @@ lexical syntax
   SEPARATOR = LINETERMINATOR
   
   LINETERMINATOR = [\n]
+  LineTerminatorEscapeSequence = [\\] LINETERMINATOR
