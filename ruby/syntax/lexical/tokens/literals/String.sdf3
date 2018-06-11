@@ -1,5 +1,11 @@
 module String
 
+imports
+
+  Separator
+  Identifier
+  CompoundStatement
+
 lexical syntax
 
   // Sources:
@@ -25,4 +31,44 @@ lexical syntax
   SingleQuotedStringMetaCharacter = [\'\\]
   SingleQuotedStringNonEscapedCharacter = ~[\'\\]
   
+  // Double Quoted String
+  
+  DoubleQuotedString = [\"] DoubleQuotedStringCharacter* [\"]
+  
+  DoubleQuotedStringCharacter = ~[\"\#\\]
+  DoubleQuotedStringCharacter = NonInterpolationHashSymbol
+  DoubleQuotedStringCharacter = DoubleEscapeSequence
+  DoubleQuotedStringCharacter = InterpolatedCharacterSequence
+  
+  DoubleEscapeSequence = SimpleEscapeSequence
+  DoubleEscapeSequence = NonEscapedSequence
+  DoubleEscapeSequence = LineTerminatorEscapeSequence
+  DoubleEscapeSequence = OctalEscapeSequence
+  DoubleEscapeSequence = HexadecimalEscapeSequence
+  DoubleEscapeSequence = ControlEscapeSequence
+  
+  SimpleEscapeSequence = [\\] DoubleEscapedCharacter
+  NonEscapedSequence = [\\] NonEscapedDoubleQuotedStringCharacter
+  OctalEscapeSequence = [\\] [0-7] [0-7]? [0-7]?
+  HexadecimalEscapeSequence = [\\] "x" [0-9a-fA-F] [0-9a-fA-F]?
+  ControlEscapeSequence = [\\] ControlCharacter ControlEscapedCharacter
+  InterpolatedCharacterSequence = "#" GLOBAL-V-IDENTIFIER
+  InterpolatedCharacterSequence = "#" CLASS-V-IDENTIFIER
+  InterpolatedCharacterSequence = "#" INSTANCE-V-IDENTIFIER
+  InterpolatedCharacterSequence = "#{" CStmt "}"
+  
+  ControlCharacter = "c"
+  ControlCharacter = "C-"
+  ControlEscapedCharacter = DoubleEscapeSequence
+  ControlEscapedCharacter = "?"
+  ControlEscapedCharacter = ~[\\\?]
+  
+  DoubleEscapedCharacter = [\\ntrfvaebs]
+  NonEscapedDoubleQuotedStringCharacter = ~[a-zA-Z0-9]
+  NonEscapedDoubleQuotedStringCharacter = LINETERMINATOR {reject}
+  
+  NonInterpolationHashSymbol = "#"
+  
 lexical restrictions
+
+  NonInterpolationHashSymbol -/- [\$\@\{]
