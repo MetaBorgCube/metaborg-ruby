@@ -1,0 +1,8 @@
+module Separator
+
+lexical syntax
+
+  SEPARATOR = ";"
+  SEPARATOR = LINETERMINATOR
+  
+  LINETERMINATOR = [\n]

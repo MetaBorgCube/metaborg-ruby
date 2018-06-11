@@ -3,13 +3,13 @@ module CompoundStatement
 imports
 	Statement
 	Expression
-	Terminator
+	Separator
 
 context-free syntax
 
-	CStmt.CStmt = <<StatementList?> <T*>>
+	CStmt.CStmt = <<StatementList?> <SEPARATOR*>>
 	
 	StatementList.Head = <<Stmt> <StatementListEnd*>>
 	StatementListEnd.Trailer = 
-		<<T+>
+		<<SEPARATOR+>
 		 <Stmt>>
