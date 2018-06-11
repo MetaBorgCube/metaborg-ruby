@@ -1,0 +1,17 @@
+module SingleQuotedStringValidTest
+
+language Ruby
+
+start symbol STRING
+
+test empty string
+  [['']] parse succeeds
+  
+test simple single quoted string
+  [['string']] parse succeeds
+  
+test string containing escaped meta character quote
+  [['\'']] parse succeeds
+  
+test string containing escaped meta character backslash
+  [['\\']] parse succeeds
