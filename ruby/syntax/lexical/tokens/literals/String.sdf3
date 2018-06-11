@@ -2,14 +2,22 @@ module String
 
 lexical syntax
 
-  STRING         = "\"" StringChar* "\"" 
-  StringChar     = ~[\"\n] 
-  StringChar     = "\\\"" 
-  StringChar     = BackSlashChar 
-  BackSlashChar  = "\\"
+  STRING = SingleQuotedString
+  
+  // Single Quoted String
+  
+  SingleQuotedString = [\'] SingleQuotedStringCharacter* [\']
+  
+  SingleQuotedStringCharacter = SingleQuotedStringNonEscapedCharacter
+  SingleQuotedStringCharacter = SingleQuotedEscapeSequence
+  
+  SingleQuotedEscapeSequence = SingleEscapeCharacterSequence
+  SingleQuotedEscapeSequence = SingleQuotedStringNonEscapedCharacterSequence
+  
+  SingleEscapeCharacterSequence = [\\] SingleQuotedStringMetaCharacter
+  SingleQuotedStringNonEscapedCharacterSequence = [\\] SingleQuotedStringNonEscapedCharacter  
+  
+  SingleQuotedStringMetaCharacter = [\'\\]
+  SingleQuotedStringNonEscapedCharacter = ~[\'\\]
   
 lexical restrictions
-
-  // Backslash chars in strings may not be followed by " 
-  
-  BackSlashChar -/- [\"]
