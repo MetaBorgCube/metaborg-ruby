@@ -4,6 +4,7 @@ imports
 	KeywordExpression
 	OperatorExpression
 	Primary
+	Yield
 
 context-free syntax
 	// General expression	
@@ -11,4 +12,7 @@ context-free syntax
 	
 	Exp.OperatorExp = OpExp
 	Exp.PrimaryExp = Primary     {prefer}
+	Exp.YieldExp = Yield
+	
+	Exp = "(" Exp ")"    {bracket}
 	

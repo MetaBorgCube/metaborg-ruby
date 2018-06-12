@@ -16,7 +16,7 @@ context-free syntax
     <yield (<ArgumentList>)>
   
   YieldWithParenthesesWithoutArgument.YieldWithoutArg = 
-    <yield ( )>
+    <yield ( )> {prefer}
   
   YieldWithArgument.YieldArgWithoutPar = 
     <yield <ArgumentWithoutParentheses>>
