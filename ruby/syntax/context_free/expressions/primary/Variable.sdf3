@@ -6,6 +6,10 @@ imports
 
 context-free syntax
 	
-	Var.Var = < <VARNAME> >
-	Var.Null = <nil>
-	Var.Self = <self>
+	Var.Var = VARNAME
+	Var.Pseudo = PseudoVar
+	
+	PseudoVar.Null = "nil"
+	PseudoVar.True = "true"
+	PseudoVar.False = "false"
+	PseudoVar.Self = "self"

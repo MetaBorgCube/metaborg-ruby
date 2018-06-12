@@ -11,6 +11,10 @@ test Methodname Camel Snake [[def Test_Name; end]] parse succeeds
 test Methodname Camel Snake [[def Test_Name; end]] parse succeeds
 test Methodname number [[def 1234; end]] parse fails
 
+test SingletonMethod period [[def singl . methodName; end]] parse succeeds
+test SingletonMethod colons [[def singl :: methodName; end]] parse succeeds
+test SingletonMethod expression [[def (testVar :: testID) :: methodName; end]] parse succeeds
+
 test Method parantheses [[def method(); end]] parse succeeds
 test Method parantheses spaces [[def method ( ) ; end]] parse succeeds
 test Method no separator whitespace [[def method() end]] parse succeeds
