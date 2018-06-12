@@ -1,0 +1,32 @@
+module AssignmentExpression
+
+imports
+  Identifier
+  Method
+  OperatorExpression
+  Primary
+  Variable
+  
+
+context-free syntax
+  AssignmentExp.Single = <<SingleAssignmentExp>>
+  
+  SingleAssignmentExp.SingleVar = <<SingleVarAssignmentExp>>
+  SingleAssignmentExp.ScopedCons = <<ScopedConstantAssignmentExp>>
+  SingleAssignmentExp.SingleIndexing = <<SingleIndexingAssignmentExp>>
+  SingleAssignmentExp.SingleMethod = <<SingleMethodAssignmentExp>>
+  
+  SingleVarAssignmentExp.SingleVarAssign = <<Var> = <OpExp>>
+  
+  ScopedConstantAssignmentExp.PrimaryExp = 
+    <<Primary> :: <CONSTANT-IDENTIFIER> = <OpExp>>
+  ScopedConstantAssignmentExp.NoPrimaryExp = 
+    <:: <CONSTANT-IDENTIFIER> = <OpExp>> 
+    
+  SingleIndexingAssignmentExp.PrimaryIndex = "@#$@#" // TODO
+  
+  SingleMethodAssignmentExp.LocalVar = "@#$@#" // TODO
+  SingleMethodAssignmentExp.ConstantVar = "@#$@#" // TODO
+  
+  AssignmentExp.Abbreviated = "@#$@#" // TODO
+  

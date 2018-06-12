@@ -14,6 +14,9 @@ signature
 rules
 
   init ^ (s) := new s.
+  
+  // We do not care about Nabl2 atm.
+  [[ Program(_) ^ (s) ]] := true.
 
-  [[ Program(compoundStatement) ^ (s) ]] := 
-		[[compoundStatement ^ (s)]].
+//  [[ Program(compoundStatement) ^ (s) ]] := 
+//		[[compoundStatement ^ (s)]].

@@ -1,0 +1,14 @@
+module Expression
+
+imports
+	KeywordExpression
+	OperatorExpression
+	Primary
+
+context-free syntax
+	// General expression	
+	Exp.Keyword = KeywordExp
+	
+	Exp.OperatorExp = OpExp
+	Exp.PrimaryExp = Primary     {prefer}
+	

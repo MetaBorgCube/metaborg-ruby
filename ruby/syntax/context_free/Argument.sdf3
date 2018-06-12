@@ -1,7 +1,9 @@
 module Argument
 
 imports
+  Command
 	LeftHandSide
+	OperatorExpression
 	Primary
 
 // TODO: Test Arguments
@@ -52,6 +54,30 @@ context-free syntax
 	Arg.Defined = <defined? <Arg>> 				{non-assoc}
 	
 	Arg.Primary = <<Primary>>
+	
+	ArgWithoutParentheses.ArgList = <<ArgList>> // TODO cannot begin with '{'
+	
+	// TODO 
+	ArgList.Block =  <<BlockArg>>
+	ArgList.Splatting = "@#$@#$@#$@" // TODO
+	ArgList.OpList =	"@#$@#$@" // TODO
+	ArgList.OpListParentheses = "@#$@#$@" // TODO
+	ArgList.Command = <<Command>>
+	
+	BlockArg.BlockArg = <& <OpExp>>
+	
+	JumpArg.Jump = ArgList //No line terminator before this term.
+	
+	ReturnWithoutArgument.ReturnWithoutArg = <return>
+	ReturnWithArgument.ReturnWithArg = <return <JumpArg>>
+	
+	BreakWithoutArgument.BreakWithoutArg = <break>
+	BreakWithArgument.BreakWithArg = <break <JumpArg>>
+	
+	NextWithoutArgument.NextWithoutArg = <next>
+  	NextWithArgument.NextWithArg = <next <JumpArg>>
+	
+	
 		
 		
 	
