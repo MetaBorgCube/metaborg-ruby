@@ -15,3 +15,7 @@ test Classname nested class path [[ class modulename :: Classname; end]] parse s
 test Superclass camelCase [[ class TestName < TestNameOther; end ]] parse succeeds
 test Superclass var [[ class TestName < testname; end ]] parse succeeds
 test Superclass number [[ class TestName < 234; end ]] parse succeeds
+
+// Singleton class
+test Singleton Class name [[class << 123; end]] parse succeeds
+test Singleton class name prefix [[class TestName << 123; end]] parse fails

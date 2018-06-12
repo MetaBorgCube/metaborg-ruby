@@ -2,10 +2,13 @@ module Method
 
 imports
   Argument
+  BodyStatement
   Command
   Identifier
   Operator
+  OperatorExpression
   Keyword
+  Separator
 
 context-free syntax
   MethodId.LocalVar = <<LOCAL-V-IDENTIFIER>>
@@ -28,4 +31,40 @@ context-free syntax
   BlockSymbol.DoubleColon = "::"
   
   ChainedCommandWithDoBlock.ChainedCommand = "@#$@$@#" //TODO
+  
+  
+  // Primary Expression Method definition
+  
+  MethodDef.Method = 
+    <def <DefinedMethodName> <MethodParamaters>
+      <MethodBody>
+     end>
+  DefinedMethodName.DefMethodName = MethodName
+  DefinedMethodName.AssignMethodName = ASSIGNMENT-LIKE-METHOD-IDENTIFIER
+  MethodBody.Body = BStmt
+  
+  MethodParamaters.ParamsWithParantheses = <( <ParamList?> )>
+  MethodParamaters.Params = <<ParamList?> <Sep>>
+  
+  ParamList.MandatoryParams =<<MandatoryParams> <OptionalOpt?> <OptionalArray?> <OptionalProc?>>
+  ParamList.Optional = <<OptionalParams> <OptionalArray?> <OptionalProc?>>
+  ParamList.Array = <<ArrayParams> <OptionalProc?>>
+  ParamList.Proc = ProcParams
+  
+  MandatoryParams.Params = {MandatoryParam ","}+
+  MandatoryParam.MandatoryParam = LOCAL-V-IDENTIFIER
+  
+  OptionalParams.Params = {OptionalParam ","}+
+  OptionalParam.OptionalParam = <<OptionalParamName> = <OpExp>>
+  OptionalParamName.Name = LOCAL-V-IDENTIFIER
+  OptionalOpt.OptionalOptionalParams = <, <OptionalParams>>
+  
+  ArrayParams.ArrayParamsWithName = <* <ArrayParamName>>
+  ArrayParams.ArrayParamStar = "*"
+  ArrayParamName.Name = LOCAL-V-IDENTIFIER
+  OptionalArray.OptionalArray = <, <ArrayParams>>
+  
+  ProcParams.ProcParam = <& <ProcParamName>>
+  ProcParamName.ProcName = LOCAL-V-IDENTIFIER
+  OptionalProc.OptionalProc = <, <ProcParams>>
 

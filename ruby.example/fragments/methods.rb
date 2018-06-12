@@ -1,0 +1,1 @@
+def test(test3, *) end

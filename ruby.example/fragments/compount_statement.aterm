@@ -1,6 +1,0 @@
-Program(
-  CStmt(
-    Some(Head(Alias("a", "b"), []))
-  , [";"]
-  )
-)
