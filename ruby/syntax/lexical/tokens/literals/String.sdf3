@@ -52,6 +52,8 @@ lexical syntax
   OctalEscapeSequence = [\\] [0-7] [0-7]? [0-7]?
   HexadecimalEscapeSequence = [\\] "x" [0-9a-fA-F] [0-9a-fA-F]?
   ControlEscapeSequence = [\\] ControlCharacter ControlEscapedCharacter
+  MetaEscapeSequence = [\\] MetaCharacter MetaEscapedCharacter
+  MetaControlEscapeSequence = [\\] MetaControlCharacter MetaControlEscapedCharacter
   InterpolatedCharacterSequence = "#" GLOBAL-V-IDENTIFIER
   InterpolatedCharacterSequence = "#" CLASS-V-IDENTIFIER
   InterpolatedCharacterSequence = "#" INSTANCE-V-IDENTIFIER
@@ -62,6 +64,15 @@ lexical syntax
   ControlEscapedCharacter = DoubleEscapeSequence
   ControlEscapedCharacter = "?"
   ControlEscapedCharacter = ~[\\\?]
+  
+  MetaCharacter = "M-"
+  MetaEscapedCharacter = DoubleEscapeSequence
+  MetaEscapedCharacter = ~[\\]
+  
+  MetaControlCharacter = MetaCharacter ControlCharacter
+  MetaControlCharacter = ControlCharacter MetaCharacter
+  MetaControlEscapedCharacter = DoubleEscapeSequence
+  MetaControlEscapedCharacter = ~[\\]
   
   DoubleEscapedCharacter = [\\ntrfvaebs]
   NonEscapedDoubleQuotedStringCharacter = ~[a-zA-Z0-9]
