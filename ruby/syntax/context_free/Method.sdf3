@@ -6,6 +6,7 @@ imports
   Command
   Expression
   Identifier
+  MethodArgument
   Operator
   OperatorExpression
   Keyword
@@ -24,7 +25,7 @@ context-free syntax
   MethodInvocationWithoutParentheses.Command = <<Command>>
   MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
   MethodInvocationWithoutParentheses.ChainedCommandLong = 
-    <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgWithoutParentheses>>
+    <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses>>
   MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>>
   MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>>
   MethodInvocationWithoutParentheses.Next = <<NextWithArgument>>

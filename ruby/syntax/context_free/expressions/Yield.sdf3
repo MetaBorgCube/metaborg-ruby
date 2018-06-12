@@ -1,0 +1,23 @@
+module Yield
+
+imports
+  MethodArgument
+
+context-free syntax
+
+  Yield.YieldExpOpt = YieldWithOptionalArgument
+  Yield.YieldExp = YieldWithArgument
+  
+  YieldWithOptionalArgument.ParAndArg = YieldWithParenthesesAndArgument
+  YieldWithOptionalArgument.ParWithoutArg = YieldWithParenthesesWithoutArgument
+  YieldWithOptionalArgument.Yield = "yield"
+  
+  YieldWithParenthesesAndArgument.YieldParAndArg = 
+    <yield (<ArgumentList>)>
+  
+  YieldWithParenthesesWithoutArgument.YieldWithoutArg = 
+    <yield ( )>
+  
+  YieldWithArgument.YieldArgWithoutPar = 
+    <yield <ArgumentWithoutParentheses>>
+  

@@ -13,6 +13,7 @@ imports
 	Separator
 	Statement
 	Variable
+	Yield
 	
 // Primary stands for the primary expressions in Ruby 
 context-free syntax
@@ -28,5 +29,6 @@ context-free syntax
 	Primary.ModulePrim = ModuleDef
 	Primary.MethodPrim = MethodDef
 	Primary.SingletonMethodPrim = SingletonMethodDef
+	Primary.YieldPrim = YieldWithOptionalArgument
 	
 	
