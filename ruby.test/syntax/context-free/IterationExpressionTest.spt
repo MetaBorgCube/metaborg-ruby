@@ -1,0 +1,7 @@
+module IterationExpressionTest
+
+language Ruby
+
+start symbol Program
+
+test While implicit do [[]] parse succeeds

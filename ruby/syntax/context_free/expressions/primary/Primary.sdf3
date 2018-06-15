@@ -4,8 +4,8 @@ imports
   BodyStatement
   Class
   CompoundStatement
+  ConditionalExpression
 	Identifier
-	If
   Expression
 	Literal
 	Method
@@ -22,6 +22,8 @@ context-free syntax
 	Primary.VarRefPrim = Var
 	Primary.ConstPrim = <<Primary> :: <ID>>
 	Primary.IfPrim = IfExp
+	Primary.UnlessPrim = UnlessExp
+	Primary.CasePrim = CaseExp
 	
 	// TODO: no line-terminator between class-name and superclass
 	Primary.ClassPrim = ClassDef

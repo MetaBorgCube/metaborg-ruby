@@ -15,3 +15,6 @@ context-free syntax
 	LHS.MethodCallDot = <<Primary>.<ID>> // TODO [ no line-terminator here ]!
 	LHS.MethodCallColon = <<Primary>::<ID>> // TODO only 'constant-ids'.
 	LHS.Constant = <::<ID>> // TODO: only 'constant-ids' (uppercase)
+	
+	//Multiple Left Hand Side
+  MLHS.MLHSItems = "@#$FW" // TODO

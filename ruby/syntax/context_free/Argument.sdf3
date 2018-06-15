@@ -56,7 +56,7 @@ context-free syntax
 	
 	Arg.Primary = <<Primary>>
 	
-	JumpArg.Jump = ArgList //No line terminator before this term.
+	JumpArg.Jump = ArgumentList //No line terminator before this term.
 	
 	ReturnWithoutArgument.ReturnWithoutArg = <return>
 	ReturnWithArgument.ReturnWithArg = <return <JumpArg>>

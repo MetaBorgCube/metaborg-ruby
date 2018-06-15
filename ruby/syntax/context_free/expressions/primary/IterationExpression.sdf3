@@ -1,0 +1,26 @@
+module IterationExpression
+
+imports
+  CompoundStatement
+  Expression
+  LeftHandSide
+  Separator
+
+context-free syntax
+
+  WhileExp.While = <while <Exp> <DoClause> 
+                    end
+                    >
+  DoClause.ImplicitDo = <<Sep> <CStmt>>
+  DoClause.ExplicitDo = <do <CStmt>>
+  
+  UntilExp.Until = <until <Exp> <DoClause>>
+  
+  ForExp.For = <for <ForVariable> in <Exp> <DoClause>
+                end>
+  ForVariable.ForLHS = LHS
+  ForVariable.ForMLHS = MLHS
+  
+  WhileModifier.WhileMod =
+  
+  UntilModifier.UntilMod =
