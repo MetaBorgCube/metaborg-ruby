@@ -21,6 +21,6 @@ context-free syntax
   ForVariable.ForLHS = LHS
   ForVariable.ForMLHS = MLHS
   
-  WhileModifier.WhileMod =
+  WhileModifier.WhileMod = "@#$" //todo
   
-  UntilModifier.UntilMod =
+  UntilModifier.UntilMod = "@#$" //todo
