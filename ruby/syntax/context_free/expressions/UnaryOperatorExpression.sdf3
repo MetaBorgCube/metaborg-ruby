@@ -1,0 +1,19 @@
+module UnaryOperatorExpression
+
+imports
+  BinaryOperatorExpression
+  Primary
+
+context-free syntax
+
+  UnaryOperatorExpression = UnaryExpression       {prefer}
+  UnaryOperatorExpression = UnaryMinusExpression
+  
+  UnaryMinusExpression = PowerExpression
+  UnaryMinusExpression.MinPower = <- <PowerExpression>> {right}
+  
+  UnaryExpression.Primary = Primary
+  UnaryExpression.BitNot = <~<UnaryExpression>> {right}
+  UnaryExpression.UnPlus = <+<UnaryExpression>> {right}
+  UnaryExpression.BoolNot = <!<UnaryExpression>> {right}
+  

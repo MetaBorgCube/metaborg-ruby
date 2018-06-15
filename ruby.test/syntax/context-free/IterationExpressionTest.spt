@@ -11,3 +11,29 @@ test While implicit do [[while 123
 test While explicit do [[while 123 do 123
   
   end]] parse succeeds
+  
+test While empty do [[while 123 do; end]] parse succeeds
+test While true [[while true; end]] parse succeeds
+test While false [[while false; end]] parse succeeds
+
+test Until implicit do [[until 123
+  
+  end]] parse succeeds
+  
+test Until explicit do [[until 123 do 123
+  
+  end]] parse succeeds
+  
+test Until empty do [[until 123 do; end]] parse succeeds
+test Until true [[until true; end]] parse succeeds
+test Until false [[until false; end]] parse succeeds
+
+test For example implicit do[[for i in 0..5
+   something
+end]] parse succeeds
+
+test For do [[for i in 123 do 123
+end]] parse succeeds
+
+
+

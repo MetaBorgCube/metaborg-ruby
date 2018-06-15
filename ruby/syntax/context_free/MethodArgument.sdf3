@@ -9,7 +9,14 @@ context-free syntax
 
   MethodArgument.MethodArgWithoutPar = ArgumentWithoutParentheses
 //  MethodArgument.MethodArgWithPar =
-//  MethodArgument.IndexingArgList =
+  MethodArgument.IndexArgList = IndexingArgumentList
+  
+  IndexingArgumentList = Command
+  IndexingArgumentList.OpExpList = OperatorExpressionList OptionalComma?
+  IndexingArgumentList.SplatOpExpList = OperatorExpressionList "," SplattingArgument
+  IndexingArgumentList.IndexAssocList = AssociationList OptionalComma?
+  IndexingArgumentList.SplatOpExp = SplattingArgument
+  OptionalComma.Comma = ","
   
   // Lookahead not in { '{' } 
   ArgumentWithoutParentheses.ArgWithoutPar = ArgumentList

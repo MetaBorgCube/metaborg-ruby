@@ -1,3 +1,3 @@
-case 123
-when 1234 then 1234;
+for i in 0..2
+
 end

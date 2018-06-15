@@ -5,7 +5,9 @@ imports
   Class
   CompoundStatement
   ConditionalExpression
+  Constructors
 	Identifier
+	IterationExpression
   Expression
 	Literal
 	Method
@@ -24,6 +26,9 @@ context-free syntax
 	Primary.IfPrim = IfExp
 	Primary.UnlessPrim = UnlessExp
 	Primary.CasePrim = CaseExp
+	Primary.WhilePrim = WhileExp
+	Primary.UntilPrim = UntilExp
+	Primary.ForPrim = ForExp {prefer}
 	
 	// TODO: no line-terminator between class-name and superclass
 	Primary.ClassPrim = ClassDef
@@ -32,5 +37,8 @@ context-free syntax
 	Primary.MethodPrim = MethodDef
 	Primary.SingletonMethodPrim = SingletonMethodDef
 	Primary.YieldPrim = YieldWithOptionalArgument
+	
+	// Constructors
+  Primary.RangePrim = RangeConstructor
 	
 	
