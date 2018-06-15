@@ -1,0 +1,63 @@
+module DoubleQuotedStringValidTest
+
+language Ruby
+
+start symbol STRING
+
+test empty string
+  [[""]] parse succeeds
+  
+test simple double quoted string
+  [["string"]] parse succeeds
+  
+test string containing escaped meta character quote
+  [["\""]] parse succeeds
+  
+test string containing escaped meta character backslash
+  [["\\"]] parse succeeds
+  
+test string containing plain non-interpolation hash symbol
+  [["this is a #string"]] parse succeeds
+  
+//test string containing empty interpolation expression
+//  [["#{}"]] parse succeeds
+  
+test string containing interpolated global variable
+  [["#$test"]] parse succeeds
+  
+test string containing interpolated instance variable
+  [["#@test"]] parse succeeds
+  
+test string containing interpolated class variable
+  [["#@@test"]] parse succeeds
+  
+test string containing octal escaped character length one
+  [["\7"]] parse succeeds
+test string containing octal escaped character length two
+  [["\07"]] parse succeeds
+test string containing octal escaped character length three
+  [["\037"]] parse succeeds
+  
+test string containing hexadecimal escaped character length one
+  [["\xf"]] parse succeeds
+test string containing hexadecimal escaped character length two
+  [["\x0F"]] parse succeeds
+  
+test string containing newline escaped character 
+  [["\n"]] parse succeeds
+test string containing horizontal tab escaped character 
+  [["\t"]] parse succeeds
+test string containing carriage return escaped character 
+  [["\r"]] parse succeeds
+test string containing form feed escaped character 
+  [["\f"]] parse succeeds
+test string containing vertical tab escaped character 
+  [["\v"]] parse succeeds
+test string containing bell escaped character 
+  [["\a"]] parse succeeds
+test string containing escape escaped character 
+  [["\e"]] parse succeeds
+test string containing backspace escaped character 
+  [["\b"]] parse succeeds
+test string containing space escaped character 
+  [["\s"]] parse succeeds
