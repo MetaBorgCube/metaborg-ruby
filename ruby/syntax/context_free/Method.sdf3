@@ -4,11 +4,14 @@ imports
   Argument
   BodyStatement
   Command
+  Expression
   Identifier
+  MethodArgument
   Operator
   OperatorExpression
   Keyword
   Separator
+  Variable
 
 context-free syntax
   MethodId.LocalVar = <<LOCAL-V-IDENTIFIER>>
@@ -22,7 +25,7 @@ context-free syntax
   MethodInvocationWithoutParentheses.Command = <<Command>>
   MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
   MethodInvocationWithoutParentheses.ChainedCommandLong = 
-    <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgWithoutParentheses>>
+    <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses>>
   MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>>
   MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>>
   MethodInvocationWithoutParentheses.Next = <<NextWithArgument>>
@@ -42,6 +45,15 @@ context-free syntax
   DefinedMethodName.DefMethodName = MethodName
   DefinedMethodName.AssignMethodName = ASSIGNMENT-LIKE-METHOD-IDENTIFIER
   MethodBody.Body = BStmt
+  
+  SingletonMethodDef.SingletonMethod = 
+    <def <Singleton> <SingSep> <DefinedMethodName> <MethodParamaters>
+      <MethodBody>
+     end>
+  Singleton.Exp = <(<Exp>)>
+  Singleton.VarRef = Var
+  SingSep.Period = "."
+  SingSep.Colons = "::"    
   
   MethodParamaters.ParamsWithParantheses = <( <ParamList?> )>
   MethodParamaters.Params = <<ParamList?> <Sep>>
@@ -67,4 +79,5 @@ context-free syntax
   ProcParams.ProcParam = <& <ProcParamName>>
   ProcParamName.ProcName = LOCAL-V-IDENTIFIER
   OptionalProc.OptionalProc = <, <ProcParams>>
+  
 

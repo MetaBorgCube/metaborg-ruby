@@ -1,1 +1,1 @@
-a = 2;
+yield (parm)

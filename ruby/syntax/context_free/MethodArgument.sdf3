@@ -1,0 +1,34 @@
+module MethodArgument
+
+imports
+  Command
+  HashConstructor
+  OperatorExpression
+
+context-free syntax
+
+  MethodArgument.MethodArgWithoutPar = ArgumentWithoutParentheses
+//  MethodArgument.MethodArgWithPar =
+//  MethodArgument.IndexingArgList =
+  
+  // Lookahead not in { '{' } 
+  ArgumentWithoutParentheses.ArgWithoutPar = ArgumentList
+  
+  SplattingArgument.SplatArg = <* <OpExp>>
+  SplattingArgumentOptional.SplatArgOptional = <, <SplattingArgument>>
+  
+  OperatorExpressionList.OpExpList = {OpExp ","}+  
+  
+  // TODO 
+  ArgumentList.Block =  <<BlockArgument>>
+  ArgumentList.Splatting = <<SplattingArgument> <BlockArgumentOptional?>>
+  ArgumentList.OpList = 
+    <<OperatorExpressionList>, <AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.OpWithoutAss = 
+    <<OperatorExpressionList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.OpWithAss = 
+    <<AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.Command = <<Command>>
+  
+  BlockArgument.BlockArg = <& <OpExp>>
+  BlockArgumentOptional.BlockArgOptional = <, <BlockArgument>>

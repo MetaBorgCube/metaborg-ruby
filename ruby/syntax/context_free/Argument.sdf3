@@ -3,6 +3,7 @@ module Argument
 imports
   Command
 	LeftHandSide
+	MethodArgument
 	OperatorExpression
 	Primary
 
@@ -54,17 +55,6 @@ context-free syntax
 	Arg.Defined = <defined? <Arg>> 				{non-assoc}
 	
 	Arg.Primary = <<Primary>>
-	
-	ArgWithoutParentheses.ArgList = <<ArgList>> // TODO cannot begin with '{'
-	
-	// TODO 
-	ArgList.Block =  <<BlockArg>>
-	ArgList.Splatting = "@#$@#$@#$@" // TODO
-	ArgList.OpList =	"@#$@#$@" // TODO
-	ArgList.OpListParentheses = "@#$@#$@" // TODO
-	ArgList.Command = <<Command>>
-	
-	BlockArg.BlockArg = <& <OpExp>>
 	
 	JumpArg.Jump = ArgList //No line terminator before this term.
 	

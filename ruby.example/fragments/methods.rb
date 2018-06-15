@@ -1,1 +1,3 @@
-def test(test3, *) end
+def singl :: method()
+
+end
