@@ -18,6 +18,7 @@ lexical syntax
 
   STRING = SingleQuotedString
   STRING = DoubleQuotedString
+  STRING = QuotedNonExpandedLiteralString
   
   // Single Quoted String
   
@@ -82,7 +83,84 @@ lexical syntax
   NonEscapedDoubleQuotedStringCharacter = ~[a-zA-Z0-9]
   NonEscapedDoubleQuotedStringCharacter = LINETERMINATOR {reject}
   
-  NonInterpolationHashSymbol = "#"
+  NonInterpolationHashSymbol = "#"  
+  
+  // Quoted non expanded literal string
+  
+  QuotedNonExpandedLiteralString = "%q" NonExpandedDelimitedString
+  
+  // AUTO GENERATED USING SCRIPT
+  
+  NonExpandedDelimitedString = [\0] NonExpandedLiteralString* [\0]
+  NonExpandedDelimitedString = [\1] NonExpandedLiteralString* [\1]
+  NonExpandedDelimitedString = [\2] NonExpandedLiteralString* [\2]
+  NonExpandedDelimitedString = [\3] NonExpandedLiteralString* [\3]
+  NonExpandedDelimitedString = [\4] NonExpandedLiteralString* [\4]
+  NonExpandedDelimitedString = [\5] NonExpandedLiteralString* [\5]
+  NonExpandedDelimitedString = [\6] NonExpandedLiteralString* [\6]
+  NonExpandedDelimitedString = [\7] NonExpandedLiteralString* [\7]
+  NonExpandedDelimitedString = [\8] NonExpandedLiteralString* [\8]
+  NonExpandedDelimitedString = [\9] NonExpandedLiteralString* [\9]
+  NonExpandedDelimitedString = [\10] NonExpandedLiteralString* [\10]
+  NonExpandedDelimitedString = [\11] NonExpandedLiteralString* [\11]
+  NonExpandedDelimitedString = [\12] NonExpandedLiteralString* [\12]
+  NonExpandedDelimitedString = [\13] NonExpandedLiteralString* [\13]
+  NonExpandedDelimitedString = [\14] NonExpandedLiteralString* [\14]
+  NonExpandedDelimitedString = [\15] NonExpandedLiteralString* [\15]
+  NonExpandedDelimitedString = [\16] NonExpandedLiteralString* [\16]
+  NonExpandedDelimitedString = [\17] NonExpandedLiteralString* [\17]
+  NonExpandedDelimitedString = [\18] NonExpandedLiteralString* [\18]
+  NonExpandedDelimitedString = [\19] NonExpandedLiteralString* [\19]
+  NonExpandedDelimitedString = [\20] NonExpandedLiteralString* [\20]
+  NonExpandedDelimitedString = [\21] NonExpandedLiteralString* [\21]
+  NonExpandedDelimitedString = [\22] NonExpandedLiteralString* [\22]
+  NonExpandedDelimitedString = [\23] NonExpandedLiteralString* [\23]
+  NonExpandedDelimitedString = [\24] NonExpandedLiteralString* [\24]
+  NonExpandedDelimitedString = [\25] NonExpandedLiteralString* [\25]
+  NonExpandedDelimitedString = [\26] NonExpandedLiteralString* [\26]
+  NonExpandedDelimitedString = [\27] NonExpandedLiteralString* [\27]
+  NonExpandedDelimitedString = [\28] NonExpandedLiteralString* [\28]
+  NonExpandedDelimitedString = [\29] NonExpandedLiteralString* [\29]
+  NonExpandedDelimitedString = [\30] NonExpandedLiteralString* [\30]
+  NonExpandedDelimitedString = [\31] NonExpandedLiteralString* [\31]
+  NonExpandedDelimitedString = [\32] NonExpandedLiteralString* [\32]
+  NonExpandedDelimitedString = [\33] NonExpandedLiteralString* [\33]
+  NonExpandedDelimitedString = [\34] NonExpandedLiteralString* [\34]
+  NonExpandedDelimitedString = [\35] NonExpandedLiteralString* [\35]
+  NonExpandedDelimitedString = [\36] NonExpandedLiteralString* [\36]
+  NonExpandedDelimitedString = [\37] NonExpandedLiteralString* [\37]
+  NonExpandedDelimitedString = [\38] NonExpandedLiteralString* [\38]
+  NonExpandedDelimitedString = [\39] NonExpandedLiteralString* [\39]
+  NonExpandedDelimitedString = [\42] NonExpandedLiteralString* [\42]
+  NonExpandedDelimitedString = [\43] NonExpandedLiteralString* [\43]
+  NonExpandedDelimitedString = [\44] NonExpandedLiteralString* [\44]
+  NonExpandedDelimitedString = [\45] NonExpandedLiteralString* [\45]
+  NonExpandedDelimitedString = [\46] NonExpandedLiteralString* [\46]
+  NonExpandedDelimitedString = [\47] NonExpandedLiteralString* [\47]
+  NonExpandedDelimitedString = [\58] NonExpandedLiteralString* [\58]
+  NonExpandedDelimitedString = [\59] NonExpandedLiteralString* [\59]
+  NonExpandedDelimitedString = [\61] NonExpandedLiteralString* [\61]
+  NonExpandedDelimitedString = [\63] NonExpandedLiteralString* [\63]
+  NonExpandedDelimitedString = [\64] NonExpandedLiteralString* [\64]
+  NonExpandedDelimitedString = [\92] NonExpandedLiteralString* [\92]
+  NonExpandedDelimitedString = [\94] NonExpandedLiteralString* [\94]
+  NonExpandedDelimitedString = [\95] NonExpandedLiteralString* [\95]
+  NonExpandedDelimitedString = [\96] NonExpandedLiteralString* [\96]
+  NonExpandedDelimitedString = [\124] NonExpandedLiteralString* [\124]
+  NonExpandedDelimitedString = [\126] NonExpandedLiteralString* [\126]
+  NonExpandedDelimitedString = [\127] NonExpandedLiteralString* [\127]
+  
+  NonExpandedDelimitedString = "{" NonExpandedLiteralString* "}"
+  NonExpandedDelimitedString = "(" NonExpandedLiteralString* ")"
+  NonExpandedDelimitedString = "[" NonExpandedLiteralString* "]"
+  NonExpandedDelimitedString = "<" NonExpandedLiteralString* ">"
+  
+  // END AUTO GENERATED USING SCRIPT
+  
+  NonExpandedLiteralString = NonExpandedLiteralCharacter
+  NonExpandedLiteralString = NonExpandedDelimitedString
+   
+  NonExpandedLiteralCharacter =
   
 lexical restrictions
 
