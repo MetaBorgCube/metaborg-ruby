@@ -3,9 +3,9 @@
 # Iterate over all characters except alphanumeric characters
 # For each of these characters, generate a production that uses the character
 # as string delimiters
-numeric = (48..57)
-alpha_lower = (97..122)
-alpha_upper = (65..90)
+numeric = (48..57).to_a
+alpha_lower = (97..122).to_a
+alpha_upper = (65..90).to_a
 matching_characters = {
   123 => 125,
   40 => 41,
@@ -13,7 +13,9 @@ matching_characters = {
   60 => 62
 }
 
-delimiter_characters = (0..127).to_a - numeric.to_a - alpha_lower.to_a - alpha_upper.to_a - matching_characters.keys - matching_characters.values
+non_delimiter_characters = numeric - alpha_lower - alpha_upper - matching_characters.keys - matching_characters.values
+
+delimiter_characters = (0..127).to_a - non_delimiter_characters
 
 delimiter_characters.each do |char|
   puts "NonExpandedDelimitedString = [\\#{char}] NonExpandedLiteralString* [\\#{char}]"
