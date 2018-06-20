@@ -7,3 +7,6 @@ context-free syntax
 
   BreakExp.BreakWithoutArg = <<BreakWithoutArgument>>
   BreakExp.BreakWithArg = <<BreakWithArgument>>
+  
+  BreakWithoutArgument.BreakWithoutArg = <break>
+  BreakWithArgument.BreakWithArg = <break <JumpArg>>

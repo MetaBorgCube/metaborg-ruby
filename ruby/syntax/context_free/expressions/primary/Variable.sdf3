@@ -2,6 +2,8 @@ module Variable
 
 imports
 
+  Identifier
+  Primary
 	VarName
 
 context-free syntax
@@ -13,3 +15,6 @@ context-free syntax
 	PseudoVar.True = "true"
 	PseudoVar.False = "false"
 	PseudoVar.Self = "self"
+	
+	ScopedConstantReference.ScopedWithPrim = <<Primary> :: <CONSTANT-IDENTIFIER>>
+	ScopedConstantReference.Scoped = <:: <CONSTANT-IDENTIFIER>>

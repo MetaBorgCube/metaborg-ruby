@@ -7,3 +7,6 @@ context-free syntax
   
   NextExp.NextWithoutArg = <<NextWithoutArgument>>
   NextExp.NextWithArg = <<NextWithArgument>>
+  
+  NextWithoutArgument.NextWithoutArg = <next>
+  NextWithArgument.NextWithArg = <next <JumpArg>>

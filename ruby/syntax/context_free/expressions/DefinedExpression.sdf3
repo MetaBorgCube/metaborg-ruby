@@ -1,0 +1,13 @@
+module DefinedExpression
+
+imports
+  Expression
+  OperatorExpression
+
+context-free syntax
+  DefinedExpression = DefinedWithoutParentheses
+  DefinedExpression = DefinedWithParentheses
+  
+  DefinedWithoutParentheses.DefinedPar = <defined? ( <Exp> )>
+  DefinedWithParentheses.Defined = <defined? <OpExp>>
+  

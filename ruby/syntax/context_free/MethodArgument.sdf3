@@ -3,6 +3,7 @@ module MethodArgument
 imports
   Command
   HashConstructor
+  Method
   OperatorExpression
 
 context-free syntax
@@ -17,6 +18,13 @@ context-free syntax
   IndexingArgumentList.IndexAssocList = AssociationList OptionalComma?
   IndexingArgumentList.SplatOpExp = SplattingArgument
   OptionalComma.Comma = ","
+  
+  ArgumentWithParentheses.Pars = "("")"
+  ArgumentWithParentheses.ArgList = <( <ArgumentList> )>
+  ArgumentWithParentheses.OpExpList = 
+    <( <OperatorExpressionList>, <ChainedCommandWithDoBlock> )>
+  ArgumentWithParentheses.ArgsParChained =
+    <( <ChainedCommandWithDoBlock> )>
   
   // Lookahead not in { '{' } 
   ArgumentWithoutParentheses.ArgWithoutPar = ArgumentList

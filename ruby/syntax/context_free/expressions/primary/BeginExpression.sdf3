@@ -1,0 +1,9 @@
+module BeginExpression
+
+imports
+  BodyStatement
+  
+context-free syntax
+  BeginExpression.BeginExp = <begin <BStmt> end>
+  
+  

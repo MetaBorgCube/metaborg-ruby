@@ -4,5 +4,7 @@ language Ruby
 
 start symbol Primary
 
-
+  // Grouping
+  test Grouping exp [[(234)]] parse succeeds
+  test Gruping cstmt[[(alias a b; alias bb;)]] parse succeeds
 

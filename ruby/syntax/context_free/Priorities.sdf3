@@ -54,8 +54,8 @@ context-free priorities
 	{left:
 		OperatorORExpression.BoolOr } >
 	{non-assoc:
-		RangeCosntructor.RangeInc
-		RangeCosntructor.RangeEx } >
+		RangeConstructor.RangeInc
+		RangeConstructor.RangeEx } >
 //	{right:
 //		?: } >
 //	{left:
