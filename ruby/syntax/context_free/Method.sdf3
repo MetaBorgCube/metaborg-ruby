@@ -76,9 +76,9 @@ context-free syntax
     <<BlockSymbol> <MethodName> <ArgumentWithParentheses>>
     
   CommandWithDoBlock = SuperWithArgumentAndDoBlock
-  CommandWithDoBlock = 
+  CommandWithDoBlock.CommandWithBlockNoPrim = 
     <<MethodId> <ArgumentWithoutParentheses> <DoBlock>>
-  CommandWithDoBlock =
+  CommandWithDoBlock.CommanWithBlock =
     <<Primary> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses> <DoBlock>>
     
   

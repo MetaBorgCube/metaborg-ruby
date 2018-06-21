@@ -61,7 +61,7 @@ context-free priorities
 //	{left:
 //		rescue } >
 	{right:
-		Arg.Assign
+		//Arg.Assign
 		// **=
 		// *= 
 		// /=
@@ -77,7 +77,8 @@ context-free priorities
 		// ^=	
 	} >
 	{non-assoc:
-		Arg.Defined } >
+		//Arg.Defined 
+		} >
 	{right:
 		KeywordNOTExpression.Not } >
 	{left:
