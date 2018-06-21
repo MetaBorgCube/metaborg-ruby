@@ -5,14 +5,17 @@ imports
   Expression
   LeftHandSide
   Separator
+  Whitespace
+  
+syntax
+  WhileExp-CF.While = "while" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE?-CF DoClause-CF LAYOUT?-CF "end"
+  DoClause-CF.ExplicitDo = "do" LAYOUT?-CF CStmt-CF
 
 context-free syntax
 
-  WhileExp.While = <while <Exp> <DoClause> 
-                    end
-                    >
+  
   DoClause.ImplicitDo = <<Sep> <CStmt>>
-  DoClause.ExplicitDo = <do <CStmt>>
+  
   
   UntilExp.Until = <until <Exp> <DoClause>>
   

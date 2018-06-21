@@ -45,24 +45,24 @@ context-free syntax
 	Primary.SingletonMethodPrim = SingletonMethodDef
 	Primary.YieldPrim = YieldWithOptionalArgument
 	
-	Primary.ReturnPrim = ReturnWithoutArgument
-	Primary.BreakPrim = BreakWithoutArgument
-	Primary.NextPrim = NextWithoutArgument
-	Primary.RedoPrim = Redo
-	Primary.RetryPrim = Retry
-	
-	// Constructors
-	Primary.ArrayPrim = ArrayConstructor
-	//Primary.HashPrim = HashConstructor
-  Primary.RangePrim = RangeConstructor
-  
-  Primary.DefinedPrim = DefinedWithParentheses
-  
-  // Primary allows grouping
-  Primary.GroupExp = <( <Exp> )>
-  Primary.GroupCStmt = <( <CStmt> )>
-  
-  Primary.MethodInvocPrim = PrimaryMethodInvocation
+//	Primary.ReturnPrim = ReturnWithoutArgument
+//	Primary.BreakPrim = BreakWithoutArgument
+//	Primary.NextPrim = NextWithoutArgument
+//	Primary.RedoPrim = Redo
+//	Primary.RetryPrim = Retry
+//	
+//	// Constructors
+//	Primary.ArrayPrim = ArrayConstructor
+//	//Primary.HashPrim = HashConstructor
+//  Primary.RangePrim = RangeConstructor
+//  
+//  Primary.DefinedPrim = DefinedWithParentheses
+//  
+//  // Primary allows grouping
+//  Primary.GroupExp = <( <Exp> )>
+//  Primary.GroupCStmt = <( <CStmt> )>
+//  
+//  Primary.MethodInvocPrim = PrimaryMethodInvocation
   
 	
 	

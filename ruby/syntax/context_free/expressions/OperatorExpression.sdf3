@@ -9,7 +9,7 @@ imports
 context-free syntax
   
   OpExp.Assign = AssignmentExp
-  OpExp.UnOp = UnaryOperatorExpression
+  OpExp.UnOp = UnaryOperatorExpression			{prefer}
   OpExp.BinOp = BinaryOperatorExpression
   
   OpExpList.OpExpList = {OpExp ","}+
