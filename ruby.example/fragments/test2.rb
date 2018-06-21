@@ -1,4 +1,3 @@
-while 
-true do
+while true do
 	123
 end

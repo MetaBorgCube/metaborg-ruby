@@ -8,14 +8,12 @@ imports
   Whitespace
   
 syntax
-  WhileExp-CF.While = "while" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE?-CF DoClause-CF LAYOUT?-CF "end"
+  WhileExp-CF.While = "while" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-CF DoClause-CF LAYOUT?-CF "end"
   DoClause-CF.ExplicitDo = "do" LAYOUT?-CF CStmt-CF
 
 context-free syntax
 
-  
   DoClause.ImplicitDo = <<Sep> <CStmt>>
-  
   
   UntilExp.Until = <until <Exp> <DoClause>>
   

@@ -21,6 +21,10 @@ lexical syntax
   NewLineEOF     = EOF
   EOF            =
   
+context-free syntax  
+	
+  LAYOUT-NO-NEWLINE.NO-NEWLINE = [\ \t\r]
+  
 lexical restrictions
 
   // Ensure greedy matching for lexicals
