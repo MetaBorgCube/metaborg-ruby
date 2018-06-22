@@ -12,8 +12,11 @@ sorts
 
 syntax
 
-  DoubleQuotedString-CF.StrD = DQ-LEX DoubleQuotedStringCharacter*-CF DQ-LEX
+  DoubleQuotedString-CF.StrD = DQ-LEX DoubleQuotedStringCharacterList-CF DQ-LEX
   
+  DoubleQuotedStringCharacterList-CF.StrDCharListEnd =
+  DoubleQuotedStringCharacterList-CF.StrDCharList = DoubleQuotedStringCharacter-CF DoubleQuotedStringCharacterList-CF
+    
   InterpolatedCharacterSequence-CF.StrDInterpIdG = "#" GLOBAL-V-IDENTIFIER-LEX
   InterpolatedCharacterSequence-CF.StrDInterpIdC = "#" CLASS-V-IDENTIFIER-LEX
   InterpolatedCharacterSequence-CF.StrDInterpIdI = "#" INSTANCE-V-IDENTIFIER-LEX
@@ -21,7 +24,7 @@ syntax
 
 context-free syntax
 
-  DoubleQuotedStringCharacter   = ~[\"\#\\]
+  DoubleQuotedStringCharacter.StrDChar = DQChar
   DoubleQuotedStringCharacter.StrDHash = NonInterpolationHashSymbol
   DoubleQuotedStringCharacter.StrDEsc = DoubleEscapeSequence
   DoubleQuotedStringCharacter.StrDInterp = InterpolatedCharacterSequence
@@ -29,6 +32,8 @@ context-free syntax
 lexical syntax  
 
   DQ = [\"]
+  
+  DQChar = ~[\"\#\\]
 
   OctalEscapeValue = [0-7] [0-7]? [0-7]?
   HexadecimalEscapeValue = [0-9a-fA-F] [0-9a-fA-F]?

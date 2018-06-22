@@ -4,11 +4,14 @@ imports
 
 syntax
 
-  SingleQuotedString-CF.StrSContent = SQ-LEX SingleQuotedStringCharacter*-CF SQ-LEX
+  SingleQuotedString-CF.StrSContent = SQ-LEX SingleQuotedStringCharacterList-CF SQ-LEX
+  
+  SingleQuotedStringCharacterList-CF.StrSCharListEnd =
+  SingleQuotedStringCharacterList-CF.StrSCharList = SingleQuotedStringCharacter-CF SingleQuotedStringCharacterList-CF  
 
 context-free syntax
   
-  SingleQuotedStringCharacter = SingleQuotedStringNonEscapedCharacter
+  SingleQuotedStringCharacter.StrSChar = SingleQuotedStringNonEscapedCharacter
   SingleQuotedStringCharacter = SingleQuotedEscapeSequence
   
   SingleQuotedEscapeSequence.StrSEsc = SingleEscapeCharacterSequence

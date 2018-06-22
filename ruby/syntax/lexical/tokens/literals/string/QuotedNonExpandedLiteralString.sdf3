@@ -2,8 +2,8 @@ module QuotedNonExpandedLiteralString
 
 imports
 
-  //QuotedNonExpandedLiteralStringGen
+  QuotedNonExpandedLiteralStringGen
 
 syntax
   
-  QuotedNonExpandedLiteralString-CF = "%q" //NonExDelimStr-CF
+  QuotedNonExpandedLiteralString-CF = "%q" NonExDelimStr-CF
