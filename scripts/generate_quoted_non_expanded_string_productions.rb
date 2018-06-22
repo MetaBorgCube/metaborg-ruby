@@ -47,14 +47,18 @@ delimiters.each do |char_start, char_end|
   puts
 
   puts productions(
-    "NonExDelimStr-CF = DELIM-START-#{char_start}-LEX NonExLitStr-#{char_start}*-CF DELIM-END-#{char_start}-LEX",
+    "NonExDelimStr-CF = DELIM-START-#{char_start}-LEX NonExLitStr-#{char_start}-List-CF DELIM-END-#{char_start}-LEX",
+    '',
+    "NonExLitStr-#{char_start}-List-CF.StrQCharListEnd =",
+    "NonExLitStr-#{char_start}-List-CF.StrQCharList = NonExLitStr-#{char_start}-CF NonExLitStr-#{char_start}-List-CF",
+    '',
     "NonExLitStr-#{char_start}-CF = NonExLitChar-#{char_start}-CF",
     "NonExLitStr-#{char_start}-CF = NonExLitEscSeq-#{char_start}-CF",
     '',
     "NonExLitChar-#{char_start}-CF.StrQChar = NonExLitChar-#{char_start}-LEX",
     '',
-    "NonExLitEscSeq-#{char_start}-CF.StrQEsc = [\\\\] NonExLitEscChar-#{char_start}",
-    "NonExLitEscSeq-#{char_start}-CF.StrQNonEsc = [\\\\] NonExLitNonEscChar-#{char_start}",
+    "NonExLitEscSeq-#{char_start}-CF.StrQEsc = EscMetaChar-LEX NonExLitEscChar-#{char_start}-LEX",
+    "NonExLitEscSeq-#{char_start}-CF.StrQNonEsc = EscMetaChar-LEX NonExLitNonEscChar-#{char_start}-LEX",
     ''
   )
 
@@ -70,7 +74,7 @@ delimiters.each do |char_start, char_end|
     '',
     "NonExLitEscChar-#{char_start} = DELIM-START-#{char_start}",
     "NonExLitEscChar-#{char_start} = DELIM-END-#{char_start}",
-    "NonExLitEscChar-#{char_start} = [\\\\]",
+    "NonExLitEscChar-#{char_start} = EscMetaChar",
     '',
     "NonExLitNonEscChar-#{char_start} = ~[]",
     "NonExLitNonEscChar-#{char_start} = NonExLitEscChar-#{char_start} {reject}",
@@ -79,3 +83,10 @@ delimiters.each do |char_start, char_end|
 
   puts
 end
+
+puts 'lexical syntax'
+puts
+
+puts productions(
+  'EscMetaChar = [\\\\]'
+)
