@@ -2,7 +2,7 @@ module SingleQuotedStringValidTest
 
 language Ruby
 
-start symbol STRING
+start symbol String
   
 test single meta character quote
   [[']] parse fails

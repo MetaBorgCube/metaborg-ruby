@@ -20,8 +20,8 @@ context-free syntax
   // TODO: make all of this context-free, since it is dependent on CFG productions,
   // and since we need more information for the dynamic semantics than just a plain string.
 
-  STRING.StrS = SingleQuotedString
-  STRING.StrD = DoubleQuotedString
+  String.StrS = SingleQuotedString
+  String.StrD = DoubleQuotedString
 //  STRING.StrQ = QuotedNonExpandedLiteralString
 //  
 //  // Quoted non expanded literal string

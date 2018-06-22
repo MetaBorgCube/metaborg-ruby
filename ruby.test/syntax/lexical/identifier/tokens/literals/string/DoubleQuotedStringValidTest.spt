@@ -2,7 +2,7 @@ module DoubleQuotedStringValidTest
 
 language Ruby
 
-start symbol STRING
+start symbol String
 
 test empty string
   [[""]] parse succeeds

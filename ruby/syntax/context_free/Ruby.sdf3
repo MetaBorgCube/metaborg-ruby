@@ -18,7 +18,6 @@ lexical start-symbols
   NUMBER
   FNAME
   IDENTIFIER
-  STRING
 
 context-free start-symbols
   
@@ -26,3 +25,4 @@ context-free start-symbols
   Stmt
   Exp
   Arg
+  String
