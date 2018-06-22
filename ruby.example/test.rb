@@ -1,3 +1,2 @@
-for i in 1..3 do
-  something
+for i in 1..3 do something
 end

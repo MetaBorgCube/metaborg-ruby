@@ -27,7 +27,7 @@ imports
 context-free syntax
 
 	Primary.LiteralPrim = Literal
-	Primary.VarRefPrim = Var
+	Primary.VarRefPrim = Var {prefer}
 	Primary.ScopedVarRefPrim = ScopedConstantReference
 	Primary.ConstPrim = <<Primary> :: <ID>>
 	Primary.IfPrim = IfExp
@@ -54,7 +54,7 @@ context-free syntax
 //	// Constructors
 //	Primary.ArrayPrim = ArrayConstructor
 //	//Primary.HashPrim = HashConstructor
-//  Primary.RangePrim = RangeConstructor
+  Primary.RangePrim = RangeConstructor
 //  
 //  Primary.DefinedPrim = DefinedWithParentheses
 //  
