@@ -2,9 +2,28 @@ module PrimaryTest
 
 language Ruby
 
-start symbol Primary
+start symbol Program
 
   // Grouping
   test Grouping exp [[(234)]] parse succeeds
   test Gruping cstmt[[(alias a b; alias bb;)]] parse succeeds
 
+  // Break
+  test Break without arguments [[break]] parse succeeds
+  test Break with arguments [[break 123]] parse succeeds
+  
+  // Return
+  test Return without arguments [[return]] parse succeeds
+  test Return with arguments [[return 123]] parse succeeds
+  
+  // Next
+  test Next without arguments [[next]] parse succeeds
+  test Next with arguments [[next 123]] parse succeeds
+  
+  // Redo
+  test Redo [[redo]] parse succeeds
+  test Redo with arguments fails [[redo 123]] parse fails
+  
+  // Retry
+  test Retry [[retry]] parse succeeds
+  test Retry with arguments fails [[retry 123]] parse fails

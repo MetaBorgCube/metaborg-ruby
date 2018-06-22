@@ -45,11 +45,11 @@ context-free syntax
 	Primary.SingletonMethodPrim = SingletonMethodDef
 	Primary.YieldPrim = YieldWithOptionalArgument
 	
-//	Primary.ReturnPrim = ReturnWithoutArgument
-//	Primary.BreakPrim = BreakWithoutArgument
-//	Primary.NextPrim = NextWithoutArgument
-//	Primary.RedoPrim = Redo
-//	Primary.RetryPrim = Retry
+	Primary.ReturnPrim = ReturnWithoutArgument {prefer}
+	Primary.BreakPrim = BreakWithoutArgument {prefer}
+	Primary.NextPrim = NextWithoutArgument {prefer}
+	Primary.RedoPrim = Redo {prefer}
+	Primary.RetryPrim = Retry {prefer}
 //	
 //	// Constructors
 //	Primary.ArrayPrim = ArrayConstructor

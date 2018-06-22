@@ -61,9 +61,9 @@ context-free syntax
   MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
   MethodInvocationWithoutParentheses.ChainedCommandLong = 
     <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses>>
-  MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>>
-  MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>>
-  MethodInvocationWithoutParentheses.Next = <<NextWithArgument>>
+  MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>> {avoid}
+  MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>> {avoid}
+  MethodInvocationWithoutParentheses.Next = <<NextWithArgument>> {avoid}
   
   BlockSymbol.Period = "."
   BlockSymbol.DoubleColon = "::"

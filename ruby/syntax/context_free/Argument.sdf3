@@ -9,7 +9,7 @@ imports
 
 context-free syntax
 	
-	JumpArg.Jump = ArgumentList //No line terminator before this term.
+	JumpArg.Jump = ArgumentList {avoid} //No line terminator before this term.
 		
 		
 	
