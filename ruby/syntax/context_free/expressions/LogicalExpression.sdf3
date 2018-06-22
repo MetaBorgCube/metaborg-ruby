@@ -16,9 +16,9 @@ context-free syntax
   // Logical Not
   LogicalNOTExpression.Keyword = KeywordNOTExpression
   LogicalNOTExpression.Operator = OperatorNOTExpression
-  KeywordNOTExpression.Method = <<MethodInvocationWithoutParentheses>>
+  KeywordNOTExpression.Method = <<MethodInvocationWithoutParentheses>>          
   KeywordNOTExpression.NotMethod = <!<MethodInvocationWithoutParentheses>>      {right}
-  KeywordNOTExpression.OpExp = <<OpExp>>
+  KeywordNOTExpression.OpExp = <<OpExp>>                                        {prefer}
   KeywordNOTExpression.Not = <not <KeywordNOTExpression>>                       {right}
   OperatorNOTExpression.MethodInvoc = <!<MethodInvocationWithoutParentheses>>   {right}
   OperatorNOTExpression.BoolNotUnOp = <!<UnaryExpression>>                      {right}

@@ -8,9 +8,9 @@ imports
 
 context-free syntax
 	// General expression	
-	Exp.Keyword = KeywordExp
+	Exp.Keyword = KeywordExp   {avoid}
 	
-	Exp.OperatorExp = OpExp
+	Exp.OperatorExp = OpExp    {avoid}
 	Exp.PrimaryExp = Primary   {prefer}
 	Exp.YieldExp = Yield
 	

@@ -3,8 +3,8 @@ module Whitespace
 lexical syntax
 
   // Layout whitespace
-  LAYOUT = [\ \t\r\n]
-  LAYOUT-NO-NEWLINE = [\ \t\r]
+  LAYOUT = [\ \t\r]
+  LAYOUT-NO-NEWLINE = [\ \t\r]*
   
   // Block comment whitespace
   CommentChar    = [\*]
@@ -20,10 +20,6 @@ lexical syntax
   NewLineEOF     = [\n\r]
   NewLineEOF     = EOF
   EOF            =
-  
-context-free syntax  
-	
-  LAYOUT-NO-NEWLINE.NO-NEWLINE = [\ \t\r]
   
 lexical restrictions
 
