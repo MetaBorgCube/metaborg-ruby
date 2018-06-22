@@ -1,0 +1,25 @@
+module SingleQuotedString
+
+imports
+
+syntax
+
+  SingleQuotedString-CF.StrSContent = SQ-LEX SingleQuotedStringCharacter*-CF SQ-LEX
+
+context-free syntax
+  
+  SingleQuotedStringCharacter = SingleQuotedStringNonEscapedCharacter
+  SingleQuotedStringCharacter = SingleQuotedEscapeSequence
+  
+  SingleQuotedEscapeSequence.StrSEsc = SingleEscapeCharacterSequence
+  SingleQuotedEscapeSequence.StrSNonEsc = SingleQuotedStringNonEscapedCharacterSequence
+  
+lexical syntax
+
+  SingleEscapeCharacterSequence = [\\] SingleQuotedStringMetaCharacter
+  SingleQuotedStringNonEscapedCharacterSequence = [\\] SingleQuotedStringNonEscapedCharacter
+
+  SQ = [\']
+  
+  SingleQuotedStringMetaCharacter = [\'\\]
+  SingleQuotedStringNonEscapedCharacter = ~[\'\\]

@@ -1,0 +1,75 @@
+module DoubleQuotedString
+
+imports
+
+  Identifier
+  Separator
+  CompoundStatement
+
+sorts
+
+  DoubleQuotedString
+
+syntax
+
+  DoubleQuotedString-CF.StrD = DQ-LEX DoubleQuotedStringCharacter*-CF DQ-LEX
+  
+  InterpolatedCharacterSequence-CF.StrDInterpIdG = "#" GLOBAL-V-IDENTIFIER-LEX
+  InterpolatedCharacterSequence-CF.StrDInterpIdC = "#" CLASS-V-IDENTIFIER-LEX
+  InterpolatedCharacterSequence-CF.StrDInterpIdI = "#" INSTANCE-V-IDENTIFIER-LEX
+  InterpolatedCharacterSequence-CF.StrDInterpCStmt = "#{" LAYOUT?-CF CStmt-CF LAYOUT?-CF "}"
+
+context-free syntax
+
+  DoubleQuotedStringCharacter   = ~[\"\#\\]
+  DoubleQuotedStringCharacter.StrDHash = NonInterpolationHashSymbol
+  DoubleQuotedStringCharacter.StrDEsc = DoubleEscapeSequence
+  DoubleQuotedStringCharacter.StrDInterp = InterpolatedCharacterSequence
+
+lexical syntax  
+
+  DQ = [\"]
+
+  OctalEscapeValue = [0-7] [0-7]? [0-7]?
+  HexadecimalEscapeValue = [0-9a-fA-F] [0-9a-fA-F]?
+
+  NonInterpolationHashSymbol = "#"
+  
+  DoubleEscapeSequence = SimpleEscapeSequence
+  DoubleEscapeSequence = NonEscapedSequence
+  DoubleEscapeSequence = LineTerminatorEscapeSequence
+  DoubleEscapeSequence = OctalEscapeSequence
+  DoubleEscapeSequence = HexadecimalEscapeSequence
+  DoubleEscapeSequence = ControlEscapeSequence
+  
+  SimpleEscapeSequence = [\\] DoubleEscapedCharacter
+  NonEscapedSequence = [\\] NonEscapedDoubleQuotedStringCharacter
+  OctalEscapeSequence = [\\] OctalEscapeValue
+  HexadecimalEscapeSequence = [\\] "x" HexadecimalEscapeValue
+  ControlEscapeSequence = [\\] ControlCharacter ControlEscapedCharacter
+  MetaEscapeSequence = [\\] MetaCharacter MetaEscapedCharacter
+  MetaControlEscapeSequence = [\\] MetaControlCharacter MetaControlEscapedCharacter
+  
+  ControlCharacter = "c"
+  ControlCharacter = "C-"
+  MetaCharacter = "M-"
+  
+  ControlEscapedCharacter = DoubleEscapeSequence
+  ControlEscapedCharacter = "?"
+  ControlEscapedCharacter = ~[\\\?]
+  
+  MetaEscapedCharacter = DoubleEscapeSequence
+  MetaEscapedCharacter = ~[\\]
+  
+  MetaControlCharacter = MetaCharacter ControlCharacter
+  MetaControlCharacter = ControlCharacter MetaCharacter
+  MetaControlEscapedCharacter = DoubleEscapeSequence
+  MetaControlEscapedCharacter = ~[\\]
+  
+  DoubleEscapedCharacter = [\\ntrfvaebs]
+  NonEscapedDoubleQuotedStringCharacter = ~[a-zA-Z0-9]
+  NonEscapedDoubleQuotedStringCharacter = LINETERMINATOR {reject}
+  
+lexical restrictions
+
+  NonInterpolationHashSymbol -/- [\$\@\{]
