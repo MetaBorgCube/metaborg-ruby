@@ -4,6 +4,8 @@ imports
 
 	CompoundStatement
 
-syntax
+context-free syntax
 
-	Program-CF.Program = CStmt-CF
+	Program.Program = <
+	 <CStmt>
+	>

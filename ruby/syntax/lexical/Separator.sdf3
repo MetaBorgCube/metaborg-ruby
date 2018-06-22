@@ -20,4 +20,4 @@ lexical syntax
 lexical restrictions
 
   SEPLIST -/- [\;\n]
-  SEPLISTEXPLICIT -/- [\;\n]
+  SEPLISTEXPLICIT -/- [\;]
