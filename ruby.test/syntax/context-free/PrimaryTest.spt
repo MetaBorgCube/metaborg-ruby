@@ -6,7 +6,7 @@ start symbol Program
 
   // Grouping
   test Grouping exp [[(234)]] parse succeeds
-  test Gruping cstmt[[(alias a b; alias bb;)]] parse succeeds
+  test Gruping cstmt[[(alias a b; alias b b;)]] parse succeeds
 
   // Break
   test Break without arguments [[break]] parse succeeds

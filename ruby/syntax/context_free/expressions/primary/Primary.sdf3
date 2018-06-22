@@ -58,9 +58,9 @@ context-free syntax
 //  
 //  Primary.DefinedPrim = DefinedWithParentheses
 //  
-//  // Primary allows grouping
-//  Primary.GroupExp = <( <Exp> )>
-//  Primary.GroupCStmt = <( <CStmt> )>
+  // Primary allows grouping
+  Primary.GroupExp = <( <Exp> )>
+  Primary.GroupCStmt = <( <CStmt> )>
 //  
 //  Primary.MethodInvocPrim = PrimaryMethodInvocation
   
