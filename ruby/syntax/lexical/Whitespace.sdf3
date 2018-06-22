@@ -3,7 +3,7 @@ module Whitespace
 lexical syntax
 
   // Layout whitespace
-  LAYOUT = [\ \t\r]
+  LAYOUT = [\ \t\r\n]
   
   // Block comment whitespace
   CommentChar    = [\*]
@@ -32,6 +32,6 @@ lexical restrictions
 
 context-free restrictions
 
-  LAYOUT? -/- [\ \t\r]
+  LAYOUT? -/- [\ \t\r\n]
   LAYOUT? -/- [\/].[\/]
   LAYOUT? -/- [\/].[\*]
