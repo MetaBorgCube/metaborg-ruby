@@ -4,12 +4,14 @@ imports
 	Statement
 	Expression
 	Separator
+	Whitespace
 
-context-free syntax
+syntax
 
-	CStmt.CStmt = <<StatementList?> <SEPARATOR*>>
-	
-	StatementList.Head = <<Stmt> <StatementListEnd*>>
-	StatementListEnd.Trailer = 
-		<<SEPARATOR+>
-		 <Stmt>>
+  CStmt-CF.CStmt = StatementList?-CF LAYOUT-NO-NEWLINE*-LEX SepListList?-CF
+  
+  StatementList-CF.StmtListH = Stmt-CF LAYOUT-NO-NEWLINE*-LEX StatementListEnd*-CF
+  StatementListEnd-CF.StmtListT = SepListList-CF LAYOUT-NO-NEWLINE*-LEX Stmt-CF
+  
+  SepListList-CF.SepListListH = SepList-CF SepListListEnd*-CF
+  SepListListEnd-CF.SepListListT = LAYOUT-NO-NEWLINE*-LEX SepList-CF

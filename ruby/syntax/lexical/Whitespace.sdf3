@@ -4,6 +4,7 @@ lexical syntax
 
   // Layout whitespace
   LAYOUT = [\ \t\r\n]
+  LAYOUT-NO-NEWLINE = [\ \t\r]
   
   // Block comment whitespace
   CommentChar    = [\*]
@@ -35,3 +36,7 @@ context-free restrictions
   LAYOUT? -/- [\ \t\r\n]
   LAYOUT? -/- [\/].[\/]
   LAYOUT? -/- [\/].[\*]
+  
+  LAYOUT-NO-NEWLINE* -/- [\ \t\r]
+  LAYOUT-NO-NEWLINE* -/- [\/].[\/]
+  LAYOUT-NO-NEWLINE* -/- [\/].[\*]
