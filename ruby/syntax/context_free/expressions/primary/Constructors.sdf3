@@ -6,9 +6,8 @@ imports
 
 context-free syntax
 
-  ArrayConstructor.Array = IndexingArgumentList
+  ArrayConstructor.Array = <[ <IndexingArgumentList?> ]>
   
-
   RangeConstructor.RangeOpOrExp = OperatorORExpression
   RangeConstructor.RangeInc = OperatorORExpression ".." OperatorORExpression
   RangeConstructor.RangeEx = OperatorORExpression "..." OperatorORExpression

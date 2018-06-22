@@ -27,3 +27,19 @@ start symbol Program
   // Retry
   test Retry [[retry]] parse succeeds
   test Retry with arguments fails [[retry 123]] parse fails
+  
+  // Defined?
+  test Defined? exp [[defined? something]] parse succeeds
+  test Defined? opExp [[defined? 3 == 3]] parse succeeds
+  
+  // Method invoc
+  test Primary method invoc [[methodName.method()]] parse succeeds
+  test Primary method invoc args [[methodName.method(2)]] parse succeeds
+  test Primary method block [[methodName { |a| a + 2 }]] parse succeeds
+  test Primary method do block [[methodName do |a| a + 2 end]] parse succeeds
+  test Primary method just a name [[methodName]] parse succeeds
+  test Primary args + block [[methodName.something(3) { |a| a + 2 }]] parse succeeds
+  test Primary module method [[someName :: someMethod.something(3)]] parse succeeds
+  test Primary method with args [[method(3)]] parse succeeds
+  test Primary method with args + block [[method(3) { |a| a + 2}]] parse succeeds
+  

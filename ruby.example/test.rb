@@ -1,1 +1,1 @@
-(alias a b; alias b b;)
+methodName do |a| a + 2 end

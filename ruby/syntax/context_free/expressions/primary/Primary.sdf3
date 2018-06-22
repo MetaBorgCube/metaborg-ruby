@@ -52,17 +52,17 @@ context-free syntax
 	Primary.RetryPrim = Retry {prefer}
 //	
 //	// Constructors
-//	Primary.ArrayPrim = ArrayConstructor
-//	//Primary.HashPrim = HashConstructor
+	Primary.ArrayPrim = ArrayConstructor
+	//Primary.HashPrim = HashConstructor
   Primary.RangePrim = RangeConstructor
 //  
-//  Primary.DefinedPrim = DefinedWithParentheses
+  Primary.DefinedPrim = DefinedWithParentheses
 //  
   // Primary allows grouping
   Primary.GroupExp = <( <Exp> )>
   Primary.GroupCStmt = <( <CStmt> )>
 //  
-//  Primary.MethodInvocPrim = PrimaryMethodInvocation
+  Primary.MethodInvocPrim = PrimaryMethodInvocation
   
 	
 	
