@@ -9,12 +9,15 @@ lexical syntax
   
   LINETERMINATOR = [\n]
   LineTerminatorEscapeSequence = [\\] LINETERMINATOR
+  EXPLICITSEPARATOR = ";"
 
-  SEPARATOR = ";"
+  SEPARATOR = EXPLICITSEPARATOR
   SEPARATOR = LINETERMINATOR
   
   SEPLIST = SEPARATOR+
+  SEPLISTEXPLICIT = SEPARATOR* EXPLICITSEPARATOR
   
 lexical restrictions
 
   SEPLIST -/- [\;\n]
+  SEPLISTEXPLICIT -/- [\;\n]
