@@ -1,0 +1,9 @@
+module QuotedExpandedLiteralString
+
+imports
+
+  QuotedExpandedLiteralStringGen
+
+syntax
+  
+  QuotedExpandedLiteralString-CF = "%Q" ExDelimStr-CF
