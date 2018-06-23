@@ -1,0 +1,45 @@
+module BinaryOperatorExpression
+
+imports
+  UnaryOperatorExpression
+
+context-free syntax
+  BinaryOperatorExpression = "(" BinaryOperatorExpression ")" {bracket}
+  BinaryOperatorExpression.BinExp = EqualityExpression
+  
+  EqualityExpression.Relational = RelationalExpression
+  EqualityExpression.SpaceShip = RelationalExpression "<=>" RelationalExpression {non-assoc}
+  EqualityExpression.Equals = RelationalExpression "==" RelationalExpression {non-assoc}
+  EqualityExpression.CaseEq = RelationalExpression "===" RelationalExpression {non-assoc}
+  EqualityExpression.NotEq = RelationalExpression "!=" RelationalExpression {non-assoc}
+  EqualityExpression.PatternMatch = RelationalExpression "=~" RelationalExpression {non-assoc}
+  EqualityExpression.NotPatternMatch = RelationalExpression "!~" RelationalExpression {non-assoc}
+  
+  RelationalExpression = BitwiseORExpression
+  RelationalExpression.Greater = RelationalExpression ">" BitwiseORExpression {left}
+  RelationalExpression.GreaterEq = RelationalExpression ">=" BitwiseORExpression {left}
+  RelationalExpression.Lesser = RelationalExpression "<" BitwiseORExpression {left}
+  RelationalExpression.LesserEq = RelationalExpression "<=" BitwiseORExpression {left}
+  
+  BitwiseORExpression = BitwiseANDExpression
+  BitwiseORExpression.BitOr = BitwiseORExpression "|" BitwiseANDExpression {left}
+  BitwiseORExpression.BitXOr = BitwiseORExpression "^" BitwiseANDExpression {left}
+  
+  BitwiseANDExpression = BitwiseShiftExpression
+  BitwiseANDExpression.BitAnd = BitwiseANDExpression "&" BitwiseShiftExpression {left}
+  
+  BitwiseShiftExpression = AdditiveExpression
+  BitwiseShiftExpression.BitShiftLeft = BitwiseShiftExpression "<<" AdditiveExpression {left}
+  BitwiseShiftExpression.BitShiftRight = BitwiseShiftExpression ">>" AdditiveExpression {left}
+  
+  AdditiveExpression = MultiplicativeExpression
+  AdditiveExpression.Plus = AdditiveExpression "+" MultiplicativeExpression {left}
+  AdditiveExpression.Minus = AdditiveExpression "-" MultiplicativeExpression {left}
+  
+  MultiplicativeExpression = UnaryMinusExpression
+  MultiplicativeExpression.Times = MultiplicativeExpression "*" UnaryMinusExpression {left}
+  MultiplicativeExpression.Division = MultiplicativeExpression "/" UnaryMinusExpression {left}
+  MultiplicativeExpression.Modulo = MultiplicativeExpression "%" UnaryMinusExpression {left}
+  
+  PowerExpression.UnExp = UnaryExpression
+  PowerExpression.PowerExp = <<UnaryExpression> ** <PowerExpression>> {left}

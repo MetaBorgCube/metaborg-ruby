@@ -2,14 +2,22 @@ module Primary
 
 imports
   BodyStatement
+  Break
   Class
   CompoundStatement
+  ConditionalExpression
+  Constructors
+  DefinedExpression
 	Identifier
-	If
+	IterationExpression
   Expression
 	Literal
 	Method
 	Module
+	Next
+	Redo
+	Retry
+	Return
 	Separator
 	Statement
 	Variable
@@ -19,9 +27,15 @@ imports
 context-free syntax
 
 	Primary.LiteralPrim = Literal
-	Primary.VarRefPrim = Var
+	Primary.VarRefPrim = Var {prefer}
+	Primary.ScopedVarRefPrim = ScopedConstantReference
 	Primary.ConstPrim = <<Primary> :: <ID>>
 	Primary.IfPrim = IfExp
+	Primary.UnlessPrim = UnlessExp
+	Primary.CasePrim = CaseExp
+	Primary.WhilePrim = WhileExp
+	Primary.UntilPrim = UntilExp
+	Primary.ForPrim = ForExp {prefer}
 	
 	// TODO: no line-terminator between class-name and superclass
 	Primary.ClassPrim = ClassDef
@@ -30,5 +44,25 @@ context-free syntax
 	Primary.MethodPrim = MethodDef
 	Primary.SingletonMethodPrim = SingletonMethodDef
 	Primary.YieldPrim = YieldWithOptionalArgument
+	
+	Primary.ReturnPrim = ReturnWithoutArgument {prefer}
+	Primary.BreakPrim = BreakWithoutArgument {prefer}
+	Primary.NextPrim = NextWithoutArgument {prefer}
+	Primary.RedoPrim = Redo {prefer}
+	Primary.RetryPrim = Retry {prefer}
+//	
+//	// Constructors
+	Primary.ArrayPrim = ArrayConstructor
+	//Primary.HashPrim = HashConstructor
+  Primary.RangePrim = RangeConstructor
+//  
+  Primary.DefinedPrim = DefinedWithParentheses
+//  
+  // Primary allows grouping
+  Primary.GroupExp = <( <Exp> )>
+  Primary.GroupCStmt = <( <CStmt> )>
+//  
+  Primary.MethodInvocPrim = PrimaryMethodInvocation
+  
 	
 	

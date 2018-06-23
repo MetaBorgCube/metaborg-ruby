@@ -5,6 +5,9 @@ imports
 
 context-free syntax
 
-  ReturExp.ReturnWithoutArg = <<ReturnWithoutArgument>>
-  ReturExp.ReturnWithArg = <<ReturnWithArgument>>
+  ReturExp = ReturnWithoutArgument
+  ReturExp = ReturnWithArgument
+  
+  ReturnWithoutArgument.ReturnWithoutArg = <return>
+  ReturnWithArgument.ReturnWithArg = <return <JumpArg>>
    

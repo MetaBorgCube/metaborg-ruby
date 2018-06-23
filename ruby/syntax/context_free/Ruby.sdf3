@@ -24,5 +24,4 @@ context-free start-symbols
   Program
   Stmt
   Exp
-  Arg
   String

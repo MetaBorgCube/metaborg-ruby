@@ -2,7 +2,7 @@ module BodyStatement
 
 imports
   CompoundStatement
-  If
+  ConditionalExpression
   LeftHandSide
   OperatorExpression
 

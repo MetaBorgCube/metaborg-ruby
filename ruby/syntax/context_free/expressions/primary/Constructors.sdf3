@@ -1,0 +1,13 @@
+module Constructors
+
+imports
+  MethodArgument
+  LogicalExpression
+
+context-free syntax
+
+  ArrayConstructor.Array = <[ <IndexingArgumentList?> ]>
+  
+  RangeConstructor.RangeOpOrExp = OperatorORExpression
+  RangeConstructor.RangeInc = OperatorORExpression ".." OperatorORExpression
+  RangeConstructor.RangeEx = OperatorORExpression "..." OperatorORExpression

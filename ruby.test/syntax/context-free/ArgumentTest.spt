@@ -1,6 +1,0 @@
-module ArgumentTest
-
-language Ruby
-
-start symbol Arg
-

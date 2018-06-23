@@ -5,5 +5,10 @@ imports
 
 context-free syntax
 
-  BreakExp.BreakWithoutArg = <<BreakWithoutArgument>>
-  BreakExp.BreakWithArg = <<BreakWithArgument>>
+  BreakExp = BreakWithoutArgument
+  BreakExp = BreakWithArgument
+  
+  BreakWithoutArgument.BreakWithoutArg = <break> {prefer}
+  BreakWithArgument.BreakWithArg = <break <JumpArg>> {avoid}
+  
+  

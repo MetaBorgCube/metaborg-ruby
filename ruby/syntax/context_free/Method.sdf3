@@ -2,15 +2,21 @@ module Method
 
 imports
   Argument
+  Block
   BodyStatement
+  Break
   Command
   Expression
   Identifier
+  Keyword
   MethodArgument
+  Next
   Operator
   OperatorExpression
-  Keyword
+  Primary
+  Return
   Separator
+  Super
   Variable
 
 context-free syntax
@@ -21,19 +27,60 @@ context-free syntax
   MethodName.Id = <<MethodId>>
   MethodName.MethodOp = <<OPERATOR-METHOD-NAME>>
   MethodName.Keyword = <<KEYWORD>>
+  
+  MethodIdNoCons.LocalVar = <<LOCAL-V-IDENTIFIER>>
+  MethodIdNoCons.MethodOnly = <<METHOD-ONLY-IDENTIFIER>>
+
+  MethodNameNoCons.Id = <<MethodId>>
+  MethodNameNoCons.MethodOp = <<OPERATOR-METHOD-NAME>>
+  MethodNameNoCons.Keyword = <<KEYWORD>>
+  
+  // Method name without Constant Identifier
+  MethodNameExceptConstant = MethodNameNoCons
+  
+  PrimaryMethodInvocation = SuperWithOptionalArgument
+  PrimaryMethodInvocation = IndexingMethodInvocation
+  PrimaryMethodInvocation = METHOD-ONLY-IDENTIFIER
+  PrimaryMethodInvocation.Block = <<MethodId> <Block>>
+  PrimaryMethodInvocation.ArgumentsBlock = 
+    <<MethodId> <ArgumentWithParentheses> 
+     <Block?>>
+  PrimaryMethodInvocation.MethodInvocArg =
+    <<Primary> . <MethodName> <ArgumentWithParentheses?>
+      <Block?>>
+  PrimaryMethodInvocation.MethodInvocColons = 
+    <<Primary> :: <MethodName> <ArgumentWithParentheses>
+      <Block?>>
+  PrimaryMethodInvocation.MethodInvocNoCons = 
+    <<Primary> :: <MethodNameExceptConstant> <ArgumentWithParentheses>
+      <Block?>>
+  
+  IndexingMethodInvocation.IndexMethodInvoc = <<Primary> [ <IndexingArgumentList?> ]>
 
   MethodInvocationWithoutParentheses.Command = <<Command>>
   MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
   MethodInvocationWithoutParentheses.ChainedCommandLong = 
     <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses>>
-  MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>>
-  MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>>
-  MethodInvocationWithoutParentheses.Next = <<NextWithArgument>>
+  MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>> {avoid}
+  MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>> {avoid}
+  MethodInvocationWithoutParentheses.Next = <<NextWithArgument>> {avoid}
   
   BlockSymbol.Period = "."
   BlockSymbol.DoubleColon = "::"
   
-  ChainedCommandWithDoBlock.ChainedCommand = "@#$@$@#" //TODO
+  ChainedCommandWithDoBlock.ChainedCommand =
+    <<CommandWithDoBlock> <ChainedMethodInvocation*>>
+  
+  ChainedMethodInvocation.ChainedMethodInvoc = <<BlockSymbol> <MethodName>>
+  ChainedMethodInvocation.ChainedMethodInvoc = 
+    <<BlockSymbol> <MethodName> <ArgumentWithParentheses>>
+    
+  CommandWithDoBlock = SuperWithArgumentAndDoBlock
+//  CommandWithDoBlock.CommandWithBlockNoPrim = 
+//    <<MethodId> <ArgumentWithoutParentheses> <DoBlock>>   {avoid}
+  CommandWithDoBlock.CommanWithBlock =
+    <<Primary> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses> <DoBlock>>
+    
   
   
   // Primary Expression Method definition

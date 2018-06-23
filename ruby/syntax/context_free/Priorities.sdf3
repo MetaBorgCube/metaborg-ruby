@@ -2,7 +2,10 @@ module Priorities
 
 imports
 	Argument
-	KeywordExpression
+	BinaryOperatorExpression
+	Constructors
+	LogicalExpression
+	UnaryOperatorExpression
 	
 // Precedence source: http://ruby-doc.org/core-2.5.1/doc/syntax/precedence_rdoc.html
 // Associativity source: https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
@@ -10,52 +13,55 @@ imports
 context-free priorities
 
 	{right: 
-		Arg.BoolNot
-		Arg.BitNot
-		Arg.UnPlus
-		Arg.Power } >
+	  OperatorNOTExpression.BoolNotUnOp
+	  OperatorNOTExpression.MethodInvoc
+	  KeywordNOTExpression.NotMethod
+		UnaryExpression.BoolNot
+		UnaryExpression.BitNot
+		UnaryExpression.UnPlus
+		PowerExpression.PowerExp } >
 	{right:
-		Arg.UnMin } >
+		UnaryMinusExpression.MinPower } >
 	{left:
-		Arg.Times
-		Arg.Division
-		Arg.Modulo } >
+		MultiplicativeExpression.Times
+		MultiplicativeExpression.Division
+		MultiplicativeExpression.Modulo } >
 	{left:
-		Arg.Plus
-		Arg.Minus } >
+		AdditiveExpression.Plus
+		AdditiveExpression.Minus } >
 	{left:
-		Arg.BitShiftLeft
-		Arg.BitShiftRight } >
+		BitwiseShiftExpression.BitShiftLeft
+		BitwiseShiftExpression.BitShiftRight } >
 	{left:
-		Arg.BitAnd } >
+		BitwiseANDExpression.BitAnd } >
 	{left:
-		Arg.BitOr
-		Arg.BitXOr } >
+		BitwiseORExpression.BitOr
+		BitwiseORExpression.BitXOr } >
 	{left:
-		Arg.Lesser
-		Arg.LesserEq
-		Arg.Greater
-		Arg.GreaterEq } >
+		RelationalExpression.Lesser
+		RelationalExpression.LesserEq
+		RelationalExpression.Greater
+		RelationalExpression.GreaterEq } >
 	{non-assoc:
-		Arg.Equals
-		Arg.CaseEq
-		Arg.NotEq
-		Arg.PatternMatch
-		Arg.NotPatternMatch
-		Arg.SpaceShip } >
+		EqualityExpression.Equals
+		EqualityExpression.CaseEq
+		EqualityExpression.NotEq
+		EqualityExpression.PatternMatch
+		EqualityExpression.NotPatternMatch
+		EqualityExpression.SpaceShip } >
 	{left:
-		Arg.BoolAnd } >
+		OperatorANDExpression.BoolAnd } >
 	{left:
-		Arg.BoolOr } >
+		OperatorORExpression.BoolOr } >
 	{non-assoc:
-		Arg.RangeInc
-		Arg.RangeExc } >
+		RangeConstructor.RangeInc
+		RangeConstructor.RangeEx } >
 //	{right:
 //		?: } >
 //	{left:
 //		rescue } >
 	{right:
-		Arg.Assign
+		//Arg.Assign
 		// **=
 		// *= 
 		// /=
@@ -71,12 +77,13 @@ context-free priorities
 		// ^=	
 	} >
 	{non-assoc:
-		Arg.Defined } >
+		//Arg.Defined 
+		} >
 	{right:
-		KeywordNOTExp.Not } >
+		KeywordNOTExpression.Not } >
 	{left:
-		KeywordANDExp.And 
-		KeywordORExp.Or } 
+		KeywordANDExpression.And 
+		KeywordORExpression.Or } 
 //	{non-assoc
 //		if
 //		unless

@@ -47,5 +47,9 @@ lexical restrictions
   
 lexical syntax
 
-  ID = KEYWORD {reject}
   IDENTIFIER = KEYWORD {reject}
+  LOCAL-V-IDENTIFIER = KEYWORD {reject}
+  GLOBAL-V-IDENTIFIER = KEYWORD {reject}
+  CLASS-V-IDENTIFIER = KEYWORD {reject}
+  INSTANCE-V-IDENTIFIER = KEYWORD {reject}
+  CONSTANT-IDENTIFIER = KEYWORD {reject}

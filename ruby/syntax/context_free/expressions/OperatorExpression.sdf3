@@ -2,26 +2,14 @@ module OperatorExpression
 
 imports
   AssignmentExpression
+  BinaryOperatorExpression
   Primary
-  
+  UnaryOperatorExpression
 
 context-free syntax
   
   OpExp.Assign = AssignmentExp
-  OpExp.UnOp = UnOpExp
+  OpExp.UnOp = UnaryOperatorExpression			{prefer}
+  OpExp.BinOp = BinaryOperatorExpression
   
   OpExpList.OpExpList = {OpExp ","}+
-  
-  UnOpExp.UnExp = UnaryExpression       {prefer}
-  UnOpExp.UnMinExp = UnaryMinExpression
-  
-  UnaryMinExpression.Power = PowerExpression
-  UnaryMinExpression.MinPower = <- <PowerExpression>>
-  
-  UnaryExpression.Primary = Primary
-  UnaryExpression.Neg = <~<UnaryExpression>>
-  UnaryExpression.Plus = <+<UnaryExpression>>
-  UnaryExpression.Not = <!<UnaryExpression>>
-  
-  PowerExpression.UnExp = UnaryExpression
-  PowerExpression.PowerExp = <<UnaryExpression> ** <PowerExpression>>
