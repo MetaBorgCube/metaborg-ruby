@@ -22,4 +22,4 @@ syntax
   
   SepListListWhitespace-CF = SepListList-CF LAYOUT-NO-NEWLINE*-LEX
 
-  SepListListExplicitEnd-CF.SepListListEnd = LAYOUT-NO-NEWLINE*-LEX SepListListEnd*-LEX LAYOUT-NO-NEWLINE*-LEX SEPLISTEXPLICIT-LEX
+  SepListListExplicitEnd-CF.SepListListEnd = SepListListEnd*-LEX LAYOUT-NO-NEWLINE*-LEX SEPLISTEXPLICIT-LEX
