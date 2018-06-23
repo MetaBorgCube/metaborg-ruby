@@ -1,6 +1,23 @@
 module Separator
 
+context-free syntax
+
+  Sep.Sep = SEPARATOR
+  SepList.SepList = SEPLIST
+
 lexical syntax
 
-	Sep.SemiColon = ";"
-	Sep.NewLine = [\n]
+  LINETERMINATOR = [\n]
+  LineTerminatorEscapeSequence = [\\] LINETERMINATOR
+  EXPLICITSEPARATOR = ";"
+
+  SEPARATOR = EXPLICITSEPARATOR
+  SEPARATOR = LINETERMINATOR
+
+  SEPLIST = SEPARATOR+
+  SEPLISTEXPLICIT = SEPARATOR* EXPLICITSEPARATOR
+
+lexical restrictions
+
+  SEPLIST -/- [\;\n]
+  SEPLISTEXPLICIT -/- [\;]
