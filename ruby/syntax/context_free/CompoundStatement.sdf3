@@ -1,17 +1,21 @@
 module CompoundStatement
 
 imports
+
 	Statement
 	Expression
 	Separator
 	Whitespace
+	Primary
+	Variable
 
 syntax
 
   CStmt-CF.CStmt = StatementList?-CF LAYOUT-NO-NEWLINE*-LEX SepListListExplicitEnd?-CF
   
-  StatementList-CF.StmtList = Stmt-CF LAYOUT-NO-NEWLINE*-LEX StatementListEnd*-CF
-  StatementListEnd-CF.StmtListItem = SepListList-CF LAYOUT-NO-NEWLINE*-LEX Stmt-CF
+  StatementList-CF.StmtList = Stmt-CF LAYOUT-NO-NEWLINE*-LEX StatementListEnd-CF
+  StatementListEnd-CF.StmtListEnd = 
+  StatementListEnd-CF.StmtListItem = SepListList-CF LAYOUT-NO-NEWLINE*-LEX Stmt-CF StatementListEnd-CF
   
   SepListList-CF.SepListListH = SEPLIST-LEX SepListListEnd*-LEX 
   SepListListEnd-LEX.SepListListT = LAYOUT-NO-NEWLINE*-LEX SEPLIST-LEX
