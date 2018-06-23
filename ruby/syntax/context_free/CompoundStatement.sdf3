@@ -11,7 +11,7 @@ imports
 
 syntax
 
-  CStmt-CF.CStmt = StatementList?-CF SepListListExplicitEnd?-CF
+  CStmt-CF.CStmt = SepListListWhitespace?-CF StatementList?-CF SepListListExplicitEnd?-CF
 
   StatementList-CF.StmtList = Stmt-CF StatementListEnd-CF
   StatementListEnd-CF.StmtListEnd =
@@ -19,5 +19,7 @@ syntax
 
   SepListList-CF.SepListListH = SEPLIST-LEX SepListListEnd*-LEX
   SepListListEnd-LEX.SepListListT = LAYOUT-NO-NEWLINE*-LEX SEPLIST-LEX
+  
+  SepListListWhitespace-CF = SepListList-CF LAYOUT-NO-NEWLINE*-LEX
 
   SepListListExplicitEnd-CF.SepListListEnd = LAYOUT-NO-NEWLINE*-LEX SepListListEnd*-LEX LAYOUT-NO-NEWLINE*-LEX SEPLISTEXPLICIT-LEX
