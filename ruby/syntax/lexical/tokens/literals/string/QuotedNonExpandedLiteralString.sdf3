@@ -1,0 +1,9 @@
+module QuotedNonExpandedLiteralString
+
+imports
+
+  QuotedNonExpandedLiteralStringGen
+
+syntax
+  
+  QuotedNonExpandedLiteralString-CF = "%q" NonExDelimStr-CF

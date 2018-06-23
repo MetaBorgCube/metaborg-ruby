@@ -1,7 +1,7 @@
 module Ruby
 
 imports
-  
+
   Whitespace
   Identifier
   Number
@@ -10,7 +10,8 @@ imports
   Statement
   Expression
   Argument
-  
+  String
+
 lexical start-symbols
 
   ID
@@ -19,5 +20,9 @@ lexical start-symbols
   IDENTIFIER
 
 context-free start-symbols
-  
+
   Program
+  Stmt
+  Exp
+  Arg
+  String

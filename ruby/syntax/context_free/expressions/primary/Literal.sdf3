@@ -13,5 +13,5 @@ context-free syntax
 
 	// LITERAL = numeric | SYMBOL | STRING | STRING2 | HERE_DOC | REGEXP
 	Literal.Num = <<NUMBER>>
-	Literal.String = < <STRING> >
+	Literal.String = <<String>>
 	Literal.Symbol = <<SYMBOL>>

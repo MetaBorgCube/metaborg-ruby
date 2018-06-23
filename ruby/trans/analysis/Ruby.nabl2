@@ -4,19 +4,12 @@ imports
 
   signatures/-
   analysis/-
-  
+
 signature
-  name resolution
-        namespaces // ... space separated list of namespaces ...
-        	Var
-        	FunctionVar
 
 rules
 
   init ^ (s) := new s.
-  
+
   // We do not care about Nabl2 atm.
   [[ Program(_) ^ (s) ]] := true.
-
-//  [[ Program(compoundStatement) ^ (s) ]] := 
-//		[[compoundStatement ^ (s)]].

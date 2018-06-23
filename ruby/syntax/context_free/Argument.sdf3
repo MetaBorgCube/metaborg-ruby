@@ -8,9 +8,5 @@ imports
 	Primary
 
 context-free syntax
-	
+
 	JumpArg.Jump = ArgumentList {avoid} //No line terminator before this term.
-		
-		
-	
-	
