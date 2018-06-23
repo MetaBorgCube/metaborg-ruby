@@ -15,4 +15,4 @@ rules
 
   init ^ (s) := new s.
 
-  [[ Program(compoundStatement) ^ (s) ]] := true.
+  [[ Program(_) ^ (s) ]] := true.

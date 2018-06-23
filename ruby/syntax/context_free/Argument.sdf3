@@ -1,6 +1,7 @@
 module Argument
 
 imports
+
 	LeftHandSide
 	Primary
 
@@ -10,7 +11,7 @@ context-free syntax
 
 	Arg = "("Arg")"								{bracket}
 
-	Arg.Assign = <<LHS> = <Arg>> 				{right}
+  Arg.Assign = <<LHS> = <Arg>> 				{right}
 //	Arg.LHSOp = <<LHS> <OP_ASSIGN> <Arg>> TODO
 	
 	Arg.RangeInc = <<Arg> .. <Arg>>				{non-assoc}
