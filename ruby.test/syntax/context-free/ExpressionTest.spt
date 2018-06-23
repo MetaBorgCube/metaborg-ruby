@@ -2,7 +2,13 @@ module ExpressionTest
 
 language Ruby
 
-start symbol Exp
+start symbol Program
 
+  // Yield
+  test Yield expression single [[yield]] parse succeeds
+  test Yield expression with Par and Arg [[yield (param1)]] parse succeeds
+  test Yield expression with Par [[yield ()]] parse succeeds
+  test Yield expression with Arg [[yield param1]] parse succeeds
+  
 
 

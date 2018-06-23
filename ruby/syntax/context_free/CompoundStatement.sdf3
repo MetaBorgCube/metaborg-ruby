@@ -12,12 +12,12 @@ imports
 syntax
 
   CStmt-CF.CStmt = StatementList?-CF LAYOUT-NO-NEWLINE*-LEX SepListListExplicitEnd?-CF
-  
+
   StatementList-CF.StmtList = Stmt-CF LAYOUT-NO-NEWLINE*-LEX StatementListEnd-CF
-  StatementListEnd-CF.StmtListEnd = 
+  StatementListEnd-CF.StmtListEnd =
   StatementListEnd-CF.StmtListItem = SepListList-CF LAYOUT-NO-NEWLINE*-LEX Stmt-CF StatementListEnd-CF
-  
-  SepListList-CF.SepListListH = SEPLIST-LEX SepListListEnd*-LEX 
+
+  SepListList-CF.SepListListH = SEPLIST-LEX SepListListEnd*-LEX
   SepListListEnd-LEX.SepListListT = LAYOUT-NO-NEWLINE*-LEX SEPLIST-LEX
-  
+
   SepListListExplicitEnd-CF.SepListListEnd = SepListListEnd*-LEX LAYOUT-NO-NEWLINE*-LEX SEPLISTEXPLICIT-LEX

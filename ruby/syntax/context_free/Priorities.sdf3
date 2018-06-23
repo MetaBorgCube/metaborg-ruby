@@ -2,7 +2,7 @@ module Priorities
 
 imports
 	Argument
-	Expression
+	KeywordExpression
 	
 // Precedence source: http://ruby-doc.org/core-2.5.1/doc/syntax/precedence_rdoc.html
 // Associativity source: https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
@@ -73,10 +73,10 @@ context-free priorities
 	{non-assoc:
 		Arg.Defined } >
 	{right:
-		Exp.Not } >
+		KeywordNOTExp.Not } >
 	{left:
-		Exp.And 
-		Exp.Or } 
+		KeywordANDExp.And 
+		KeywordORExp.Or } 
 //	{non-assoc
 //		if
 //		unless

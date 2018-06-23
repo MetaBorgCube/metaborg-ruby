@@ -1,0 +1,22 @@
+module ClassTest
+
+language Ruby
+
+start symbol Program
+
+test Classname lowercase [[ class testName; end ]] parse fails
+test Classname correct [[ class TestName; end ]] parse succeeds
+test Classname top class path [[ class :: TestName; end]] parse succeeds
+test Classname constant [[ class TESTCONSTANT; end]] parse succeeds
+test Classname variable [[ class @testvar; end]] parse fails
+test Classname nested class path [[ class modulename :: Classname; end]] parse succeeds
+
+// Superclass can be any expression
+test Superclass camelCase [[ class TestName < TestNameOther; end ]] parse succeeds
+test Superclass var [[ class TestName < testname; end ]] parse succeeds
+test Superclass number [[ class TestName < 234; end ]] parse succeeds
+test Superclassception [[class Test < (class Test2 < (class Test3; end); end); end]] parse succeeds
+
+// Singleton class
+test Singleton Class name [[class << 123; end]] parse succeeds
+test Singleton class name prefix [[class TestName << 123; end]] parse fails

@@ -1,1 +1,1 @@
-alias a b
+yield (parm)

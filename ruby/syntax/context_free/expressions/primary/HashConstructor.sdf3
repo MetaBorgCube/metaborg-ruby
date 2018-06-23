@@ -1,0 +1,20 @@
+module HashConstructor
+
+imports
+  OperatorExpression
+
+context-free syntax
+  HashConstructor.HashConstructor = <{ <HashAssociationList?> }>
+  
+  HashAssociationList.HashAssList = <<AssociationList> <HashSep?>>
+  
+  HashSep.FinalComma = ","
+
+  AssociationList.AssList = {Association ","}*
+  
+  Association.Association = [[AssociationKey] => [AssociationValue]]
+  
+  AssociationKey.AssKey = OpExp
+  
+  AssociationValue.AssValue = OpExp
+  

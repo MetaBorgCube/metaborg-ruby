@@ -1,0 +1,18 @@
+module Expression
+
+imports
+	KeywordExpression
+	OperatorExpression
+	Primary
+	Yield
+
+context-free syntax
+	// General expression	
+	Exp.Keyword = KeywordExp
+	
+	Exp.OperatorExp = OpExp
+	Exp.PrimaryExp = Primary     {prefer}
+	Exp.YieldExp = Yield
+	
+	Exp = "(" Exp ")"    {bracket}
+	

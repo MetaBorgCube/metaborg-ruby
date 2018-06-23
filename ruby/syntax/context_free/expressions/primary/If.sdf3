@@ -1,0 +1,21 @@
+module If
+
+imports
+  CompoundStatement
+  Expression
+  Separator
+
+context-free syntax
+  IfExp.If = 
+   <if <Exp> 
+    <ThenClause> 
+    <ElseIfClause*> 
+    <ElseClause?> 
+    end>
+    
+  ThenClause.ImplicitThen = <<Sep> <CStmt>>
+  ThenClause.ExplicitThen = <<Sep?> then <CStmt>>
+  
+  ElseIfClause.ElseIf = <elseif <Exp> <ThenClause>>
+  
+  ElseClause.Else = <else <CStmt>>

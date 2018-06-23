@@ -1,8 +1,10 @@
 module Argument
 
 imports
-
+  Command
 	LeftHandSide
+	MethodArgument
+	OperatorExpression
 	Primary
 
 // TODO: Test Arguments
@@ -13,7 +15,7 @@ context-free syntax
 
   Arg.Assign = <<LHS> = <Arg>> 				{right}
 //	Arg.LHSOp = <<LHS> <OP_ASSIGN> <Arg>> TODO
-	
+
 	Arg.RangeInc = <<Arg> .. <Arg>>				{non-assoc}
 	Arg.RangeExc = <<Arg> ... <Arg>>			{non-assoc}
 
@@ -25,11 +27,11 @@ context-free syntax
 	Arg.Power = <<Arg> ** <Arg>>				{right}
 	Arg.UnPlus = <+ <Arg>>						{right}
 	Arg.UnMin = <- <Arg>>						{right}
-	
+
 	Arg.BitOr = <<Arg> | <Arg>>					{left}
 	Arg.BitXOr = <<Arg> ^ <Arg>>				{left}
 	Arg.BitAnd = <<Arg> & <Arg>>				{left}
-	
+
 	Arg.SpaceShip = [[Arg] <=> [Arg]] 			{non-assoc}
 	Arg.Greater = [[Arg] > [Arg]]				{left}
 	Arg.GreaterEq = [[Arg] >= [Arg]] 			{left}
@@ -40,20 +42,27 @@ context-free syntax
 	Arg.NotEq = <<Arg> != <Arg>> 				{non-assoc}
 	Arg.PatternMatch = <<Arg> =~ <Arg>> 		{non-assoc}
 	Arg.NotPatternMatch = <<Arg> !~ <Arg>> 		{non-assoc}
-	
+
 	Arg.BoolNot = <!<Arg>>						{right}
 	Arg.BitNot = <~<Arg>>						{right}
-	
+
 	Arg.BitShiftLeft = [[Arg] << [Arg]] 		{left}
 	Arg.BitShiftRight = [[Arg] >> [Arg]] 		{left}
-	
+
 	Arg.BoolAnd = <<Arg> && <Arg>> 				{left}
 	Arg.BoolOr = <<Arg> || <Arg>> 				{left}
-	
+
 	Arg.Defined = <defined? <Arg>> 				{non-assoc}
-	
+
 	Arg.Primary = <<Primary>>
-		
-		
-	
-	
+
+	JumpArg.Jump = ArgumentList //No line terminator before this term.
+
+	ReturnWithoutArgument.ReturnWithoutArg = <return>
+	ReturnWithArgument.ReturnWithArg = <return <JumpArg>>
+
+	BreakWithoutArgument.BreakWithoutArg = <break>
+	BreakWithArgument.BreakWithArg = <break <JumpArg>>
+
+	NextWithoutArgument.NextWithoutArg = <next>
+  	NextWithArgument.NextWithArg = <next <JumpArg>>

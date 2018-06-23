@@ -1,0 +1,9 @@
+module Next
+
+imports
+  Argument
+
+context-free syntax
+  
+  NextExp.NextWithoutArg = <<NextWithoutArgument>>
+  NextExp.NextWithArg = <<NextWithArgument>>

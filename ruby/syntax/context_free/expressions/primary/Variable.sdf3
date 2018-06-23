@@ -1,0 +1,15 @@
+module Variable
+
+imports
+
+	VarName
+
+context-free syntax
+	
+	Var.Var = VARNAME
+	Var.Pseudo = PseudoVar
+	
+	PseudoVar.Null = "nil"
+	PseudoVar.True = "true"
+	PseudoVar.False = "false"
+	PseudoVar.Self = "self"

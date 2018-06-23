@@ -4,19 +4,19 @@ context-free syntax
 
   Sep.Sep = SEPARATOR
   SepList.SepList = SEPLIST
-  
+
 lexical syntax
-  
+
   LINETERMINATOR = [\n]
   LineTerminatorEscapeSequence = [\\] LINETERMINATOR
   EXPLICITSEPARATOR = ";"
 
   SEPARATOR = EXPLICITSEPARATOR
   SEPARATOR = LINETERMINATOR
-  
+
   SEPLIST = SEPARATOR+
   SEPLISTEXPLICIT = SEPARATOR* EXPLICITSEPARATOR
-  
+
 lexical restrictions
 
   SEPLIST -/- [\;\n]
