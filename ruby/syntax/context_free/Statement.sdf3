@@ -6,21 +6,18 @@ imports
 	Expression
 	FunctionName
 	Literal
+	Whitespace
+	
+	
+syntax 
+
+  WhileModifierStatement-CF.StmtWhileMod = Stmt-CF LAYOUT-NO-NEWLINE*-LEX "while" LAYOUT?-CF Exp-CF
+  UntilModifierStatement-CF.StmtUntilMod = Stmt-CF LAYOUT-NO-NEWLINE*-LEX "until" LAYOUT?-CF Exp-CF
 	
 context-free syntax
 
-	Stmt.Exp = <<Exp>>
-
-	//Stmt.Call = <<Call> do [| [<BlockVar>] |] <CStmt> end>
-	Stmt.Undef = <undef <FNAME>>
-	Stmt.Alias = <alias <FNAME> <FNAME>>
+	Stmt.StmtExp = <<Exp>>
 	
-	Stmt.If = <<Stmt> if <Exp>>
-	Stmt.While = <<Stmt> while <Exp>>
-	Stmt.Unless = <<Stmt> unless <Exp>>
-	Stmt.Until = <<Stmt> until <Exp>>
 	
-	Stmt.Begin = <BEGIN { <CStmt> }> // Object initializer
-	Stmt.End = <END { <CStmt> }> // Object finalizer
 	
-	//Stmt.Comman = <<LHS> = <Command> [do [| [<BlockVar>] |] <CStmt> end]>
+	

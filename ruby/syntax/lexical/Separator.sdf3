@@ -1,10 +1,10 @@
 module Separator
 
-context-free syntax
+imports
+  
+  Whitespace
 
-  Sep.Sep = SEPARATOR
-  SepList.SepList = SEPLIST
-
+  
 lexical syntax
 
   LINETERMINATOR = [\n]

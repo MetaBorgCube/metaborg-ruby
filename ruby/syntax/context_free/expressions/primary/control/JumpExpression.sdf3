@@ -1,0 +1,40 @@
+module JumpExpression
+
+imports
+
+  Argument
+  
+context-free syntax
+
+  JumpExpression = BreakExpression
+  JumpExpression = NextExpression
+  JumpExpression = RedoExpression
+  JumpExpression = ReturnExpression
+  JumpExpression = RetryExpression
+
+  // Break
+  BreakExpression = BreakWithoutArgument
+  BreakExpression = BreakWithArgument
+  
+  BreakWithoutArgument.BreakWithoutArg = <break> {prefer}
+  BreakWithArgument.BreakWithArg = <break <JumpArg>> {avoid}
+  
+  // Next
+  NextExpression = NextWithoutArgument
+  NextExpression = NextWithArgument
+  
+  NextWithoutArgument.NextWithoutArgExp = <next>
+  NextWithArgument.NextWithArgExp = <next <JumpArg>>
+  
+  // Redo
+  RedoExpression.RedoExp = "redo"
+  
+  // Retry
+  RetryExpression.RetryExp = "retry"
+  
+  // Return
+  ReturnExpression = ReturnWithoutArgument
+  ReturnExpression = ReturnWithArgument
+  
+  ReturnWithoutArgument.ReturnWithoutArg = <return>
+  ReturnWithArgument.ReturnWithArg = <return <JumpArg>>
