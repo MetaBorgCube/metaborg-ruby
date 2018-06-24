@@ -1,6 +1,7 @@
 module Primary
 
 imports
+  BeginExpression
   BodyStatement
   Class
   CompoundStatement
@@ -50,6 +51,8 @@ context-free syntax
   Primary.RangePrim = RangeConstructor  {avoid}
 
   Primary.DefinedPrim = DefinedWithParentheses
+  
+  Primry.BeginPrim = BeginExpression
 
   // Primary allows grouping
   Primary.GroupExp = <( <Exp> )>

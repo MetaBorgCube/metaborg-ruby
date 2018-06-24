@@ -14,7 +14,7 @@ syntax
   DoClause-CF.ExplicitDo = "do" LAYOUT?-CF CStmt-CF
   DoClause-CF.IMplicitDo = SEPARATOR-LEX LAYOUT?-CF CStmt-CF
 
-  ForExp-CF.ForExp = "for" LAYOUT?-CF ForVariable-CF LAYOUT?-CF "in" LAYOUT?-CF 
+  ForExp-CF.ForExp = "for" LAYOUT?-CF ForVariable-CF LAYOUT-NO-NEWLINE*-LEX "in" LAYOUT?-CF 
                   Exp-CF LAYOUT-NO-NEWLINE*-LEX DoClause-CF LAYOUT?-CF "end"
                   
   UntilExp-CF.UntilExp = "until" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-LEX DoClause-CF
