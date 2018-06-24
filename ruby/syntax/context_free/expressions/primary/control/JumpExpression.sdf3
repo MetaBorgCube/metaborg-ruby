@@ -3,6 +3,12 @@ module JumpExpression
 imports
 
   Argument
+  Whitespace
+  
+syntax
+  BreakWithArgument-CF.BreakWithArg = "break" LAYOUT-NO-NEWLINE*-LEX JumpArg-CF   {avoid}
+  NextWithArgument-CF.NextWithArgExp = "next" LAYOUT-NO-NEWLINE*-LEX JumpArg-CF
+  ReturnWithArgument-CF.ReturnWithArg = "return" LAYOUT-NO-NEWLINE*-LEX JumpArg-CF
   
 context-free syntax
 
@@ -17,14 +23,14 @@ context-free syntax
   BreakExpression = BreakWithArgument
   
   BreakWithoutArgument.BreakWithoutArg = <break> {prefer}
-  BreakWithArgument.BreakWithArg = <break <JumpArg>> {avoid}
+  
   
   // Next
   NextExpression = NextWithoutArgument
   NextExpression = NextWithArgument
   
   NextWithoutArgument.NextWithoutArgExp = <next>
-  NextWithArgument.NextWithArgExp = <next <JumpArg>>
+  
   
   // Redo
   RedoExpression.RedoExp = "redo"
@@ -37,4 +43,4 @@ context-free syntax
   ReturnExpression = ReturnWithArgument
   
   ReturnWithoutArgument.ReturnWithoutArg = <return>
-  ReturnWithArgument.ReturnWithArg = <return <JumpArg>>
+  

@@ -5,13 +5,18 @@ imports
   ConditionalExpression
   LeftHandSide
   OperatorExpression
+  Whitespace
+  
+syntax
+  
+  RescueClause-CF.Rescue = "rescue" LAYOUT-NO-NEWLINE*-LEX ExceptionClassList?-CF 
+                              LAYOUT?-CF ExceptionVar?-CF LAYOUT?-CF ThenClause
 
 context-free syntax
 
   BStmt.BodyStmt = <<CStmt> <RescueClause*> <ElseClause?> <EnsureClause?>>
   
-  RescueClause.Rescue = 
-    <rescue <ExceptionClassList?> <ExceptionVar?>>
+  
   
   EnsureClause.Ensure = <ensure <CStmt>>
   
