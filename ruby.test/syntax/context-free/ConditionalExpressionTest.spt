@@ -53,3 +53,9 @@ test Case implicit then with else [[case 123
     else 123
   end
 ]] parse succeeds
+
+test conditional opexp [[true ? some1 : some2]] parse succeeds
+test conditional opexp fails newline 1 [[true 
+? some1 : some2]] parse fails
+test conditional opexp fials newline 2 [[true ? some1 
+: some2]] parse fails

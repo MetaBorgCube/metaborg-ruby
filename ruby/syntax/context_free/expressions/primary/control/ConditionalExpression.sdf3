@@ -1,6 +1,7 @@
 module ConditionalExpression
 
 imports
+  Constructors
   CompoundStatement
   Expression
   MethodArgument
@@ -10,8 +11,10 @@ imports
   
 syntax
 
-  CaseExp-CF.CaseExp = "case" LAYOUT?-CF Exp-CF LAYOUT?-CF SepListList?-CF LAYOUT?-CF WhenClause+-CF LAYOUT?-CF ElseClause?-CF LAYOUT?-CF "end"
-  CaseExp-CF.Case = "case" LAYOUT?-CF SepListList?-CF LAYOUT?-CF WhenClause+-CF LAYOUT?-CF ElseClause?-CF LAYOUT?-CF "end"
+  CaseExp-CF.CaseExp = "case" LAYOUT?-CF Exp-CF LAYOUT?-CF SepListList?-CF LAYOUT?-CF 
+                       WhenClause+-CF LAYOUT?-CF ElseClause?-CF LAYOUT?-CF "end"
+  CaseExp-CF.Case = "case" LAYOUT?-CF SepListList?-CF LAYOUT?-CF 
+                    WhenClause+-CF LAYOUT?-CF ElseClause?-CF LAYOUT?-CF "end"
   
   WhenClause-CF.WhenClause = "when" LAYOUT?-CF WhenArgument-CF LAYOUT?-CF ThenClause-CF
   
@@ -20,11 +23,15 @@ syntax
   ThenClause-CF.ImplicitThen = SEPARATOR-LEX LAYOUT?-CF CStmt-CF
   ThenClause-CF.ExplicitThen = SepListList?-CF LAYOUT?-CF "then" LAYOUT?-CF CStmt-CF
   
+  ConditionalOperatorExpression-CF.ConditionalOpExp = RangeConstructor-CF LAYOUT-NO-NEWLINE*-LEX "?" LAYOUT?-CF 
+                                                      OpExp-CF LAYOUT-NO-NEWLINE*-LEX ":" LAYOUT?-CF OpExp-CF
+  
 context-free syntax
 
   ConditionalExpression = IfExp
   ConditionalExpression = UnlessExp
   ConditionalExpression = CaseExp
+  ConditionalExpression = ConditionalOperatorExpression
 
   IfExp.If = 
    <if <Exp> 
@@ -46,7 +53,9 @@ context-free syntax
   
   WhenArgument.WhenSplat = SplattingArgument
   
-  //TODO conditional-operator-expression
+  ConditionalOperatorExpression = RangeConstructor  {avoid}
+  
+  
   
   
   
