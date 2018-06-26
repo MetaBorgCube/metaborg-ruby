@@ -11,6 +11,11 @@ imports
   Expression
   Argument
   String
+  
+  OperatorExpression
+  BinaryOperatorExpression
+  UnaryOperatorExpression
+  Constructors
 
 lexical start-symbols
 
@@ -25,3 +30,60 @@ context-free start-symbols
   Stmt
   Exp
   String
+  
+context-free priorities
+
+  {right: 
+    Exp.UnNotExp
+    Exp.UnNotExp
+    Exp.UnBitNotExp
+    Exp.UnPlusExp
+    Exp.BinPowExp } >
+  {right:
+    Exp.UnMinExp } >
+  {left:
+    Exp.BinMulExp
+    Exp.BinDivExp
+    Exp.BinModExp } >
+  {left:
+    Exp.BinPlusExp
+    Exp.BinMinExp } >
+  {left:
+    Exp.BinBitLShiftExp
+    Exp.BinBitRShiftExp } >
+  {left:
+    Exp.BinBitAndExp } >
+  {left:
+    Exp.BinBitOrExp
+    Exp.BinBitXOrExp } >
+  {left:
+    Exp.BinLtExp
+    Exp.BinLeqExp
+    Exp.BinGtExp
+    Exp.BinGeqExp } >
+  {non-assoc:
+    Exp.BinEqExp
+    Exp.BinCaseEqExp
+    Exp.BinNotEqExp
+    Exp.BinMatchExp
+    Exp.BinNotMatchExp
+    Exp.BinSpaceEqExp } >
+  {left:
+    Exp.BinAndExp } >
+  {left:
+    Exp.BinOrExp } >
+  {non-assoc:
+    RangeConstructor.RangeInc
+    RangeConstructor.RangeEx } >
+  {right:
+    Exp.UnKeyNotExp } >
+  {left:
+    Exp.BinKeyAndExp 
+    Exp.BinKeyOrExp } 
+//  {non-assoc
+//    if
+//    unless
+//    while
+//    until } >
+//  {
+//    {}-blocks }

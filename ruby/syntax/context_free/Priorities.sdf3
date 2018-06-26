@@ -1,10 +1,10 @@
 module Priorities
 
 imports
+
 	Argument
 	BinaryOperatorExpression
 	Constructors
-	LogicalExpression
 	UnaryOperatorExpression
 	
 // Precedence source: http://ruby-doc.org/core-2.5.1/doc/syntax/precedence_rdoc.html
@@ -13,46 +13,44 @@ imports
 context-free priorities
 
 	{right: 
-	  OperatorNOTExpression.BoolNotUnOp
-	  OperatorNOTExpression.MethodInvoc
-	  KeywordNOTExpression.NotMethod
-		UnaryExpression.BoolNot
-		UnaryExpression.BitNot
-		UnaryExpression.UnPlus
-		PowerExpression.PowerExp } >
+	  Exp.UnNotExp
+		Exp.UnNotExp
+		Exp.UnBitNotExp
+		Exp.UnPlusExp
+		Exp.BinPowExp } >
 	{right:
-		UnaryMinusExpression.MinPower } >
+		Exp.UnMinExp } >
 	{left:
-		MultiplicativeExpression.Times
-		MultiplicativeExpression.Division
-		MultiplicativeExpression.Modulo } >
+		Exp.BinMulExp
+		Exp.BinDivExp
+		Exp.BinModExp } >
 	{left:
-		AdditiveExpression.Plus
-		AdditiveExpression.Minus } >
+		Exp.BinPlusExp
+		Exp.BinMinExp } >
 	{left:
-		BitwiseShiftExpression.BitShiftLeft
-		BitwiseShiftExpression.BitShiftRight } >
+		Exp.BinBitLShiftExp
+		Exp.BinBitRShiftExp } >
 	{left:
-		BitwiseANDExpression.BitAnd } >
+		Exp.BinBitAndExp } >
 	{left:
-		BitwiseORExpression.BitOr
-		BitwiseORExpression.BitXOr } >
+		Exp.BinBitOrExp
+		Exp.BinBitXOrExp } >
 	{left:
-		RelationalExpression.Lesser
-		RelationalExpression.LesserEq
-		RelationalExpression.Greater
-		RelationalExpression.GreaterEq } >
+		Exp.BinLtExp
+		Exp.BinLeqExp
+		Exp.BinGtExp
+		Exp.BinGeqExp } >
 	{non-assoc:
-		EqualityExpression.Equals
-		EqualityExpression.CaseEq
-		EqualityExpression.NotEq
-		EqualityExpression.PatternMatch
-		EqualityExpression.NotPatternMatch
-		EqualityExpression.SpaceShip } >
+		Exp.BinEqExp
+		Exp.BinCaseEqExp
+		Exp.BinNotEqExp
+		Exp.BinMatchExp
+		Exp.BinNotMatchExp
+		Exp.BinSpaceEqExp } >
 	{left:
-		OperatorANDExpression.BoolAnd } >
+		Exp.BinAndExp } >
 	{left:
-		OperatorORExpression.BoolOr } >
+		Exp.BinOrExp } >
 	{non-assoc:
 		RangeConstructor.RangeInc
 		RangeConstructor.RangeEx } >
@@ -80,10 +78,10 @@ context-free priorities
 		//Arg.Defined 
 		} >
 	{right:
-		KeywordNOTExpression.Not } >
+		Exp.UnKeyNotExp } >
 	{left:
-		KeywordANDExpression.And 
-		KeywordORExpression.Or } 
+		Exp.BinKeyAndExp 
+		Exp.BinKeyOrExp } 
 //	{non-assoc
 //		if
 //		unless

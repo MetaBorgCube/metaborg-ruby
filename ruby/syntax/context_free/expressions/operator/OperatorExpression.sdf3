@@ -1,0 +1,11 @@
+module OperatorExpression
+
+imports
+
+  AssignmentExpression
+  
+context-free syntax
+  
+  OpExp.Assign = AssignmentExp
+  
+  OpExpList.OpExpList = {OpExp ","}+

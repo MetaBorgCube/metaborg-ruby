@@ -1,0 +1,14 @@
+module UnaryOperatorExpression
+
+imports
+
+  Expression
+
+context-free syntax
+  
+  Exp.UnMinExp = <-<Exp>> {right}
+  Exp.UnBitNotExp = <~<Exp>> {right}
+  Exp.UnPlusExp = <+<Exp>> {right}
+  Exp.UnNotExp = <!<Exp>> {right}
+  Exp.UnKeyNotExp = <not<Exp>> {right}
+  

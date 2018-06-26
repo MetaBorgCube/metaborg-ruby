@@ -1,17 +1,17 @@
 module Expression
 
 imports
-	LogicalExpression
+
 	OperatorExpression
+	BinaryOperatorExpression
+	UnaryOperatorExpression
 	Primary
 	Yield
 
 context-free syntax
-	// General expression	
-	Exp.Keyword = KeywordExp   {avoid}
-	
-	Exp.OperatorExp = OpExp    {avoid}
-	Exp.PrimaryExp = Primary   {prefer}
+	// General expression
+	Exp.OperatorExp = OpExp
+	Exp.PrimaryExp = Primary
 	Exp.YieldExp = Yield
 	
 	Exp = "(" Exp ")"    {bracket}
