@@ -4,7 +4,7 @@ imports
   Command
   HashConstructor
   Method
-  OperatorExpression
+  Expression
 
 context-free syntax
 
@@ -13,37 +13,33 @@ context-free syntax
   MethodArgument.IndexArgList = IndexingArgumentList
   
   IndexingArgumentList = Command
-  IndexingArgumentList.OpExpList = OperatorExpressionList OptionalComma?
-  IndexingArgumentList.SplatOpExpList = OperatorExpressionList "," SplattingArgument
+  IndexingArgumentList.OpExpList = ExpressionList OptionalComma?
+  IndexingArgumentList.SplatOpExpList = ExpressionList "," SplattingArgument
   IndexingArgumentList.IndexAssocList = AssociationList OptionalComma?
   IndexingArgumentList.SplatOpExp = SplattingArgument
   OptionalComma.Comma = ","
   
   ArgumentWithParentheses.Pars = "("")"
   ArgumentWithParentheses.ArgList = <( <ArgumentList> )>
-  ArgumentWithParentheses.OpExpList = 
-    <( <OperatorExpressionList>, <ChainedCommandWithDoBlock> )>
+  ArgumentWithParentheses.ExpList = <( <Exp>, <ChainedCommandWithDoBlock> )>
   ArgumentWithParentheses.ArgsParChained =
     <( <ChainedCommandWithDoBlock> )>
   
   // Lookahead not in { '{' } 
   ArgumentWithoutParentheses.ArgWithoutPar = ArgumentList
   
-  SplattingArgument.SplatArg = <* <OpExp>>
+  SplattingArgument.SplatArg = <* <Exp>>
   SplattingArgumentOptional.SplatArgOptional = <, <SplattingArgument>>
   
-  OperatorExpressionList.OpExpList = {OpExp ","}+  
+  ExpressionList.ExpList = {Exp ","}+  
   
   // TODO 
   ArgumentList.Block =  <<BlockArgument>>
   ArgumentList.Splatting = <<SplattingArgument> <BlockArgumentOptional?>>
-  ArgumentList.OpList = 
-    <<OperatorExpressionList>, <AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.OpWithoutAssoc = 
-    <<OperatorExpressionList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.OpWithAssoc = 
-    <<AssociationListNonEmpty> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.OpList = <<ExpressionList>, <AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.OpWithoutAssoc = <<ExpressionList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.OpWithAssoc = <<AssociationListNonEmpty> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
   ArgumentList.Command = <<Command>>
   
-  BlockArgument.BlockArg = <& <OpExp>>
+  BlockArgument.BlockArg = <& <Exp>>
   BlockArgumentOptional.BlockArgOptional = <, <BlockArgument>>
