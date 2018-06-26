@@ -18,6 +18,7 @@ imports
   Yield
   Variable
   Whitespace
+  CompoundStatement
 
 context-free syntax
   MethodId.LocalVar = <<LOCAL-V-IDENTIFIER>>
@@ -96,25 +97,25 @@ context-free syntax
   
   // Primary Expression Method definition
   
-  MethodDef.Method = 
-    <def <DefinedMethodName> <MethodParamaters>
-      <MethodBody>
-     end>
+syntax
+
+  MethodDef-CF.MethodDef = "def" LAYOUT?-CF DefinedMethodName-CF LAYOUT-NO-NEWLINE*-LEX MethodParameters-CF LAYOUT?-CF BStmt-CF LAYOUT?-CF "end"
+   
+  SingletonMethodDef-CF.SingletonMethodDef = "def" LAYOUT?-CF Singleton-CF LAYOUT?-CF SingSep-CF LAYOUT?-CF DefinedMethodName-CF LAYOUT-NO-NEWLINE*-LEX MethodParameters-CF LAYOUT?-CF BStmt-CF LAYOUT?-CF "end"
+  
+  MethodParameters-CF.Params = ParamList?-CF LAYOUT-NO-NEWLINE*-LEX SEPARATOR-LEX SepListListExplicitEnd?-CF
+
+context-free syntax
+
   DefinedMethodName.DefMethodName = MethodName
   DefinedMethodName.AssignMethodName = ASSIGNMENT-LIKE-METHOD-IDENTIFIER
-  MethodBody.Body = BStmt
   
-  SingletonMethodDef.SingletonMethod = 
-    <def <Singleton> <SingSep> <DefinedMethodName> <MethodParamaters>
-      <MethodBody>
-     end>
   Singleton.Exp = <(<Exp>)>
   Singleton.VarRef = Var
   SingSep.Period = "."
-  SingSep.Colons = "::"    
+  SingSep.Colons = "::"
   
-  MethodParamaters.ParamsWithParantheses = <( <ParamList?> )>
-  MethodParamaters.Params = <<ParamList?> <SEPARATOR>>
+  MethodParameters.ParamsWithParentheses = <( <ParamList?> )>
   
   ParamList.MandatoryParams =<<MandatoryParams> <OptionalOpt?> <OptionalArray?> <OptionalProc?>>
   ParamList.Optional = <<OptionalParams> <OptionalArray?> <OptionalProc?>>
