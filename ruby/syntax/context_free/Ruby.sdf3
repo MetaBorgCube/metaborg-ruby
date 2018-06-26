@@ -79,7 +79,8 @@ context-free priorities
     Exp.UnKeyNotExp } >
   {left:
     Exp.BinKeyAndExp 
-    Exp.BinKeyOrExp } 
+    Exp.BinKeyOrExp } >
+  { Exp.MethodInvocExp }
 //  {non-assoc
 //    if
 //    unless

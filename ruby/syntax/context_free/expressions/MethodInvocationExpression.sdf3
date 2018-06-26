@@ -5,6 +5,6 @@ imports
   Identifier
   
 context-free syntax
-  MethodInvocationExpression = PrimaryMethodInvocation
+  
   MethodInvocationExpression = MethodInvocationWithoutParentheses
   MethodInvocationExpression = LOCAL-V-IDENTIFIER

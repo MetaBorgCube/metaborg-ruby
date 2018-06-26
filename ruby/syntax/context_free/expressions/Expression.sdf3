@@ -7,12 +7,14 @@ imports
 	UnaryOperatorExpression
 	Primary
 	Yield
+	MethodInvocationExpression
 
 context-free syntax
 	// General expression
 	Exp.OperatorExp = OpExp
 	Exp.PrimaryExp = Primary
 	Exp.YieldExp = Yield
-	
+	Exp.MethodInvocExp = MethodInvocationExpression
+
 	Exp = "(" Exp ")"    {bracket}
 	
