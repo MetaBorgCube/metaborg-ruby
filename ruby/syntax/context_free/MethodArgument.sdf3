@@ -39,10 +39,10 @@ context-free syntax
   ArgumentList.Splatting = <<SplattingArgument> <BlockArgumentOptional?>>
   ArgumentList.OpList = 
     <<OperatorExpressionList>, <AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.OpWithoutAss = 
+  ArgumentList.OpWithoutAssoc = 
     <<OperatorExpressionList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.OpWithAss = 
-    <<AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.OpWithAssoc = 
+    <<AssociationListNonEmpty> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
   ArgumentList.Command = <<Command>>
   
   BlockArgument.BlockArg = <& <OpExp>>

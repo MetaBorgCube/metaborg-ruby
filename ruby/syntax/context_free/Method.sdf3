@@ -15,7 +15,9 @@ imports
   Primary
   Separator
   Super
+  Yield
   Variable
+  Whitespace
 
 context-free syntax
   MethodId.LocalVar = <<LOCAL-V-IDENTIFIER>>
@@ -62,6 +64,17 @@ context-free syntax
   MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>> {avoid}
   MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>> {avoid}
   MethodInvocationWithoutParentheses.Next = <<NextWithArgument>> {avoid}
+  
+  Command.ComSuper = SuperWithArgument
+  Command.ComYield = YieldWithArgument
+  Command.ComMethod = MethodId ArgumentWithoutParentheses
+  
+syntax
+
+  Command-CF.ComPrim = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT?-CF ArgumentWithoutParentheses-CF 
+
+context-free syntax
+  
   
   BlockSymbol.Period = "."
   BlockSymbol.DoubleColon = "::"

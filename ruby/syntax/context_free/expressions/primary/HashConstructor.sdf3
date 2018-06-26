@@ -6,15 +6,16 @@ imports
 context-free syntax
   HashConstructor.HashConstructor = <{ <HashAssociationList?> }>
   
-  HashAssociationList.HashAssList = <<AssociationList> <HashSep?>>
+  HashAssociationList.HashAssocList = <<AssociationList> <HashSep?>>
   
   HashSep.FinalComma = ","
 
-  AssociationList.AssList = {Association ","}*
+  AssociationList.AssocList = {Association ","}*
+  AssociationListNonEmpty.AssocList = {Association ","}+
   
-  Association.Association = [[AssociationKey] => [AssociationValue]]
+  Association.Assoc = [[AssociationKey] => [AssociationValue]]
   
-  AssociationKey.AssKey = OpExp
+  AssociationKey.AssocKey = OpExp
   
-  AssociationValue.AssValue = OpExp
+  AssociationValue.AssocValue = OpExp
   
