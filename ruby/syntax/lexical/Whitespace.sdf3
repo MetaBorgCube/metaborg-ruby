@@ -6,15 +6,11 @@ lexical syntax
   LAYOUT = [\ \t\r\n]
   LAYOUT-NO-NEWLINE = [\ \t\r]
 
-  // Block comment whitespace
-  CommentChar    = [\*]
-  BlockComment   = "/*" (InsideComment | BlockComment)* "*/"
-  InsideComment  = ~[\*]
-  InsideComment  = CommentChar
-
   // Line comment whitespace
-  LAYOUT         = "//" ~[\n\r]* NewLineEOF
-  LAYOUT = BlockComment
+  LineComment = "#" ~[\n\r]* NewLineEOF
+  
+  LAYOUT            = LineComment 
+  LAYOUT-NO-NEWLINE = LineComment
 
   // New line or end of file utility
   NewLineEOF     = [\n\r]
@@ -23,10 +19,6 @@ lexical syntax
 
 lexical restrictions
 
-  // Ensure greedy matching for lexicals
-
-  CommentChar   -/- [\/]
-
   // EOF may not be followed by any char
 
   EOF -/- ~[]
@@ -34,9 +26,7 @@ lexical restrictions
 context-free restrictions
 
   LAYOUT? -/- [\ \t\r\n]
-  LAYOUT? -/- [\/].[\/]
-  LAYOUT? -/- [\/].[\*]
+  LAYOUT? -/- [\#]
 
   LAYOUT-NO-NEWLINE* -/- [\ \t\r]
-  LAYOUT-NO-NEWLINE* -/- [\/].[\/]
-  LAYOUT-NO-NEWLINE* -/- [\/].[\*]
+  LAYOUT-NO-NEWLINE* -/- [\#]

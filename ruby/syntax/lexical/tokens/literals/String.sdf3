@@ -5,6 +5,7 @@ imports
   SingleQuotedString
   DoubleQuotedString
   QuotedNonExpandedLiteralString
+  QuotedExpandedLiteralString
 
   Separator
   Identifier
@@ -24,3 +25,4 @@ context-free syntax
   String.StrS = SingleQuotedString
   String.StrD = DoubleQuotedString
   String.StrQ = QuotedNonExpandedLiteralString
+  String.StrQE = QuotedExpandedLiteralString
