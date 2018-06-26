@@ -6,14 +6,16 @@ imports
   Identifier
   Primary
   Separator
+  Whitespace
+  CompoundStatement
+
+syntax
+
+  ClassDef-CF.Class = "class" LAYOUT?-CF ClassPath-CF LAYOUT-NO-NEWLINE*-LEX SuperClass?-CF LAYOUT-NO-NEWLINE*-LEX SepListListWhitespace-CF BStmt-CF LAYOUT?-CF "end"
+  
+  SingletonClassDef-CF.SingletonClass = "class" LAYOUT?-CF "<<" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-LEX SepListListWhitespace-CF BStmt-CF LAYOUT?-CF "end"
 
 context-free syntax
-
-  ClassDef.Class = 
-   < class <ClassPath> <SuperClass?> <SEPARATOR>
-     <BStmt>
-     end
-   >
 
   ClassPath.TopClassPath = <:: <ClassName>>
   ClassPath.ClassName = ClassName
@@ -22,10 +24,3 @@ context-free syntax
   ClassPath.NestedClassPath = <<Primary> :: <ClassName>>
   
   SuperClass.Super = [ < [Exp]]
-  
-  SingletonClassDef.SingletonClass = 
-    [class << [Exp] [SEPARATOR] 
-      [SingletonClassBody]
-    ]
-    
-  SingletonClassBody.ClassBody = BStmt
