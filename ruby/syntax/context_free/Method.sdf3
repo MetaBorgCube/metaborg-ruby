@@ -4,17 +4,15 @@ imports
   Argument
   Block
   BodyStatement
-  Break
   Command
   Expression
   Identifier
+  JumpExpression
   Keyword
   MethodArgument
-  Next
   Operator
   OperatorExpression
   Primary
-  Return
   Separator
   Super
   Variable
@@ -103,7 +101,7 @@ context-free syntax
   SingSep.Colons = "::"    
   
   MethodParamaters.ParamsWithParantheses = <( <ParamList?> )>
-  MethodParamaters.Params = <<ParamList?> <Sep>>
+  MethodParamaters.Params = <<ParamList?> <SEPARATOR>>
   
   ParamList.MandatoryParams =<<MandatoryParams> <OptionalOpt?> <OptionalArray?> <OptionalProc?>>
   ParamList.Optional = <<OptionalParams> <OptionalArray?> <OptionalProc?>>

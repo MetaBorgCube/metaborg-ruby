@@ -1,8 +1,8 @@
 module Primary
 
 imports
+  BeginExpression
   BodyStatement
-  Break
   Class
   CompoundStatement
   ConditionalExpression
@@ -10,19 +10,16 @@ imports
   DefinedExpression
 	Identifier
 	IterationExpression
+	JumpExpression
   Expression
 	Literal
 	Method
 	Module
-	Next
-	Redo
-	Retry
-	Return
 	Separator
 	Statement
 	Variable
 	Yield
-	
+
 // Primary stands for the primary expressions in Ruby 
 context-free syntax
 
@@ -30,12 +27,12 @@ context-free syntax
 	Primary.VarRefPrim = Var {prefer}
 	Primary.ScopedVarRefPrim = ScopedConstantReference
 	Primary.ConstPrim = <<Primary> :: <ID>>
-	Primary.IfPrim = IfExp
-	Primary.UnlessPrim = UnlessExp
-	Primary.CasePrim = CaseExp
-	Primary.WhilePrim = WhileExp
-	Primary.UntilPrim = UntilExp
-	Primary.ForPrim = ForExp {prefer}
+	
+	// Iteration expression eg: while, for
+	Primary.IterationExp = IterationExpression
+	
+	// Conditional expression eg: case, if, unless
+	Primary.ConditionalExp = ConditionalExpression
 	
 	// TODO: no line-terminator between class-name and superclass
 	Primary.ClassPrim = ClassDef
@@ -45,24 +42,20 @@ context-free syntax
 	Primary.SingletonMethodPrim = SingletonMethodDef
 	Primary.YieldPrim = YieldWithOptionalArgument
 	
-	Primary.ReturnPrim = ReturnWithoutArgument {prefer}
-	Primary.BreakPrim = BreakWithoutArgument {prefer}
-	Primary.NextPrim = NextWithoutArgument {prefer}
-	Primary.RedoPrim = Redo {prefer}
-	Primary.RetryPrim = Retry {prefer}
-//	
-//	// Constructors
+	// Jump Expression
+	Primary.JumpPrim = JumpExpression
+
+	// Constructors
 	Primary.ArrayPrim = ArrayConstructor
 	//Primary.HashPrim = HashConstructor
-  Primary.RangePrim = RangeConstructor
-//  
+  Primary.RangePrim = RangeConstructor  {avoid}
+
   Primary.DefinedPrim = DefinedWithParentheses
-//  
+  
+  Primry.BeginPrim = BeginExpression
+
   // Primary allows grouping
   Primary.GroupExp = <( <Exp> )>
   Primary.GroupCStmt = <( <CStmt> )>
-//  
+
   Primary.MethodInvocPrim = PrimaryMethodInvocation
-  
-	
-	

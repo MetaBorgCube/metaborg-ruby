@@ -10,7 +10,7 @@ imports
 context-free syntax
 
   ClassDef.Class = 
-   < class <ClassPath> <SuperClass?> <Sep>
+   < class <ClassPath> <SuperClass?> <SEPARATOR>
      <BStmt>
      end
    >
@@ -24,7 +24,7 @@ context-free syntax
   SuperClass.Super = [ < [Exp]]
   
   SingletonClassDef.SingletonClass = 
-    [class << [Exp] [Sep] 
+    [class << [Exp] [SEPARATOR] 
       [SingletonClassBody]
     ]
     

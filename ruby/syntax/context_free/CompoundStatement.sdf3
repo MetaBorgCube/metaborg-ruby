@@ -19,7 +19,7 @@ syntax
 
   SepListList-CF.SepListListH = SEPLIST-LEX SepListListEnd*-LEX
   SepListListEnd-LEX.SepListListT = LAYOUT-NO-NEWLINE*-LEX SEPLIST-LEX
-  
+
   SepListListWhitespace-CF = SepListList-CF LAYOUT-NO-NEWLINE*-LEX
 
   SepListListExplicitEnd-CF.SepListListEnd = SepListListEnd*-LEX LAYOUT-NO-NEWLINE*-LEX SEPLISTEXPLICIT-LEX
