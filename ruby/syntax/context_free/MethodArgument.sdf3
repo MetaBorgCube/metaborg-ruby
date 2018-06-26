@@ -34,12 +34,12 @@ context-free syntax
   ExpressionList.ExpList = {Exp ","}+  
   
   // TODO 
-  ArgumentList.Block =  <<BlockArgument>>
-  ArgumentList.Splatting = <<SplattingArgument> <BlockArgumentOptional?>>
-  ArgumentList.OpList = <<ExpressionList>, <AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.OpWithoutAssoc = <<ExpressionList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.OpWithAssoc = <<AssociationListNonEmpty> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.Command = <<Command>>
+  ArgumentList.BlockArgList =  <<BlockArgument>>
+  ArgumentList.SplatArgList = <<SplattingArgument> <BlockArgumentOptional?>>
+  ArgumentList.ExpAssocArgList = <<ExpressionList>, <AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.ExpArgList = <<ExpressionList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.AssocArgList = <<AssociationListNonEmpty> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
+  ArgumentList.CommandArgList = <<Command>>
   
   BlockArgument.BlockArg = <& <Exp>>
   BlockArgumentOptional.BlockArgOptional = <, <BlockArgument>>

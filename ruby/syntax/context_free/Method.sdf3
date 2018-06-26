@@ -60,19 +60,24 @@ context-free syntax
 
   MethodInvocationWithoutParentheses.Command = <<Command>>
   MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
-  MethodInvocationWithoutParentheses.ChainedCommandLong = 
-    <<ChainedCommandWithDoBlock> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses>>
+  
+syntax
+
+  MethodInvocationWithoutParentheses-CF.ChainedCommandLong = ChainedCommandWithDoBlock-CF LAYOUT?-CF BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF
+    
+context-free syntax
+
   MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>> {avoid}
   MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>> {avoid}
   MethodInvocationWithoutParentheses.Next = <<NextWithArgument>> {avoid}
   
   Command.ComSuper = SuperWithArgument
   Command.ComYield = YieldWithArgument
-  Command.ComMethod = MethodId ArgumentWithoutParentheses
   
 syntax
 
-  Command-CF.ComPrim = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT?-CF ArgumentWithoutParentheses-CF 
+  Command-CF.ComMethod = MethodId-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF
+  Command-CF.ComPrim = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF 
 
 context-free syntax
   
@@ -89,8 +94,8 @@ syntax
   ChainedMethodInvocation-CF.ChainedMethodInvoc = BlockSymbol-CF LAYOUT?-CF MethodName-CF ArgumentWithParentheses-CF
     
   CommandWithDoBlock-CF.CommandBlockSuper = SuperWithArgumentAndDoBlock-CF
-  CommandWithDoBlock-CF.CommandBlockNoPrim = MethodId-CF LAYOUT?-CF ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
-  CommandWithDoBlock-CF.CommandBlock = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT?-CF ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+  CommandWithDoBlock-CF.CommandBlockNoPrim = MethodId-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+  CommandWithDoBlock-CF.CommandBlock = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
   
   // Primary Expression Method definition
 
