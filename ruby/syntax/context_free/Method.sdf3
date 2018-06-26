@@ -19,6 +19,7 @@ imports
   Variable
   Whitespace
   CompoundStatement
+  Symbol
 
 context-free syntax
   MethodId.LocalVar = <<LOCAL-V-IDENTIFIER>>
@@ -43,20 +44,19 @@ context-free syntax
   PrimaryMethodInvocation = IndexingMethodInvocation
   PrimaryMethodInvocation = METHOD-ONLY-IDENTIFIER
   PrimaryMethodInvocation.Block = <<MethodId> <Block>>
-  PrimaryMethodInvocation.ArgumentsBlock = 
-    <<MethodId> <ArgumentWithParentheses> 
-     <Block?>>
-  PrimaryMethodInvocation.MethodInvocArg =
-    <<Primary> . <MethodName> <ArgumentWithParentheses?>
-      <Block?>>
-  PrimaryMethodInvocation.MethodInvocColons = 
-    <<Primary> :: <MethodName> <ArgumentWithParentheses>
-      <Block?>>
-  PrimaryMethodInvocation.MethodInvocNoCons = 
-    <<Primary> :: <MethodNameExceptConstant> <ArgumentWithParentheses>
-      <Block?>>
   
-  IndexingMethodInvocation.IndexMethodInvoc = <<Primary> [ <IndexingArgumentList?> ]>
+syntax
+
+  PrimaryMethodInvocation-CF.ArgumentsBlock = MethodId-CF ArgumentWithParentheses-CF BlockPrecededByLayout?-CF
+  PrimaryMethodInvocation-CF.MethodInvocArg = Primary-CF LAYOUT-NO-NEWLINE*-LEX "." LAYOUT?-CF MethodName-CF ArgumentWithParentheses?-CF BlockPrecededByLayout?-CF
+  PrimaryMethodInvocation-CF.MethodInvocColons = Primary-CF LAYOUT-NO-NEWLINE*-LEX "::" LAYOUT?-CF MethodName-CF ArgumentWithParentheses-CF BlockPrecededByLayout?-CF
+  PrimaryMethodInvocation-CF.MethodInvocNoCons = Primary-CF LAYOUT-NO-NEWLINE*-LEX "::" LAYOUT?-CF MethodNameExceptConstant-CF LAYOUT?-CF ArgumentWithParentheses-CF BlockPrecededByLayout?-CF
+    
+  BlockPrecededByLayout-CF = LAYOUT?-CF Block-CF
+    
+  IndexingMethodInvocation-CF.IndexMethodInvoc = Primary-CF "[" LAYOUT?-CF IndexingArgumentList?-CF LAYOUT?-CF "]"
+  
+context-free syntax
 
   MethodInvocationWithoutParentheses.Command = <<Command>>
   MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
@@ -80,24 +80,19 @@ context-free syntax
   BlockSymbol.Period = "."
   BlockSymbol.DoubleColon = "::"
   
-  ChainedCommandWithDoBlock.ChainedCommand =
-    <<CommandWithDoBlock> <ChainedMethodInvocation*>>
+  ChainedCommandWithDoBlock.ChainedCommand = <<CommandWithDoBlock> <ChainedMethodInvocation*>>
   
   ChainedMethodInvocation.ChainedMethodInvoc = <<BlockSymbol> <MethodName>>
-  ChainedMethodInvocation.ChainedMethodInvoc = 
-    <<BlockSymbol> <MethodName> <ArgumentWithParentheses>>
-    
-  CommandWithDoBlock = SuperWithArgumentAndDoBlock
-//  CommandWithDoBlock.CommandWithBlockNoPrim = 
-//    <<MethodId> <ArgumentWithoutParentheses> <DoBlock>>   {avoid}
-  CommandWithDoBlock.CommanWithBlock =
-    <<Primary> <BlockSymbol> <MethodName> <ArgumentWithoutParentheses> <DoBlock>>
-    
-  
-  
-  // Primary Expression Method definition
   
 syntax
+  
+  ChainedMethodInvocation-CF.ChainedMethodInvoc = BlockSymbol-CF LAYOUT?-CF MethodName-CF ArgumentWithParentheses-CF
+    
+  CommandWithDoBlock-CF.CommandBlockSuper = SuperWithArgumentAndDoBlock-CF
+  CommandWithDoBlock-CF.CommandBlockNoPrim = MethodId-CF LAYOUT?-CF ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+  CommandWithDoBlock-CF.CommandBlock = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT?-CF ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+  
+  // Primary Expression Method definition
 
   MethodDef-CF.MethodDef = "def" LAYOUT?-CF DefinedMethodName-CF LAYOUT-NO-NEWLINE*-LEX MethodParameters-CF LAYOUT?-CF BStmt-CF LAYOUT?-CF "end"
    
@@ -136,7 +131,8 @@ context-free syntax
   OptionalArray.OptionalArray = <, <ArrayParams>>
   
   ProcParams.ProcParam = <& <ProcParamName>>
-  ProcParamName.ProcName = LOCAL-V-IDENTIFIER
+  ProcParamName.ProcNameLocal = LOCAL-V-IDENTIFIER
+  ProcParamName.ProcNameSym = Symbol
   OptionalProc.OptionalProc = <, <ProcParams>>
   
 
