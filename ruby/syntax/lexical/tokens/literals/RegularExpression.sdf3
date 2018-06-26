@@ -1,0 +1,52 @@
+module RegularExpression
+
+imports
+
+  Separator
+  DoubleQuotedString
+  QuotedExpandedLiteralStringGen
+
+syntax
+
+  RegEx-CF.RegExLit = REGEX-DELIM-LEX RegExBody-CF REGEX-DELIM-LEX REGEX-MOD*-LEX
+  RegEx-CF.RegExStrQ = "%r" ExDelimStr-CF REGEX-OPT*-LEX
+  
+  RegExBody-CF.RegExBody = RegExCharList-CF
+  
+  RegExCharList-CF.RegExCharListEnd =
+  RegExCharList-CF.RegExCharListItem = RegExChar-CF RegExCharList-CF
+   
+  RegExChar-CF.RegExChar = REGEX-CHAR-LEX
+  RegExChar-CF.RegExHash = NonInterpolationHashSymbol-LEX
+  RegExChar-CF.RegExEsc = "\\/"
+  RegExChar-CF.RegExNonEsc = "\\" REGEX-NONESC-CHAR-LEX
+  RegExChar-CF.RegExLF = LineTerminatorEscapeSequence-LEX
+  RegExChar-CF.RegExInterp = InterpolatedCharacterSequence-CF
+  
+lexical syntax
+
+  REGEX-DELIM = [\/]
+  
+  // source: http://ruby-doc.org/core-2.5.1/Regexp.html
+  REGEX-MOD = REGEX-OPT
+  REGEX-MOD = REGEX-ENC
+  REGEX-OPT = [imxo]
+  REGEX-ENC = [eusn]
+  
+  REGEX-CHAR = ~[]
+  REGEX-CHAR = [\#\/\\] {reject}
+
+  REGEX-NONESC-CHAR-SRC = ~[]
+  REGEX-NONESC-CHAR-SRC = REGEX-LF {reject}
+  REGEX-NONESC-CHAR-SRC = REGEX-CR {reject}
+  
+  REGEX-NONESC-CHAR = REGEX-NONESC-CHAR-SRC
+  REGEX-NONESC-CHAR = REGEX-CR
+  
+  REGEX-LF = [\n]
+  REGEX-CR = [\r]
+  
+lexical restrictions
+
+  REGEX-CR -/- [\n]  
+  

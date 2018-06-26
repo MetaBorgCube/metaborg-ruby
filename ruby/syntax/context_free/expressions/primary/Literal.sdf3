@@ -4,6 +4,7 @@ imports
 	Number
 	String
 	Symbol
+	RegularExpression
 	
 sorts
 
@@ -15,3 +16,4 @@ context-free syntax
 	Literal.Num = <<NUMBER>>
 	Literal.String = <<String>>
 	Literal.Symbol = <<Symbol>>
+	Literal.RegEx = <<RegEx>>
