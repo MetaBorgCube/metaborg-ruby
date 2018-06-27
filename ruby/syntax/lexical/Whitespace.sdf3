@@ -12,6 +12,13 @@ lexical syntax
   LAYOUT            = LineComment 
   LAYOUT-NO-NEWLINE = LineComment
 
+  // Line continuations
+  LineContinuation = [\\][\n]
+  LineContinuation = [\\][\r][\n]
+  
+  LAYOUT            = LineContinuation
+  LAYOUT-NO-NEWLINE = LineContinuation
+
   // New line or end of file utility
   NewLineEOF     = [\n\r]
   NewLineEOF     = EOF
@@ -27,6 +34,8 @@ context-free restrictions
 
   LAYOUT? -/- [\ \t\r\n]
   LAYOUT? -/- [\#]
+  LAYOUT? -/- [\\].[\n]
 
   LAYOUT-NO-NEWLINE* -/- [\ \t\r]
   LAYOUT-NO-NEWLINE* -/- [\#]
+  LAYOUT-NO-NEWLINE* -/- [\\].[\n]
