@@ -42,7 +42,7 @@ syntax
 
   ExpressionList-CF.ExpList = Exp-CF ExpressionArgumentOptionalList-CF
   ExpressionArgumentOptionalList-CF.ListEnd =
-  ExpressionArgumentOptionalList-CF.ListItem = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF Exp-CF ExpressionArgumentOptionalList?-CF
+  ExpressionArgumentOptionalList-CF.ListItem = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF Exp-CF ExpressionArgumentOptionalList-CF
   
   ArgumentList-CF.SplatArgList = SplattingArgument-CF BlockArgumentOptional?-CF
   ArgumentList-CF.ExpAssocArgList = ExpressionList-CF LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF AssociationList-CF SplattingArgumentOptional?-CF BlockArgumentOptional?-CF
