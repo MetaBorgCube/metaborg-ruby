@@ -1,10 +1,12 @@
 module MethodArgument
 
 imports
+
   Command
   HashConstructor
   Method
   Expression
+  Whitespace
 
 context-free syntax
 
@@ -28,18 +30,24 @@ context-free syntax
   // Lookahead not in { '{' } 
   ArgumentWithoutParentheses.ArgWithoutPar = ArgumentList
   
+    
+  
   SplattingArgument.SplatArg = <* <Exp>>
-  SplattingArgumentOptional.SplatArgOptional = <, <SplattingArgument>>
+  BlockArgument.BlockArg = <& <Exp>>
   
-  ExpressionList.ExpList = {Exp ","}+  
-  
-  // TODO 
   ArgumentList.BlockArgList =  <<BlockArgument>>
-  ArgumentList.SplatArgList = <<SplattingArgument> <BlockArgumentOptional?>>
-  ArgumentList.ExpAssocArgList = <<ExpressionList>, <AssociationList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.ExpArgList = <<ExpressionList> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
-  ArgumentList.AssocArgList = <<AssociationListNonEmpty> <SplattingArgumentOptional?> <BlockArgumentOptional?>>
   ArgumentList.CommandArgList = <<Command>>
   
-  BlockArgument.BlockArg = <& <Exp>>
-  BlockArgumentOptional.BlockArgOptional = <, <BlockArgument>>
+syntax
+
+  ExpressionList-CF.ExpList = Exp-CF ExpressionArgumentOptionalList-CF
+  ExpressionArgumentOptionalList-CF.ListEnd =
+  ExpressionArgumentOptionalList-CF.ListItem = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF Exp-CF ExpressionArgumentOptionalList?-CF
+  
+  ArgumentList-CF.SplatArgList = SplattingArgument-CF BlockArgumentOptional?-CF
+  ArgumentList-CF.ExpAssocArgList = ExpressionList-CF LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF AssociationList-CF SplattingArgumentOptional?-CF BlockArgumentOptional?-CF
+  ArgumentList-CF.ExpArgList = ExpressionList-CF SplattingArgumentOptional?-CF BlockArgumentOptional?-CF
+  ArgumentList-CF.AssocArgList = AssociationListNonEmpty-CF SplattingArgumentOptional?-CF BlockArgumentOptional?-CF
+  
+  SplattingArgumentOptional-CF.SplatArgOptional = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF SplattingArgument-CF
+  BlockArgumentOptional-CF.BlockArgOptional = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF BlockArgument-CF
