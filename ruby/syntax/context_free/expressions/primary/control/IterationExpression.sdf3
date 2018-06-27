@@ -26,5 +26,5 @@ context-free syntax
   IterationExpression = WhileModifierStatement
   IterationExpression = UntilModifierStatement
 
-  ForVariable = LHS
-  ForVariable = MLHS
+  ForVariable = LeftHandSide
+  ForVariable = MultipleLeftHandSide

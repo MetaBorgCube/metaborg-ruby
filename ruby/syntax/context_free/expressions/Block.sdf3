@@ -13,12 +13,10 @@ context-free syntax
   
   DoBlock.DoBlock = <do <BlockParameter?> <BlockBody> end>
   
-  //TODO: Exact 1 of 2 whitespaces
-  BlockParameter.BlockPar2 = "| |"
-  BlockParameter.BlockPar1 = "||"
-  BlockParameter.BlockParList = <| <BlockParameterList> |>
+  BlockParameter.BlockParEmpty = "|" "|"
+  BlockParameter.BlockParList = "|" BlockParameterList "|"
   
-  BlockParameterList = LHS
-  BlockParameterList = MLHS
+  BlockParameterList.BlockParListLHS = LeftHandSide
+  BlockParameterList.BlockParListMLHS = MultipleLeftHandSide
   
   BlockBody = CStmt

@@ -11,7 +11,7 @@ context-free syntax
 	Var.Var = VARNAME  {prefer}
 	Var.Pseudo = PseudoVar
 	
-	PseudoVar.Null = "nil"
+	PseudoVar.Nil = "nil"
 	PseudoVar.True = "true"
 	PseudoVar.False = "false"
 	PseudoVar.Self = "self"

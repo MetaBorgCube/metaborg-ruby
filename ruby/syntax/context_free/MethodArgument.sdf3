@@ -15,22 +15,32 @@ context-free syntax
   MethodArgument.IndexArgList = IndexingArgumentList
   
   IndexingArgumentList = Command
-  IndexingArgumentList.OpExpList = ExpressionList OptionalComma?
-  IndexingArgumentList.SplatOpExpList = ExpressionList "," SplattingArgument
-  IndexingArgumentList.IndexAssocList = AssociationList OptionalComma?
-  IndexingArgumentList.SplatOpExp = SplattingArgument
-  OptionalComma.Comma = ","
+  IndexingArgumentList.SplatIndArgList = SplattingArgument
+  
+syntax
+  
+  IndexingArgumentList-CF.ExpIndArgList = ExpressionList-CF OptionalComma?-CF
+  IndexingArgumentList-CF.ExpSplatIndArgList = ExpressionList-CF LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF SplattingArgument-CF
+  IndexingArgumentList-CF.AssocIndArgList = AssociationListNonEmpty-CF OptionalComma?-CF
+  
+  OptionalComma-CF.Comma = LAYOUT-NO-NEWLINE*-LEX ","
+  
+context-free syntax
   
   ArgumentWithParentheses.Pars = "("")"
   ArgumentWithParentheses.ArgList = <( <ArgumentList> )>
-  ArgumentWithParentheses.ExpList = <( <Exp>, <ChainedCommandWithDoBlock> )>
+  
+syntax
+  
+  ArgumentWithParentheses-CF.ExpList = "(" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF ChainedCommandWithDoBlock-CF LAYOUT?-CF ")"
+  
+context-free syntax
+  
   ArgumentWithParentheses.ArgsParChained =
     <( <ChainedCommandWithDoBlock> )>
   
-  // Lookahead not in { '{' } 
+  // TODO Lookahead not in { '{' } 
   ArgumentWithoutParentheses.ArgWithoutPar = ArgumentList
-  
-    
   
   SplattingArgument.SplatArg = <* <Exp>>
   BlockArgument.BlockArg = <& <Exp>>

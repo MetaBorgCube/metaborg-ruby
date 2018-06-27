@@ -22,4 +22,4 @@ context-free syntax
   
   ExceptionClassList.OpExp = <<OpExp>>
   ExceptionClassList.MultipleRHS = "@#$@#$" //TODO
-  ExceptionVar.ExceptionAssign = [=> [LHS]]
+  ExceptionVar.ExceptionAssign = [=> [LeftHandSide]]
