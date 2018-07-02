@@ -33,12 +33,12 @@ syntax
 
   IndexingArgumentListOptional-CF = LAYOUT?-CF IndexingArgumentList-CF LAYOUT?-CF
   
-//  SingleMethodAssignmentExp.LocalVar = Primary-CF LAYOUT-NO-NEWLINE*-LEX LOCAL-V-IDENTIFIER-LEX
-//    LAYOUT-NO-NEWLINE*-LEX "=" OpExp-CF
-  SingleMethodAssignmentExp-CF.ConstantVar = "@#$@#" // TODO
+  SingleMethodAssignmentExp-CF.SMethodAssignExp = Primary-CF LAYOUT-NO-NEWLINE*-LEX MethodInvoc-CF
+    LAYOUT?-CF LOCAL-V-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
+  SingleMethodAssignmentExp-CF.SMethodAssignExpConstant = "@#$@#" // TODO
   
-//  MethodInvoc-CF.Colons = "::"
-//  MethodInvoc-CF.Dot = "."
+  MethodInvoc-CF.Colons = "::"
+  MethodInvoc-CF.Dot = "."
   
 context-free syntax
   
