@@ -3,18 +3,20 @@ module AssignmentExpression
 imports
   Identifier
   Method
+  MethodArgument
   OperatorExpression
   Primary
   Variable
+  Whitespace
   
 
 context-free syntax
-  AssignmentExp.Single = <<SingleAssignmentExp>>
+  AssignmentExp = SingleAssignmentExp
   
-  SingleAssignmentExp.SingleVar = <<SingleVarAssignmentExp>>
-  SingleAssignmentExp.ScopedCons = <<ScopedConstantAssignmentExp>>
-  SingleAssignmentExp.SingleIndexing = <<SingleIndexingAssignmentExp>>
-  SingleAssignmentExp.SingleMethod = <<SingleMethodAssignmentExp>>
+  SingleAssignmentExp = SingleVarAssignmentExp
+  SingleAssignmentExp = ScopedConstantAssignmentExp
+  SingleAssignmentExp = SingleIndexingAssignmentExp
+  SingleAssignmentExp = SingleMethodAssignmentExp
   
   SingleVarAssignmentExp.SingleVarAssign = <<Var> = <OpExp>>
   
@@ -23,10 +25,22 @@ context-free syntax
   ScopedConstantAssignmentExp.NoPrimaryExp = 
     <:: <CONSTANT-IDENTIFIER> = <OpExp>> 
     
-  SingleIndexingAssignmentExp.PrimaryIndex = "@#$@#" // TODO
+syntax
+
+  SingleIndexingAssignmentExp-CF.Test = "jaapie"
+  SingleIndexingAssignmentExp-CF.SinglePrimaryIndex = Primary-CF 
+    "[" IndexingArgumentListOptional?-CF "]" LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
+
+  IndexingArgumentListOptional-CF = LAYOUT?-CF IndexingArgumentList-CF LAYOUT?-CF
   
-  SingleMethodAssignmentExp.LocalVar = "@#$@#" // TODO
-  SingleMethodAssignmentExp.ConstantVar = "@#$@#" // TODO
+//  SingleMethodAssignmentExp.LocalVar = Primary-CF LAYOUT-NO-NEWLINE*-LEX LOCAL-V-IDENTIFIER-LEX
+//    LAYOUT-NO-NEWLINE*-LEX "=" OpExp-CF
+  SingleMethodAssignmentExp-CF.ConstantVar = "@#$@#" // TODO
+  
+//  MethodInvoc-CF.Colons = "::"
+//  MethodInvoc-CF.Dot = "."
+  
+context-free syntax
   
   AssignmentExp.Abbreviated = "@#$@#" // TODO
   
