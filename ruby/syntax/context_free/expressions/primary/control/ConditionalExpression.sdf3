@@ -18,7 +18,7 @@ syntax
   
   WhenClause-CF.WhenClause = "when" LAYOUT?-CF WhenArgument-CF LAYOUT?-CF ThenClause-CF
   
-  WhenArgument-CF.WhenArgOp = OpExp+-CF LAYOUT-NO-NEWLINE*-LEX SplattingArgumentOptional?-CF
+  WhenArgument-CF.WhenArgOp = OpExp+-CF SplattingArgumentOptional?-CF
   
   ThenClause-CF.ImplicitThen = SEPARATOR-LEX LAYOUT?-CF CStmt-CF
   ThenClause-CF.ExplicitThen = SepListList?-CF LAYOUT?-CF "then" LAYOUT?-CF CStmt-CF
