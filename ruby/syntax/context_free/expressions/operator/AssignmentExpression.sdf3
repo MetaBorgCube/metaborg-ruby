@@ -35,7 +35,8 @@ syntax
   
   SingleMethodAssignmentExp-CF.SMethodAssignExp = Primary-CF LAYOUT-NO-NEWLINE*-LEX MethodInvoc-CF
     LAYOUT?-CF LOCAL-V-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
-  SingleMethodAssignmentExp-CF.SMethodAssignExpConstant = "@#$@#" // TODO
+  SingleMethodAssignmentExp-CF.SMethodAssignExpConstant = Primary-CF LAYOUT-NO-NEWLINE*-LEX "."
+    LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
   
   MethodInvoc-CF.Colons = "::"
   MethodInvoc-CF.Dot = "."
