@@ -1,0 +1,12 @@
+module AssignmentExpressionTest
+
+language Ruby
+
+start symbol Program
+
+fixture [[
+case something
+when [[...]];
+  somethingElse
+end
+]]

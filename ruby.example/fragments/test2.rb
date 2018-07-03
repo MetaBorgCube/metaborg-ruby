@@ -1,4 +1,4 @@
 case s
-when something.CONSTANT = jaapie;
+when v = jaapie rescue jaapie;
 jaapie
 end
