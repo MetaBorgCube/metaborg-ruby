@@ -11,8 +11,6 @@ imports
   Expression
   Argument
   String
-  
-  OperatorExpression
   BinaryOperatorExpression
   UnaryOperatorExpression
   Constructors
@@ -30,10 +28,10 @@ context-free start-symbols
   Stmt
   Exp
   String
-  
+
 context-free priorities
 
-  {right: 
+  {right:
     Exp.UnNotExp
     Exp.UnNotExp
     Exp.UnBitNotExp
@@ -78,7 +76,7 @@ context-free priorities
   {right:
     Exp.UnKeyNotExp } >
   {left:
-    Exp.BinKeyAndExp 
+    Exp.BinKeyAndExp
     Exp.BinKeyOrExp } >
   { Exp.MethodInvocExp }
 //  {non-assoc

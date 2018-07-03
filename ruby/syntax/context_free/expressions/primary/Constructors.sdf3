@@ -3,31 +3,27 @@ module Constructors
 imports
 
   Expression
-  OperatorExpression
   MethodArgument
   Whitespace
 
 context-free syntax
 
   ArrayConstructor.Array = <[ <IndexingArgumentList?> ]>
-  
+
   RangeConstructor.RangeInc = Exp ".." Exp
   RangeConstructor.RangeEx = Exp "..." Exp
-  
-  Test = "@#$@#"
-  
+
 syntax
 
   HashConstructor-CF.HashConstructor = "{" HashAssociationList-CF? "}"
 
   HashSep-CF.FinalComma = LAYOUT-NO-NEWLINE*-LEX ","
   HashAssociationList-CF.HashAssocList = LAYOUT?-CF AssociationList-CF HashSep?-CF LAYOUT?-CF
-  
+
   AssociationList-CF.AssocccList = Association-CF AssociationListItem*-CF
-  AssociationListItem-CF.Item = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF Association-CF 
-  
+  AssociationListItem-CF.Item = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF Association-CF
+
   Association-CF.Assoc = AssociationKey-CF LAYOUT-NO-NEWLINE*-LEX "=>" LAYOUT?-CF AssociationValue-CF
-  
-  AssociationKey-CF.Key = OpExp-CF
-  AssociationValue-CF.Value = OpExp-CF
-   
+
+  AssociationKey-CF.Key = Exp-CF
+  AssociationValue-CF.Value = Exp-CF

@@ -2,72 +2,70 @@ module AssignmentExpression
 
 imports
   Identifier
+  Expression
   LeftHandSide
   Method
   MethodArgument
   Operator
-  OperatorExpression
   Primary
   Variable
   Whitespace
-  
+
 
 context-free syntax
-  AssignmentExp.TEST = "jaapie" //For test purposes
-  AssignmentExp = SingleAssignmentExp
-  AssignmentExp = AbbreviatedAssignmentExpression
-  AssignmentExp = AssignmentWithRescueModifier
-  
+  AssignmentExpression = SingleAssignmentExp
+  AssignmentExpression = AbbreviatedAssignmentExpression
+  AssignmentExpression = AssignmentWithRescueModifier
+
   SingleAssignmentExp = SingleVarAssignmentExp
   SingleAssignmentExp = ScopedConstantAssignmentExp
   SingleAssignmentExp = SingleIndexingAssignmentExp
   SingleAssignmentExp = SingleMethodAssignmentExp
-  
+
   AbbreviatedAssignmentExpression = AbbreviatedVariableAssignmentExpression
   AbbreviatedAssignmentExpression = AbbreviatedIndexingAssignmentExpression
   AbbreviatedAssignmentExpression = AbbreviatedMethodAssignmentExpression
-  
-    
+
+
 syntax
 
   // Most of the Assignment Expressions do not allow a new line or white space before the colons
   // and dots when invocating.
   ////////////////////////////
-  
-  SingleVarAssignmentExp-CF.SingleVarAssign = Var-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
-  
-  ScopedConstantAssignmentExp-CF.PrimaryScopedAssignExp = 
-    Primary-CF "::" LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
-  ScopedConstantAssignmentExp-CF.ScopedAssignExp = 
-    "::" LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF 
 
-  SingleIndexingAssignmentExp-CF.SinglePrimaryIndex = Primary-CF 
-    "[" IndexingArgumentListOptional?-CF "]" LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
-  
+  SingleVarAssignmentExp-CF.SingleVarAssign = Var-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF Exp-CF
+
+  ScopedConstantAssignmentExp-CF.PrimaryScopedAssignExp =
+    Primary-CF "::" LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF Exp-CF
+  ScopedConstantAssignmentExp-CF.ScopedAssignExp =
+    "::" LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF Exp-CF
+
+  SingleIndexingAssignmentExp-CF.SinglePrimaryIndex = Primary-CF
+    "[" IndexingArgumentListOptional?-CF "]" LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF Exp-CF
+
   SingleMethodAssignmentExp-CF.SMethodAssignExp = Primary-CF LAYOUT-NO-NEWLINE*-LEX MethodInvoc-CF
-    LAYOUT?-CF LOCAL-V-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
+    LAYOUT?-CF LOCAL-V-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF Exp-CF
   SingleMethodAssignmentExp-CF.SMethodAssignExpConstant = Primary-CF LAYOUT-NO-NEWLINE*-LEX "."
-    LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
+    LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF Exp-CF
 
-  AbbreviatedVariableAssignmentExpression-CF.AbbrVarAssignExp = Var-CF LAYOUT-NO-NEWLINE*-LEX 
-    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF OpExp-CF
-  
-  AbbreviatedIndexingAssignmentExpression-CF.AbbrIndexAssignExp = 
-    Primary-CF "[" IndexingArgumentListOptional?-CF "]" LAYOUT-NO-NEWLINE*-LEX 
-    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF OpExp-CF
-    
-  AbbreviatedMethodAssignmentExpression-CF.AbbrMethodAssignExp = Primary-CF LAYOUT-NO-NEWLINE*-LEX 
-    MethodInvoc-CF LAYOUT?-CF LOCAL-V-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX 
-    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF OpExp-CF
-  AbbreviatedMethodAssignmentExpression-CF.AbbrMethodAssignExpCons = Primary-CF LAYOUT-NO-NEWLINE*-LEX 
-    "." LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX 
-    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF OpExp-CF
-    
+  AbbreviatedVariableAssignmentExpression-CF.AbbrVarAssignExp = Var-CF LAYOUT-NO-NEWLINE*-LEX
+    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF Exp-CF
+
+  AbbreviatedIndexingAssignmentExpression-CF.AbbrIndexAssignExp =
+    Primary-CF "[" IndexingArgumentListOptional?-CF "]" LAYOUT-NO-NEWLINE*-LEX
+    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF Exp-CF
+
+  AbbreviatedMethodAssignmentExpression-CF.AbbrMethodAssignExp = Primary-CF LAYOUT-NO-NEWLINE*-LEX
+    MethodInvoc-CF LAYOUT?-CF LOCAL-V-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX
+    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF Exp-CF
+  AbbreviatedMethodAssignmentExpression-CF.AbbrMethodAssignExpCons = Primary-CF LAYOUT-NO-NEWLINE*-LEX
+    "." LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX
+    ASSIGNMENT-OPERATOR-CF LAYOUT?-CF Exp-CF
+
   AssignmentWithRescueModifier-CF.AssignRescueMod = LeftHandSide-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF
-    OpExp-CF LAYOUT-NO-NEWLINE*-LEX "rescue" LAYOUT?-CF OpExp-CF
+    Exp-CF LAYOUT-NO-NEWLINE*-LEX "rescue" LAYOUT?-CF Exp-CF
 
   // Helper constructs
   IndexingArgumentListOptional-CF = LAYOUT?-CF IndexingArgumentList-CF LAYOUT?-CF
   MethodInvoc-CF.Colons = "::"
   MethodInvoc-CF.Dot = "."
-  

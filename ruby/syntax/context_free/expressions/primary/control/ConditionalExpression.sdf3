@@ -5,27 +5,26 @@ imports
   CompoundStatement
   Expression
   MethodArgument
-  OperatorExpression
   Separator
   Whitespace
-  
+
 syntax
 
-  CaseExp-CF.CaseExp = "case" LAYOUT?-CF Exp-CF LAYOUT?-CF SepListList?-CF LAYOUT?-CF 
+  CaseExp-CF.CaseExp = "case" LAYOUT?-CF Exp-CF LAYOUT?-CF SepListList?-CF LAYOUT?-CF
                        WhenClause+-CF LAYOUT?-CF ElseClause?-CF LAYOUT?-CF "end"
-  CaseExp-CF.Case = "case" LAYOUT?-CF SepListList?-CF LAYOUT?-CF 
+  CaseExp-CF.Case = "case" LAYOUT?-CF SepListList?-CF LAYOUT?-CF
                     WhenClause+-CF LAYOUT?-CF ElseClause?-CF LAYOUT?-CF "end"
-  
+
   WhenClause-CF.WhenClause = "when" LAYOUT?-CF WhenArgument-CF LAYOUT?-CF ThenClause-CF
-  
-  WhenArgument-CF.WhenArgOp = OpExp+-CF SplattingArgumentOptional?-CF
-  
+
+  WhenArgument-CF.WhenArgOp = Exp+-CF SplattingArgumentOptional?-CF
+
   ThenClause-CF.ImplicitThen = SEPARATOR-LEX LAYOUT?-CF CStmt-CF
   ThenClause-CF.ExplicitThen = SepListList?-CF LAYOUT?-CF "then" LAYOUT?-CF CStmt-CF
-  
-  ConditionalOperatorExpression-CF.ConditionalOpExp = RangeConstructor-CF LAYOUT-NO-NEWLINE*-LEX "?" LAYOUT?-CF 
-                                                      OpExp-CF LAYOUT-NO-NEWLINE*-LEX ":" LAYOUT?-CF OpExp-CF
-  
+
+  ConditionalOperatorExpression-CF.ConditionalExp = RangeConstructor-CF LAYOUT-NO-NEWLINE*-LEX "?" LAYOUT?-CF
+                                                      Exp-CF LAYOUT-NO-NEWLINE*-LEX ":" LAYOUT?-CF Exp-CF
+
 context-free syntax
 
   ConditionalExpression = IfExp
@@ -33,29 +32,24 @@ context-free syntax
   ConditionalExpression = CaseExp
   ConditionalExpression = ConditionalOperatorExpression
 
-  IfExp.If = 
-   <if <Exp> 
-    <ThenClause> 
-    <ElseIfClause*> 
-    <ElseClause?> 
+  IfExp.If =
+   <if <Exp>
+    <ThenClause>
+    <ElseIfClause*>
+    <ElseClause?>
     end>
-     
+
   ElseIfClause.ElseIf = <elseif <Exp> <ThenClause>>
-  
+
   ElseClause.Else = <else <CStmt>>
-  
-  UnlessExp.Unless = 
-    <unless <Exp> 
-      <ThenClause> 
-      <ElseClause?> 
+
+  UnlessExp.Unless =
+    <unless <Exp>
+      <ThenClause>
+      <ElseClause?>
      end
-     >  
-  
+     >
+
   WhenArgument.WhenSplat = SplattingArgument
-  
+
   ConditionalOperatorExpression = RangeConstructor  {avoid}
-  
-  
-  
-  
-  

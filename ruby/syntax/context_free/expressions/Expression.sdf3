@@ -2,7 +2,7 @@ module Expression
 
 imports
 
-	OperatorExpression
+	AssignmentExpression
 	BinaryOperatorExpression
 	UnaryOperatorExpression
 	Primary
@@ -11,10 +11,9 @@ imports
 
 context-free syntax
 	// General expression
-	Exp.OperatorExp = OpExp
+	Exp.AssigExp = AssignmentExpression
 	Exp.PrimaryExp = Primary
 	Exp.YieldExp = Yield
 	Exp.MethodInvocExp = MethodInvocationExpression
 
 	Exp = "(" Exp ")"    {bracket}
-	

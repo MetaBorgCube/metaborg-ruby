@@ -1,1 +1,3 @@
-{jaapie => jaapie, jaapie => jaapie,}
+somePrim ::CONST = 42
+
+somePrim::CONST = 42
