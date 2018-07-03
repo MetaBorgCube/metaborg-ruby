@@ -4,13 +4,18 @@ module Number
 // - http://ruby-doc.org/core-2.5.0/doc/syntax/literals_rdoc.html#label-Numbers
 // - https://www.ipa.go.jp/files/000011432.pdf (Chapter 8.7.6.2)
 
+// TODO: convert to kernel syntax, some information might be useful to have in the AST for later in determining semantics
+
 sorts
 
 	NUMBER
 	
 lexical syntax
 
-	NUMBER = SignedNumber
+  // We decided to let every sign be regarded as a unary operator application of the corresponding operator (+/-)
+  // Otherwise, this yields ambiguity
+	// NUMBER = SignedNumber
+	
 	NUMBER = UnsignedNumber
 	
 	SignedNumber = [\+\-] UnsignedNumber
