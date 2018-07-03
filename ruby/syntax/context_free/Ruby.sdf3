@@ -74,6 +74,9 @@ context-free priorities
     RangeConstructor.RangeInc
     RangeConstructor.RangeEx } >
   {right:
+    Exp.AssignExp
+  } >
+  {right:
     Exp.UnKeyNotExp } >
   {left:
     Exp.BinKeyAndExp

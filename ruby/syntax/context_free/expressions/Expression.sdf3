@@ -11,7 +11,7 @@ imports
 
 context-free syntax
 	// General expression
-	Exp.AssigExp = AssignmentExpression
+	Exp.AssignExp = AssignmentExpression
 	Exp.PrimaryExp = Primary
 	Exp.YieldExp = Yield
 	Exp.MethodInvocExp = MethodInvocationExpression
