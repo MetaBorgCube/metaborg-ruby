@@ -1,4 +1,10 @@
-class Class < Super
+class Class < (
+    class Superc
+      def toString
+      
+      end  
+    end
+  )
   def test(a, b, str)
     puts str
     a + b
@@ -24,7 +30,7 @@ end; # ambig when no explicit line sep
 -1.2e3 + 0xEF - 0b01011
 
 module Mod
-  class ClassInModule;end # ambig when space
+  class ClassInModule; end # ambig when space
 end
 
 class Mod::OtherClassInModule

@@ -1,3 +1,4 @@
-while true do
-	123
+case s
+when v = jaapie rescue jaapie;
+jaapie
 end

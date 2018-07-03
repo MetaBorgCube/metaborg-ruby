@@ -26,29 +26,29 @@ test Case no whens fails [[
   end
 ]] parse fails
 test Case one when [[case 1234
-  when 1234 then 123
+  when v = jaapie then jaapie
   end
 ]] parse succeeds
 
 test Case two whens[[case 1234
-  when 123 then 1234
-  when 123 then 1345
+  when v = jaapie then jaapie
+  when v = jaapie then jaapie
   end
 ]] parse succeeds
 
 test Case when else [[case 1234
-  when 123 then 123 else 234
+  when v = jaapie then jaapie else 234
   end
 ]] parse succeeds
 
 test Case implicit then [[case 123
-  when 123
-    
+  when v = jaapie
+    t
   end
 ]] parse succeeds
 
 test Case implicit then with else [[case 123
-  when 123
+  when v = jaapie
     
     else 123
   end
