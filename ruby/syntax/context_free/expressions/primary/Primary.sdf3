@@ -51,7 +51,9 @@ context-free syntax
 
   Primary.DefinedPrim = DefinedWithParentheses
   
-  Primry.BeginPrim = BeginExpression
+  Primary.BeginPrim = BeginExpression
+  Primary.BEGINPrim = BeginBodyExpression
+  Primary.ENDPrim = EndBodyExpression
 
   // Primary allows grouping
   Primary.GroupCStmt = <( <CStmt> )>

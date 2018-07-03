@@ -5,6 +5,7 @@ imports
 	CompoundStatement
 	Expression
 	FunctionName
+	Method
 	Literal
 	Whitespace
 	
@@ -16,7 +17,9 @@ syntax
 	
 context-free syntax
 
-	Stmt.StmtExp = <<Exp>>
+	Stmt.StmtExp = Exp
+	Stmt.Alias = AliasStatement
+	Stmt.Undef = UndefStatement
 	
 	
 	

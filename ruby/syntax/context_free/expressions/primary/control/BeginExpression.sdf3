@@ -2,8 +2,13 @@ module BeginExpression
 
 imports
   BodyStatement
+  CompoundStatement
   
 context-free syntax
   BeginExpression.BeginExp = <begin <BStmt> end>
+  
+  BeginBodyExpression.BEGINExp = <BEGIN { <CStmt> }>
+  EndBodyExpression.ENDExp = <END { <CStmt> }>
+  
   
   

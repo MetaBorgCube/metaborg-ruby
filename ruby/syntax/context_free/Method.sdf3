@@ -21,13 +21,13 @@ imports
   Symbol
 
 context-free syntax
-  Alias.Alias = "alias" NewName AliasedName
+  AliasStatement.AliasStmt = <alias <NewName> <AliasedName>>
   DefinedMethodNameOrSymbol = DefinedMethodName
   DefinedMethodNameOrSymbol = Symbol
   NewName = DefinedMethodNameOrSymbol
   AliasedName = DefinedMethodNameOrSymbol
   
-  UndefStatement.UndefStmt = <"undef" <UndefList>>
+  UndefStatement.UndefStmt = <undef <UndefList>>
   UndefList.UndefList = {DefinedMethodNameOrSymbol ","}+
 
   MethodId.LocalVar = LOCAL-V-IDENTIFIER
