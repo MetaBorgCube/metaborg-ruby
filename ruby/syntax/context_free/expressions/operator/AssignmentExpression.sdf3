@@ -18,15 +18,16 @@ context-free syntax
   SingleAssignmentExp = SingleIndexingAssignmentExp
   SingleAssignmentExp = SingleMethodAssignmentExp
   
-  SingleVarAssignmentExp.SingleVarAssign = <<Var> = <OpExp>>
-  
   
     
 syntax
 
   // Most of the Assignment Expressions do not allow a new line or white space before the colons
   // and dots when invocating.
-  /////////////
+  ////////////////////////////
+  
+  SingleVarAssignmentExp-CF.SingleVarAssign = Var-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
+  
   ScopedConstantAssignmentExp-CF.PrimaryScopedAssignExp = 
     Primary-CF "::" LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
   ScopedConstantAssignmentExp-CF.ScopedAssignExp = 

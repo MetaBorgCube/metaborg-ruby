@@ -43,7 +43,7 @@ test Case when else [[case 1234
 
 test Case implicit then [[case 123
   when 123
-    
+    t
   end
 ]] parse succeeds
 
