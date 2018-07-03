@@ -1,4 +1,1 @@
-case s
-when v = jaapie rescue jaapie;
-jaapie
-end
+{jaapie => jaapie, jaapie => jaapie,}

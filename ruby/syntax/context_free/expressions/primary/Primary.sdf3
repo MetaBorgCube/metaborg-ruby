@@ -46,7 +46,7 @@ context-free syntax
 
 	// Constructors
 	Primary.ArrayPrim = ArrayConstructor
-	//Primary.HashPrim = HashConstructor
+	Primary.HashPrim = HashConstructor
   Primary.RangePrim = RangeConstructor
 
   Primary.DefinedPrim = DefinedWithParentheses
