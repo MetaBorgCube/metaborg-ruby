@@ -16,4 +16,5 @@ context-free syntax
 	Exp.YieldExp = Yield
 	Exp.MethodInvocExp = MethodInvocationExpression
 
-	Exp = "(" Exp ")"    {bracket}
+  // This is ambiguous: an expression can also be a "( CSTMT )" which is a superset of "( Exp )"
+	// Exp = "(" Exp ")"    {bracket}
