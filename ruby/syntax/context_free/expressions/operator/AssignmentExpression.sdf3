@@ -13,10 +13,10 @@ imports
   
 
 context-free syntax
+  AssignmentExp.TEST = "jaapie" //For test purposes
   AssignmentExp = SingleAssignmentExp
   AssignmentExp = AbbreviatedAssignmentExpression
   AssignmentExp = AssignmentWithRescueModifier
-  
   
   SingleAssignmentExp = SingleVarAssignmentExp
   SingleAssignmentExp = ScopedConstantAssignmentExp
@@ -41,7 +41,6 @@ syntax
   ScopedConstantAssignmentExp-CF.ScopedAssignExp = 
     "::" LAYOUT?-CF CONSTANT-IDENTIFIER-CF LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF 
 
-  SingleIndexingAssignmentExp-CF.Test = "jaapie"
   SingleIndexingAssignmentExp-CF.SinglePrimaryIndex = Primary-CF 
     "[" IndexingArgumentListOptional?-CF "]" LAYOUT-NO-NEWLINE*-LEX "=" LAYOUT?-CF OpExp-CF
   

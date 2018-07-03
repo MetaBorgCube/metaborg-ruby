@@ -10,3 +10,365 @@ when [[...]];
   somethingElse
 end
 ]]
+
+test SingleVarAssignmentExp [[v = jaapie]] parse succeeds
+test SingleVarAssignmentExp no newline [[v 
+= jaapie]] parse fails
+
+test ScopedConstantAssignmentExp [[somePrim::CONST = jaapie]] parse succeeds
+test ScopedConstantAssignmentExp no whitespace [[somePrim ::CONST = jaapie]] parse fails
+test ScopedConstantAssignmentExp no newline [[somePrim
+::CONST = jaapie]] parse fails
+test ScopedConstantAssignmentExp without prim [[::CONST = jaapie]] parse succeeds
+test ScopedConstantAssignmentExp without prim no newline [[::CONST 
+= jaapie]] parse fails
+
+test SingleIndexingAssignmentExp empty [[somePrim[] = jaapie]] parse succeeds
+test SingleIndexingAssignmentExp non-empty [[somePrim[some, another] = jaapie]] parse succeeds
+test SingleIndexingAssignmentExp empty no whitespace [[somePrim [] = jaapie]] parse fails
+test SingleIndexingAssignmentExp non-empty no whitespace [[somePrim [some] = jaapie]] parse fails
+test SingleIndexingAssignmentExp empty no newline [[somePrim
+[] = jaapie]] parse fails
+test SingleIndexingAssignmentExp non-empty no newline [[somePrim
+[some] = jaapie]] parse fails
+test SingleIndexingAssignmentExp empty, no newline before = [[somePrim[] 
+= jaapie]] parse fails
+test SingleIndexingAssignmentExp non-empty, no newline before = [[somePrim[some] 
+= jaapie]] parse fails
+test SingleIndexingAssignmentExp non-empty, no newlines/whitespaces [[somePrim 
+[some] 
+= jaapie]] parse fails
+
+test SingleMethodAssignmentExp invoc dot [[somePrim.varID = jaapie]] parse succeeds
+test SingleMethodAssignmentExp invoc dot no newline [[somePrim.varID 
+= jaapie]] parse fails
+test SingleMethodAssignmentExp invoc colons [[somePrim::varID = jaapie]] parse succeeds
+test SingleMethodAssignmentExp invoc colons no newline [[somePrim::varID 
+= jaapie]] parse fails
+test SingleMethodAssignmentExp cons [[somePrim::CONST = jaapie]] parse succeeds
+test SingleMethodAssignmentExp cons no newline [[somePrim::CONST 
+= jaapie]] parse fails
+
+test AbbreviatedVariableAssignmentExpression && [[v &&= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression || [[v ||= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression ^ [[v ^= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression & [[v &= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression | [[v |= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression << [[v <<= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression >> [[v >>= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression + [[v += jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression - [[v -= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression * [[v *= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression / [[v /= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression % [[v %= jaapie]] parse succeeds
+test AbbreviatedVariableAssignmentExpression ** [[v **= jaapie]] parse succeeds
+
+test AbbreviatedVariableAssignmentExpression no newline && [[v 
+&&= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline || [[v 
+||= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline ^ [[v 
+^= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline & [[v 
+&= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline | [[v 
+|= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline << [[v 
+<<= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline >> [[v 
+>>= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline + [[v 
++= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline - [[v 
+-= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline * [[v 
+*= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline / [[v 
+/= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline % [[v 
+%= jaapie]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline ** [[v 
+**= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression && empty [[somePrim[] &&= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression && non-empty [[somePrim[some, some2] &&= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression && no white empty [[somePrim [] &&= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression && no white non-empty [[somePrim [some] &&= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression && no newline non-empty [[somePrim
+[] &&= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression && empty no newline assignOp [[somePrim[] 
+&&= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression && non-empty no newline assignOp [[somePrim[some] 
+&&= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression || empty [[somePrim[] ||= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression || non-empty [[somePrim[some, some2] ||= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression || no white empty [[somePrim [] ||= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression || no white non-empty [[somePrim [some] ||= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression || no newline non-empty [[somePrim
+[] ||= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression || empty no newline assignOp [[somePrim[] 
+||= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression || non-empty no newline assignOp [[somePrim[some] 
+||= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression ^ empty [[somePrim[] ^= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ^ non-empty [[somePrim[some, some2] ^= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ^ no white empty [[somePrim [] ^= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ no white non-empty [[somePrim [some] ^= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ no newline non-empty [[somePrim
+[] ^= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ empty no newline assignOp [[somePrim[] 
+^= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ non-empty no newline assignOp [[somePrim[some] 
+^= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression & empty [[somePrim[] &= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression & non-empty [[somePrim[some, some2] &= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression & no white empty [[somePrim [] &= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression & no white non-empty [[somePrim [some] &= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression & no newline non-empty [[somePrim
+[] &= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression & empty no newline assignOp [[somePrim[] 
+&= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression & non-empty no newline assignOp [[somePrim[some] 
+&= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression | empty [[somePrim[] |= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression | non-empty [[somePrim[some, some2] |= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression | no white empty [[somePrim [] |= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression | no white non-empty [[somePrim [some] |= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression | no newline non-empty [[somePrim
+[] |= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression | empty no newline assignOp [[somePrim[] 
+|= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression | non-empty no newline assignOp [[somePrim[some] 
+|= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression << empty [[somePrim[] <<= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression << non-empty [[somePrim[some, some2] <<= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression << no white empty [[somePrim [] <<= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression << no white non-empty [[somePrim [some] <<= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression << no newline non-empty [[somePrim
+[] <<= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression << empty no newline assignOp [[somePrim[] 
+<<= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression << non-empty no newline assignOp [[somePrim[some] 
+<<= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression >> empty [[somePrim[] >>= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression >> non-empty [[somePrim[some, some2] >>= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression >> no white empty [[somePrim [] >>= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> no white non-empty [[somePrim [some] >>= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> no newline non-empty [[somePrim
+[] >>= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> empty no newline assignOp [[somePrim[] 
+>>= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> non-empty no newline assignOp [[somePrim[some] 
+>>= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression + empty [[somePrim[] += jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression + non-empty [[somePrim[some, some2] += jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression + no white empty [[somePrim [] += jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression + no white non-empty [[somePrim [some] += jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression + no newline non-empty [[somePrim
+[] += jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression + empty no newline assignOp [[somePrim[] 
++= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression + non-empty no newline assignOp [[somePrim[some] 
++= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression ** empty [[somePrim[] **= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ** non-empty [[somePrim[some, some2] **= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ** no white empty [[somePrim [] **= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** no white non-empty [[somePrim [some] **= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** no newline non-empty [[somePrim
+[] **= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** empty no newline assignOp [[somePrim[] 
+**= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** non-empty no newline assignOp [[somePrim[some] 
+**= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression - empty [[somePrim[] -= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression - non-empty [[somePrim[some, some2] -= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression - no white empty [[somePrim [] -= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression - no white non-empty [[somePrim [some] -= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression - no newline non-empty [[somePrim
+[] -= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression - empty no newline assignOp [[somePrim[] 
+-= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression - non-empty no newline assignOp [[somePrim[some] 
+-= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression * empty [[somePrim[] *= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression * non-empty [[somePrim[some, some2] *= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression * no white empty [[somePrim [] *= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression * no white non-empty [[somePrim [some] *= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression * no newline non-empty [[somePrim
+[] *= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression * empty no newline assignOp [[somePrim[] 
+*= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression * non-empty no newline assignOp [[somePrim[some] 
+*= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression / empty [[somePrim[] /= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression / non-empty [[somePrim[some, some2] /= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression / no white empty [[somePrim [] /= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression / no white non-empty [[somePrim [some] /= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression / no newline non-empty [[somePrim
+[] /= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression / empty no newline assignOp [[somePrim[] 
+/= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression / non-empty no newline assignOp [[somePrim[some] 
+/= jaapie]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression % empty [[somePrim[] %= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression % non-empty [[somePrim[some, some2] %= jaapie]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression % no white empty [[somePrim [] %= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression % no white non-empty [[somePrim [some] %= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression % no newline non-empty [[somePrim
+[] %= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression % empty no newline assignOp [[somePrim[] 
+%= jaapie]] parse fails
+test AbbreviatedIndexingAssignmentExpression % non-empty no newline assignOp [[somePrim[some] 
+%= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression && [[somePrim.localVar &&= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression && no-newline [[somePrim
+.localVar &&= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression && [[somePrim::localVar &&= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression && no-newline [[somePrim
+::localVar &&= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression && [[somePrim.CONST &&= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression && no-newline [[somePrim
+.CONST &&= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression || [[somePrim.localVar ||= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression || no-newline [[somePrim
+.localVar ||= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression || [[somePrim::localVar ||= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression || no-newline [[somePrim
+::localVar ||= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression || [[somePrim.CONST ||= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression || no-newline [[somePrim
+.CONST ||= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression ^ [[somePrim.localVar ^= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ^ no-newline [[somePrim
+.localVar ^= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression ^ [[somePrim::localVar ^= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ^ no-newline [[somePrim
+::localVar ^= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression ^ [[somePrim.CONST ^= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ^ no-newline [[somePrim
+.CONST ^= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression & [[somePrim.localVar &= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression & no-newline [[somePrim
+.localVar &= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression & [[somePrim::localVar &= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression & no-newline [[somePrim
+::localVar &= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression & [[somePrim.CONST &= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression & no-newline [[somePrim
+.CONST &= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression | [[somePrim.localVar |= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression | no-newline [[somePrim
+.localVar |= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression | [[somePrim::localVar |= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression | no-newline [[somePrim
+::localVar |= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression | [[somePrim.CONST |= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression | no-newline [[somePrim
+.CONST |= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression << [[somePrim.localVar <<= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression << no-newline [[somePrim
+.localVar <<= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression << [[somePrim::localVar <<= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression << no-newline [[somePrim
+::localVar <<= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression << [[somePrim.CONST <<= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression << no-newline [[somePrim
+.CONST <<= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression >> [[somePrim.localVar >>= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression >> no-newline [[somePrim
+.localVar >>= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression >> [[somePrim::localVar >>= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression >> no-newline [[somePrim
+::localVar >>= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression >> [[somePrim.CONST >>= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression >> no-newline [[somePrim
+.CONST >>= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression + [[somePrim.localVar += jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression + no-newline [[somePrim
+.localVar += jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression + [[somePrim::localVar += jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression + no-newline [[somePrim
+::localVar += jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression + [[somePrim.CONST += jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression + no-newline [[somePrim
+.CONST += jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression - [[somePrim.localVar -= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression - no-newline [[somePrim
+.localVar -= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression - [[somePrim::localVar -= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression - no-newline [[somePrim
+::localVar -= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression - [[somePrim.CONST -= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression - no-newline [[somePrim
+.CONST -= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression * [[somePrim.localVar *= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression * no-newline [[somePrim
+.localVar *= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression * [[somePrim::localVar *= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression * no-newline [[somePrim
+::localVar *= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression * [[somePrim.CONST *= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression * no-newline [[somePrim
+.CONST *= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression / [[somePrim.localVar /= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression / no-newline [[somePrim
+.localVar /= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression / [[somePrim::localVar /= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression / no-newline [[somePrim
+::localVar /= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression / [[somePrim.CONST /= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression / no-newline [[somePrim
+.CONST /= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression % [[somePrim.localVar %= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression % no-newline [[somePrim
+.localVar %= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression % [[somePrim::localVar %= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression % no-newline [[somePrim
+::localVar %= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression % [[somePrim.CONST %= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression % no-newline [[somePrim
+.CONST %= jaapie]] parse fails
+
+test AbbreviatedMethodAssignmentExpression ** [[somePrim.localVar **= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ** no-newline [[somePrim
+.localVar **= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression ** [[somePrim::localVar **= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ** no-newline [[somePrim
+::localVar **= jaapie]] parse fails
+test AbbreviatedMethodAssignmentExpression ** [[somePrim.CONST **= jaapie]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ** no-newline [[somePrim
+.CONST **= jaapie]] parse fails
+
+test AssignmentWithRescueModifier [[var = jaapie rescue jaapie]] parse succeeds
+test AssignmentWithRescueModifier  no newline = [[var 
+= jaapie rescue jaapie]] parse fails
+test AssignmentWithRescueModifier no newline [[var = jaapie 
+rescue jaapie]] parse fails
+test AssignmentWithRescueModifier no newlines [[var
+ = jaapie 
+rescue jaapie]] parse fails
+
