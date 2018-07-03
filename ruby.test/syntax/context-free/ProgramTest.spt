@@ -1,7 +1,0 @@
-module ProgramTest
-
-language Ruby
-
-start symbol Program
-
-

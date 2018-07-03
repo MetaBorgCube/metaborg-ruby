@@ -22,20 +22,6 @@ test Alias number to ID [[alias 1 testVar]] parse fails
 test Alias ID to number [[alias testVar 1]] parse fails
 test Alias number to number [[alias 1 2]] parse fails
 
-// BEGIN
-
-test Begin compound single statement [[BEGIN { alias a b }]] parse succeeds
-test Begin compound multipe statements [[
-	BEGIN {
-		alias a b;
-		alias c b;
-	}
-]] parse succeeds
-test Begin number [[BEGIN { 1 }]] parse fails
-test Begin token [[BEGIN { $ }]] parse fails
-test Begin symbol [[BEGIN { :testSymbol }]] parse fails
-test Begin lowercase [[begin { alias a b }]] parse fails
-
 // END
 
 test End compound single statement [[END { alias a b }]] parse succeeds
@@ -45,7 +31,7 @@ test End compound multipe statements [[
 		alias c b;
 	}
 ]] parse succeeds
-test End number [[END { 1 }]] parse fails
+test End number [[END { 1 }]] parse succeeds
 test End token [[END { $ }]] parse fails
-test End symbol [[END { :testSymbol }]] parse fails
+test End symbol [[END { :testSymbol }]] parse succeeds
 test End lowercase [[end { alias a b }]] parse fails

@@ -16,9 +16,9 @@ test SingleVarAssignmentExp no newline [[v
 = 42]] parse fails
 
 test ScopedConstantAssignmentExp [[somePrim::CONST = 42]] parse succeeds
-test ScopedConstantAssignmentExp no whitespace [[somePrim ::CONST = 42]] parse fails
-test ScopedConstantAssignmentExp no newline [[somePrim
-::CONST = 42]] parse fails
+test ScopedConstantAssignmentExp no whitespace [[somePrim ::CONST = 42]] parse succeeds
+test ScopedConstantAssignmentExp no new line [[somePrim 
+::CONST = 42]] parse succeeds
 test ScopedConstantAssignmentExp without prim [[::CONST = 42]] parse succeeds
 test ScopedConstantAssignmentExp without prim no newline [[::CONST 
 = 42]] parse fails

@@ -1,1 +1,1 @@
-BEGIN { 1 }
+somePrim ::CONST = 42
