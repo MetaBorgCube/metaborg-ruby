@@ -1,4 +1,3 @@
-case s
-when v = jaapie rescue jaapie;
-jaapie
-end
+somePrim ::CONST = 42
+
+somePrim::CONST = 42

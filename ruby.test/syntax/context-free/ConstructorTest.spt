@@ -1,0 +1,26 @@
+module ConstructorTest
+
+language Ruby
+
+start symbol Program
+
+// Range Constructor
+test Range constructor single value [[3 == 3]] parse succeeds
+test Range constructor inc [[2..3]] parse succeeds
+test Range constructor exc [[2...3]] parse succeeds
+
+// Hash Constructor
+test Hash constructor empty [[{}]] parse succeeds
+test Hash constructor 1 item [[{42 => 42}]] parse succeeds
+test Hash constructor 2 items [[{42 => 42, 42 => 42}]] parse succeeds
+test Hash constructor 2 items multi-line [[{42 => 42, 
+42 => 42}]] parse succeeds
+test Hash constructor final comma [[{42 => 42,}]] parse succeeds
+test Hash constructor only final comma fails [[{,}]] parse fails
+test Hash constructor no new line [[{42 
+=> 42}]] parse fails
+test Hash constructor no new line , [[{42 => 42
+,}]] parse fails
+test hash constructot no new line , sep [[{42 => 42
+, 42 => 42,}]] parse fails
+

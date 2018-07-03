@@ -4,7 +4,6 @@ imports
   Command
 	LeftHandSide
 	MethodArgument
-	OperatorExpression
 	Primary
 
 context-free syntax

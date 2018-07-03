@@ -2,7 +2,7 @@ module StatementTest
 
 language Ruby
 
-start symbol Stmt
+start symbol Program
 
 // EXP
 // TODO
