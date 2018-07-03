@@ -30,20 +30,20 @@ context-free syntax
   UndefStatement.UndefStmt = <"undef" <UndefList>>
   UndefList.UndefList = {DefinedMethodNameOrSymbol ","}+
 
-  MethodId.LocalVar = <<LOCAL-V-IDENTIFIER>>
-  MethodId.Constant = <<CONSTANT-IDENTIFIER>>
-  MethodId.MethodOnly = <<METHOD-ONLY-IDENTIFIER>>
+  MethodId.LocalVar = LOCAL-V-IDENTIFIER
+  MethodId.Constant = CONSTANT-IDENTIFIER
+  MethodId.MethodOnly = METHOD-ONLY-IDENTIFIER
 
-  MethodName.Id = <<MethodId>>
-  MethodName.MethodOp = <<OPERATOR-METHOD-NAME>>
-  MethodName.Keyword = <<KEYWORD>>
+  MethodName.Id = MethodId
+  MethodName.MethodOp = OPERATOR-METHOD-NAME
+  MethodName.Keyword = KEYWORD
 
-  MethodIdNoCons.LocalVar = <<LOCAL-V-IDENTIFIER>>
-  MethodIdNoCons.MethodOnly = <<METHOD-ONLY-IDENTIFIER>>
+  MethodIdNoCons.LocalVar = LOCAL-V-IDENTIFIER
+  MethodIdNoCons.MethodOnly = METHOD-ONLY-IDENTIFIER
 
-  MethodNameNoCons.Id = <<MethodId>>
-  MethodNameNoCons.MethodOp = <<OPERATOR-METHOD-NAME>>
-  MethodNameNoCons.Keyword = <<KEYWORD>>
+  MethodNameNoCons.Id = MethodId
+  MethodNameNoCons.MethodOp = OPERATOR-METHOD-NAME
+  MethodNameNoCons.Keyword = KEYWORD
 
   // Method name without Constant Identifier
   MethodNameExceptConstant = MethodNameNoCons
@@ -75,9 +75,9 @@ syntax
 
 context-free syntax
 
-  MethodInvocationWithoutParentheses.Return = <<ReturnWithArgument>> {avoid}
-  MethodInvocationWithoutParentheses.Break = <<BreakWithArgument>> {avoid}
-  MethodInvocationWithoutParentheses.Next = <<NextWithArgument>> {avoid}
+  MethodInvocationWithoutParentheses.Return = ReturnWithArgument {avoid}
+  MethodInvocationWithoutParentheses.Break = BreakWithArgument {avoid}
+  MethodInvocationWithoutParentheses.Next = NextWithArgument {avoid}
 
   Command.ComSuper = SuperWithArgument
   Command.ComYield = YieldWithArgument
