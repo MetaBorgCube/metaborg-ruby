@@ -71,7 +71,7 @@ context-free syntax
 
 syntax
 
-  MethodInvocationWithoutParentheses-CF.ChainedCommandLong = ChainedCommandWithDoBlock-CF LAYOUT?-CF BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF
+  MethodInvocationWithoutParentheses-CF.ChainedCommandLong = ChainedCommandWithDoBlock-CF LAYOUT?-CF BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF
 
 context-free syntax
 
@@ -84,8 +84,8 @@ context-free syntax
 
 syntax
 
-  Command-CF.ComMethod = MethodId-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF
-  Command-CF.ComPrim = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF
+  Command-CF.ComMethod = MethodId-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF
+  Command-CF.ComPrim = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF
 
 context-free syntax
 
@@ -102,8 +102,8 @@ syntax
   ChainedMethodInvocation-CF.ChainedMethodInvoc = BlockSymbol-CF LAYOUT?-CF MethodName-CF ArgumentWithParentheses-CF
 
   CommandWithDoBlock-CF.CommandBlockSuper = SuperWithArgumentAndDoBlock-CF
-  CommandWithDoBlock-CF.CommandBlockNoPrim = MethodId-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
-  CommandWithDoBlock-CF.CommandBlock = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE*-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+  CommandWithDoBlock-CF.CommandBlockNoPrim = MethodId-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+  CommandWithDoBlock-CF.CommandBlock = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
 
   // Primary Expression Method definition
 

@@ -15,12 +15,14 @@ syntax
   CaseExp-CF.Case = "case" LAYOUT?-CF SepListList?-CF LAYOUT?-CF
                     WhenClause+-CF LAYOUT?-CF ElseClause?-CF LAYOUT?-CF "end"
 
-  WhenClause-CF.WhenClause = "when" LAYOUT?-CF WhenArgument-CF LAYOUT?-CF ThenClause-CF
+  WhenClause-CF.WhenClause = "when" LAYOUT?-CF WhenArgument-CF LAYOUT-NO-NEWLINE*-LEX ThenClause-CF
 
-  WhenArgument-CF.WhenArgOp = Exp+-CF SplattingArgumentOptional?-CF
+  WhenArgument-CF.WhenArg = ExpressionList-CF SplattingArgumentOptional?-CF
 
   ThenClause-CF.ImplicitThen = SEPARATOR-LEX LAYOUT?-CF CStmt-CF
-  ThenClause-CF.ExplicitThen = SepListList?-CF LAYOUT?-CF "then" LAYOUT?-CF CStmt-CF
+  ThenClause-CF.ExplicitThen = SepWhitespace?-CF "then" LAYOUT?-CF CStmt-CF
+  
+  SepWhitespace-CF = SEPARATOR-LEX LAYOUT?-CF 
 
   ConditionalOperatorExpression-CF.ConditionalExp = RangeConstructor-CF LAYOUT-NO-NEWLINE*-LEX "?" LAYOUT?-CF
                                                       Exp-CF LAYOUT-NO-NEWLINE*-LEX ":" LAYOUT?-CF Exp-CF
