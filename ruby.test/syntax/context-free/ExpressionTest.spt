@@ -1,0 +1,17 @@
+module ExpressionTest
+
+language Ruby
+
+start symbol Program
+
+  // Yield
+  test Yield expression single [[yield]] parse succeeds
+  test Yield expression with Par and Arg [[yield (param1)]] parse succeeds
+  test Yield expression with Par [[yield ()]] parse succeeds
+  test Yield expression with Arg [[yield param1]] parse succeeds
+  
+  // Defined
+  test Defined with parentheses must be expression [[defined? (123)]] parse succeeds
+  test Defined without parentheses must be operatorExpression [[defined? 2 == 3]] parse succeeds
+  
+

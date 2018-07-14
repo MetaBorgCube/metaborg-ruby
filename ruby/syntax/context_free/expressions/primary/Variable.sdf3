@@ -1,0 +1,20 @@
+module Variable
+
+imports
+
+  Identifier
+  Primary
+	VarName
+
+context-free syntax
+	
+	Var.Var = VARNAME  {prefer}
+	Var.Pseudo = PseudoVar
+	
+	PseudoVar.Nul = "nil"
+	PseudoVar.True = "true"
+	PseudoVar.False = "false"
+	PseudoVar.Self = "self"
+	
+	ScopedConstantReference.ScopedWithPrim = <<Primary> :: <CONSTANT-IDENTIFIER>>
+	ScopedConstantReference.Scoped = <:: <CONSTANT-IDENTIFIER>>

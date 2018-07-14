@@ -1,0 +1,46 @@
+module JumpExpression
+
+imports
+
+  Argument
+  Whitespace
+  
+syntax
+  BreakWithArgument-CF.BreakWithArg = "break" LAYOUT-NO-NEWLINE*-LEX JumpArg-CF   {avoid}
+  NextWithArgument-CF.NextWithArgExp = "next" LAYOUT-NO-NEWLINE*-LEX JumpArg-CF
+  ReturnWithArgument-CF.ReturnWithArg = "return" LAYOUT-NO-NEWLINE*-LEX JumpArg-CF
+  
+context-free syntax
+
+  JumpExpression = BreakExpression
+  JumpExpression = NextExpression
+  JumpExpression = RedoExpression
+  JumpExpression = ReturnExpression
+  JumpExpression = RetryExpression
+
+  // Break
+  BreakExpression = BreakWithoutArgument
+  BreakExpression = BreakWithArgument
+  
+  BreakWithoutArgument.BreakWithoutArg = <break> {prefer}
+  
+  
+  // Next
+  NextExpression = NextWithoutArgument
+  NextExpression = NextWithArgument
+  
+  NextWithoutArgument.NextWithoutArgExp = <next>
+  
+  
+  // Redo
+  RedoExpression.RedoExp = "redo"
+  
+  // Retry
+  RetryExpression.RetryExp = "retry"
+  
+  // Return
+  ReturnExpression = ReturnWithoutArgument
+  ReturnExpression = ReturnWithArgument
+  
+  ReturnWithoutArgument.ReturnWithoutArg = <return>
+  

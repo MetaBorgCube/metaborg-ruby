@@ -1,0 +1,22 @@
+module Block
+
+imports
+  CompoundStatement
+  LeftHandSide
+
+context-free syntax
+
+  Block = BraceBlock
+  Block = DoBlock
+  
+  BraceBlock.BraceBlock = <{ <BlockParameter?> <BlockBody> }>
+  
+  DoBlock.DoBlock = <do <BlockParameter?> <BlockBody> end>
+  
+  BlockParameter.BlockParEmpty = "|" "|"
+  BlockParameter.BlockParList = "|" BlockParameterList "|"
+  
+  BlockParameterList.BlockParListLHS = LeftHandSide
+  BlockParameterList.BlockParListMLHS = MultipleLeftHandSide
+  
+  BlockBody = CStmt

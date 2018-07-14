@@ -1,0 +1,1 @@
+somePrim ::CONST = 42

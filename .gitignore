@@ -1,0 +1,4 @@
+target
+.project
+ruby.example/*.aterm
+*.aterm

@@ -1,0 +1,61 @@
+module ConditionalExpressionTest
+
+language Ruby
+
+start symbol Program
+
+test If single [[if testExp; end]] parse succeeds
+test If explicit with then [[if 123 then 123 end]] parse succeeds
+test If implicit without sep fails [[if 1234 Var end]] parse fails
+test If implicit with sep [[if 1234; 1234; end]] parse succeeds
+
+test If implicit with else[[if 123; 1234 else 1234; end]] parse succeeds
+test If explicit with else[[if 123 then 1234 else 1234 end]] parse succeeds
+
+test If one elseif [[if 123; then 123 elseif 1234 then 1234 end]] parse succeeds
+test If more elseif [[if 123; then 1234 elseif 1234 then 124 elseif 1234 then 1234 end]] parse succeeds
+
+test Else before elseif fails [[if 123 then 1234 else 1234 elseif 1234 end]] parse fails
+
+test Unless [[unless 123 then 1234 end]] parse succeeds
+test Unless else [[unless 1234 then 1234 else 1234 end]] parse succeeds
+test Unless no then fails [[unless 1234 1234 end]] parse fails
+
+test Case no whens fails [[
+  case 1234
+  end
+]] parse fails
+test Case one when [[case 1234
+  when v = 42 then 42
+  end
+]] parse succeeds
+
+test Case two whens[[case 1234
+  when v = 42 then 42
+  when v = 42 then 42
+  end
+]] parse succeeds
+
+test Case when else [[case 1234
+  when v = 42 then 42 else 234
+  end
+]] parse succeeds
+
+test Case implicit then [[case 123
+  when v = 42
+    t
+  end
+]] parse succeeds
+
+test Case implicit then with else [[case 123
+  when v = 42
+    
+    else 123
+  end
+]] parse succeeds
+
+test conditional opexp [[2..3 ? some1 : some2]] parse succeeds
+test conditional opexp fails newline 1 [[true 
+? some1 : some2]] parse fails
+test conditional opexp fials newline 2 [[true ? some1 
+: some2]] parse fails

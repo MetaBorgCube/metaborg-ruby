@@ -1,0 +1,30 @@
+module IterationExpression
+
+imports
+  CompoundStatement
+  Expression
+  LeftHandSide
+  Separator
+  Statement
+  Whitespace
+  
+syntax
+
+  WhileExp-CF.While = "while" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-LEX DoClause-CF LAYOUT?-CF "end"
+  DoClause-CF.ExplicitDo = "do" LAYOUT?-CF CStmt-CF
+  DoClause-CF.IMplicitDo = SEPARATOR-LEX LAYOUT?-CF CStmt-CF
+
+  ForExp-CF.ForExp = "for" LAYOUT?-CF ForVariable-CF LAYOUT-NO-NEWLINE*-LEX "in" LAYOUT?-CF 
+                  Exp-CF LAYOUT-NO-NEWLINE*-LEX DoClause-CF LAYOUT?-CF "end"
+                  
+  UntilExp-CF.UntilExp = "until" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-LEX DoClause-CF
+  
+context-free syntax
+  IterationExpression = UntilExp
+  IterationExpression = ForExp
+  IterationExpression = WhileExp
+  IterationExpression = WhileModifierStatement
+  IterationExpression = UntilModifierStatement
+
+  ForVariable = LeftHandSide
+  ForVariable = MultipleLeftHandSide

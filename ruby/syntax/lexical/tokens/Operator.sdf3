@@ -1,0 +1,59 @@
+module Operator
+
+lexical syntax
+
+  // Sources:
+  // https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.5)
+  // https://www.tutorialspoint.com/ruby/ruby_operators.htm
+  // http://ruby-for-beginners.rubymonstas.org/operators/methods.html
+  // http://ruby-doc.org/core-2.5.0/doc/syntax/methods_rdoc.html
+
+  OPERATOR = "!"
+  OPERATOR = "!="
+  OPERATOR = "!~"
+  OPERATOR = "&&"
+  OPERATOR = "||"
+  OPERATOR = "="
+  OPERATOR = OPERATOR-METHOD-NAME
+
+  OPERATOR-METHOD-NAME = "^"
+  OPERATOR-METHOD-NAME = "&"
+  OPERATOR-METHOD-NAME = "|"
+  OPERATOR-METHOD-NAME = "<=>"
+  OPERATOR-METHOD-NAME = "=="
+  OPERATOR-METHOD-NAME = "==="
+  OPERATOR-METHOD-NAME = "=~"
+  OPERATOR-METHOD-NAME = ">"
+  OPERATOR-METHOD-NAME = ">="
+  OPERATOR-METHOD-NAME = "<"
+  OPERATOR-METHOD-NAME = "<="
+  OPERATOR-METHOD-NAME = "+"
+  OPERATOR-METHOD-NAME = "-"
+  OPERATOR-METHOD-NAME = "*"
+  OPERATOR-METHOD-NAME = "/"
+  OPERATOR-METHOD-NAME = "%"
+  OPERATOR-METHOD-NAME = "**"
+  OPERATOR-METHOD-NAME = "<<"
+  OPERATOR-METHOD-NAME = ">>"
+  OPERATOR-METHOD-NAME = "~"
+  OPERATOR-METHOD-NAME = "+@"
+  OPERATOR-METHOD-NAME = "-@"
+  OPERATOR-METHOD-NAME = "[]"
+  OPERATOR-METHOD-NAME = "[]="
+  OPERATOR-METHOD-NAME = "`"
+  
+  ASSIGNMENT-OPERATOR = ASSIGNMENT-OPERATOR-NAME "="
+  
+  ASSIGNMENT-OPERATOR-NAME = "&&"
+  ASSIGNMENT-OPERATOR-NAME = "||"
+  ASSIGNMENT-OPERATOR-NAME = "^"
+  ASSIGNMENT-OPERATOR-NAME = "&"
+  ASSIGNMENT-OPERATOR-NAME = "|"
+  ASSIGNMENT-OPERATOR-NAME = "<<"
+  ASSIGNMENT-OPERATOR-NAME = ">>"
+  ASSIGNMENT-OPERATOR-NAME = "+"
+  ASSIGNMENT-OPERATOR-NAME = "-"
+  ASSIGNMENT-OPERATOR-NAME = "*"
+  ASSIGNMENT-OPERATOR-NAME = "/"
+  ASSIGNMENT-OPERATOR-NAME = "%"
+  ASSIGNMENT-OPERATOR-NAME = "**"

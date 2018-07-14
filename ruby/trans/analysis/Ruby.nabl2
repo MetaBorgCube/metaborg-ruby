@@ -1,0 +1,15 @@
+module analysis/Ruby
+
+imports
+
+  signatures/-
+  analysis/-
+
+signature
+
+rules
+
+  init ^ (s) := new s.
+
+  // We do not care about Nabl2 atm.
+  [[ Program(_) ^ (s) ]] := true.

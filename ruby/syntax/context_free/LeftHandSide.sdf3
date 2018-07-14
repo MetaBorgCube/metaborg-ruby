@@ -1,0 +1,47 @@
+module LeftHandSide
+
+imports
+
+	Argument
+	Identifier
+	Primary
+	Variable
+	MethodArgument
+	Whitespace
+
+context-free syntax
+	// LeftHandSide is defined as the left hand side of 
+	// an assignment expression.
+	// Also occurs in other places, like the arguments for a block.
+	
+	LeftHandSideID.ConstantID = CONSTANT-IDENTIFIER
+	LeftHandSideID.LocalVarID = LOCAL-V-IDENTIFIER
+	
+	LeftHandSideSym.SymDot = "."
+	LeftHandSideSym.SymDoubleColon = "::"
+	
+	LeftHandSideDoubleColon.SymDoubleColon = "::"
+	
+	//Multiple Left Hand Side
+  MultipleLeftHandSide.ListMLHS = MultipleLeftHandSideListItem+ MultipleLeftHandSideItem?
+  MultipleLeftHandSide.ListPackingMLHS = MultipleLeftHandSideListItem+ PackingLeftHandSide
+  MultipleLeftHandSide.PackingMLHS = PackingLeftHandSide
+  MultipleLeftHandSide.GroupedMLHS = GroupedLeftHandSide
+  
+  MultipleLeftHandSideItem.MLHSItemLHS = LeftHandSide
+  MultipleLeftHandSideItem.MLHSItemGLHS = GroupedLeftHandSide
+  
+  PackingLeftHandSide.PackingLHS = "*" LeftHandSide?
+  
+  GroupedLeftHandSide.GroupedLHS = "(" MultipleLeftHandSide ")"
+  
+syntax
+
+  LeftHandSide-CF.VarLHS = Var-CF
+  LeftHandSide-CF.IndLHS = Primary-CF "[" LAYOUT?-CF IndexingArgumentList?-CF LAYOUT?-CF "]"
+  LeftHandSide-CF.PrimLHS = Primary-CF LAYOUT-NO-NEWLINE*-LEX LeftHandSideSym-CF LAYOUT?-CF LeftHandSideID-CF
+  LeftHandSide-CF.ConstLHS = LeftHandSideDoubleColon?-CF CONSTANT-IDENTIFIER-LEX
+  
+  MultipleLeftHandSideListItem-CF.MLHSListItem = MultipleLeftHandSideItem-CF LAYOUT-NO-NEWLINE*-LEX ","
+
+  

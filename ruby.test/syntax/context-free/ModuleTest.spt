@@ -1,0 +1,13 @@
+module ModuleTest
+
+language Ruby
+
+start symbol Program
+
+test Module lowercase [[ module testName; end ]] parse fails
+test Module correct [[ module TestName end ]] parse succeeds
+test Module with separator [[ module TestName; end]] parse succeeds
+test Module top module path [[ module :: TestName; end]] parse succeeds
+test Module constant [[ module TESTCONSTANT; end]] parse succeeds
+test Module variable [[ module @testvar; end]] parse fails
+test Module nested module path [[ module modulename :: Classname; end]] parse succeeds

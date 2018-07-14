@@ -1,0 +1,37 @@
+module Symbol
+
+imports
+
+  Identifier
+  Keyword
+  Operator
+  
+  SingleQuotedString
+  DoubleQuotedString
+  
+  QuotedNonExpandedLiteralStringGen
+	
+sorts
+
+	Symbol
+
+syntax
+
+  Symbol-CF.SymLit = ":" SYMBOL-NAME-LEX
+  Symbol-CF.SymDyn = SymbolDynamic-CF 
+  
+  SymbolDynamic-CF.SymDynStrS = ":" SingleQuotedString-CF
+  SymbolDynamic-CF.SymDynStrD = ":" DoubleQuotedString-CF
+  SymbolDynamic-CF.SymDynStrQ = "%s" NonExDelimStr-CF
+
+lexical syntax
+
+  // Sources:
+  // - https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.6.6)
+
+	SYMBOL-NAME = IDENTIFIER
+	SYMBOL-NAME = OPERATOR-METHOD-NAME
+	SYMBOL-NAME = KEYWORD
+	
+	 
+	

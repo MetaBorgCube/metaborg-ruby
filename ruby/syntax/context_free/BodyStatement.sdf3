@@ -1,0 +1,25 @@
+module BodyStatement
+
+imports
+  CompoundStatement
+  ConditionalExpression
+  Expression
+  LeftHandSide
+  Whitespace
+
+syntax
+
+  RescueClause-CF.Rescue = "rescue" LAYOUT-NO-NEWLINE*-LEX ExceptionClassList?-CF
+                              LAYOUT?-CF ExceptionVar?-CF LAYOUT?-CF ThenClause
+
+context-free syntax
+
+  BStmt.BodyStmt = <<CStmt> <RescueClause*> <ElseClause?> <EnsureClause?>>
+
+
+
+  EnsureClause.Ensure = <ensure <CStmt>>
+
+  ExceptionClassList.Exp = Exp
+  ExceptionClassList.MultipleRHS = "@#$@#$" //TODO
+  ExceptionVar.ExceptionAssign = [=> [LeftHandSide]]

@@ -1,0 +1,18 @@
+module Super
+
+imports
+  Block
+  MethodArgument
+
+context-free syntax
+
+  SuperExpression = SuperWithOptionalArgument
+  SuperExpression = SuperWithArgument
+  SuperExpression = SuperWithArgumentAndDoBlock
+  
+  SuperWithOptionalArgument.SuperOptionalArg =
+    <super <ArgumentWithoutParentheses?> <Block?>>
+  
+  SuperWithArgument.SuperArg = <super <ArgumentWithoutParentheses>>
+  
+  SuperWithArgumentAndDoBlock.SuperArgAndBlock = <super <ArgumentWithoutParentheses> <DoBlock>>

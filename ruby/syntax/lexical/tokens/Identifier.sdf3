@@ -1,0 +1,55 @@
+module Identifier
+
+imports
+
+	Keyword
+
+sorts
+
+  ID
+  IDENTIFIER
+  
+lexical syntax
+
+  // Sources:
+  // - http://ruby-doc.org/core-2.5.0/doc/syntax/methods_rdoc.html
+  // - https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.3)
+  
+  IDENTIFIER = LOCAL-V-IDENTIFIER
+  IDENTIFIER = GLOBAL-V-IDENTIFIER
+  IDENTIFIER = CLASS-V-IDENTIFIER
+  IDENTIFIER = INSTANCE-V-IDENTIFIER
+  IDENTIFIER = CONSTANT-IDENTIFIER
+  IDENTIFIER = METHOD-ONLY-IDENTIFIER
+  IDENTIFIER = ASSIGNMENT-LIKE-METHOD-IDENTIFIER
+
+  LOCAL-V-IDENTIFIER = [a-z\_] ID-CHAR*
+  GLOBAL-V-IDENTIFIER = "$" ID
+  CLASS-V-IDENTIFIER = "@@" ID
+  INSTANCE-V-IDENTIFIER = "@" ID
+  CONSTANT-IDENTIFIER = [A-Z] ID-CHAR*
+  
+  // NOTE: LOCAL-V-IDENTIFIER + CONSTANT-IDENTIFIER == ID
+  
+  METHOD-ONLY-IDENTIFIER = ID [\?\!]
+  ASSIGNMENT-LIKE-METHOD-IDENTIFIER = ID "="
+
+  ID = ID-START-CHAR ID-CHAR*
+  
+  ID-CHAR = [a-zA-Z0-9\_]
+  ID-START-CHAR = [a-zA-Z\_]
+
+lexical restrictions
+
+  ID -/- [a-zA-Z0-9\_]
+  LOCAL-V-IDENTIFIER -/- [a-zA-Z0-9\_]
+  CONSTANT-IDENTIFIER -/- [a-zA-Z0-9\_]
+  
+lexical syntax
+
+  IDENTIFIER = KEYWORD {reject}
+  LOCAL-V-IDENTIFIER = KEYWORD {reject}
+  GLOBAL-V-IDENTIFIER = KEYWORD {reject}
+  CLASS-V-IDENTIFIER = KEYWORD {reject}
+  INSTANCE-V-IDENTIFIER = KEYWORD {reject}
+  CONSTANT-IDENTIFIER = KEYWORD {reject}

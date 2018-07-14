@@ -1,0 +1,19 @@
+module Literal
+
+imports
+	Number
+	String
+	Symbol
+	RegularExpression
+	
+sorts
+
+	Literal
+
+context-free syntax
+
+	// LITERAL = numeric | SYMBOL | STRING | STRING2 | HERE_DOC | REGEXP
+	Literal.Num = <<NUMBER>>
+	Literal.String = <<String>>
+	Literal.Symbol = <<Symbol>>
+	Literal.RegEx = <<RegEx>>

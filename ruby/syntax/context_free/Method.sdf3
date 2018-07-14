@@ -1,0 +1,149 @@
+module Method
+
+imports
+  Argument
+  Block
+  BodyStatement
+  Command
+  Expression
+  Identifier
+  JumpExpression
+  Keyword
+  MethodArgument
+  Operator
+  Primary
+  Separator
+  Super
+  Yield
+  Variable
+  Whitespace
+  CompoundStatement
+  Symbol
+
+context-free syntax
+  AliasStatement.AliasStmt = <alias <NewName> <AliasedName>>
+  DefinedMethodNameOrSymbol = DefinedMethodName
+  DefinedMethodNameOrSymbol = Symbol
+  NewName = DefinedMethodNameOrSymbol
+  AliasedName = DefinedMethodNameOrSymbol
+  
+  UndefStatement.UndefStmt = <undef <UndefList>>
+  UndefList.UndefList = {DefinedMethodNameOrSymbol ","}+
+
+  MethodId.LocalVar = LOCAL-V-IDENTIFIER
+  MethodId.Constant = CONSTANT-IDENTIFIER
+  MethodId.MethodOnly = METHOD-ONLY-IDENTIFIER
+
+  MethodName.Id = MethodId
+  MethodName.MethodOp = OPERATOR-METHOD-NAME
+  MethodName.Keyword = KEYWORD
+
+  MethodIdNoCons.LocalVar = LOCAL-V-IDENTIFIER
+  MethodIdNoCons.MethodOnly = METHOD-ONLY-IDENTIFIER
+
+  MethodNameNoCons.Id = MethodId
+  MethodNameNoCons.MethodOp = OPERATOR-METHOD-NAME
+  MethodNameNoCons.Keyword = KEYWORD
+
+  // Method name without Constant Identifier
+  MethodNameExceptConstant = MethodNameNoCons
+
+  PrimaryMethodInvocation = SuperWithOptionalArgument
+  PrimaryMethodInvocation = IndexingMethodInvocation
+  PrimaryMethodInvocation = METHOD-ONLY-IDENTIFIER
+  PrimaryMethodInvocation.Block = <<MethodId> <Block>>
+
+syntax
+
+  PrimaryMethodInvocation-CF.ArgumentsBlock = MethodId-CF ArgumentWithParentheses-CF BlockPrecededByLayout?-CF
+  PrimaryMethodInvocation-CF.MethodInvocArg = Primary-CF LAYOUT-NO-NEWLINE*-LEX "." LAYOUT?-CF MethodName-CF ArgumentWithParentheses?-CF BlockPrecededByLayout?-CF
+  PrimaryMethodInvocation-CF.MethodInvocColons = Primary-CF LAYOUT-NO-NEWLINE*-LEX "::" LAYOUT?-CF MethodName-CF ArgumentWithParentheses-CF BlockPrecededByLayout?-CF
+  PrimaryMethodInvocation-CF.MethodInvocNoCons = Primary-CF LAYOUT-NO-NEWLINE*-LEX "::" LAYOUT?-CF MethodNameExceptConstant-CF LAYOUT?-CF ArgumentWithParentheses-CF BlockPrecededByLayout?-CF
+
+  BlockPrecededByLayout-CF = LAYOUT?-CF Block-CF
+
+  IndexingMethodInvocation-CF.IndexMethodInvoc = Primary-CF "[" LAYOUT?-CF IndexingArgumentList?-CF LAYOUT?-CF "]"
+
+context-free syntax
+
+  MethodInvocationWithoutParentheses.Command = <<Command>>
+  MethodInvocationWithoutParentheses.ChainedCommand = <<ChainedCommandWithDoBlock>>
+
+syntax
+
+  MethodInvocationWithoutParentheses-CF.ChainedCommandLong = ChainedCommandWithDoBlock-CF LAYOUT?-CF BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF
+
+context-free syntax
+
+  MethodInvocationWithoutParentheses.Return = ReturnWithArgument {avoid}
+  MethodInvocationWithoutParentheses.Break = BreakWithArgument {avoid}
+  MethodInvocationWithoutParentheses.Next = NextWithArgument {avoid}
+
+  Command.ComSuper = SuperWithArgument
+  Command.ComYield = YieldWithArgument
+
+syntax
+
+  Command-CF.ComMethod = MethodId-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF
+  Command-CF.ComPrim = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF
+
+context-free syntax
+
+
+  BlockSymbol.Period = "."
+  BlockSymbol.DoubleColon = "::"
+
+  ChainedCommandWithDoBlock.ChainedCommand = <<CommandWithDoBlock> <ChainedMethodInvocation*>>
+
+  ChainedMethodInvocation.ChainedMethodInvoc = <<BlockSymbol> <MethodName>>
+
+syntax
+
+  ChainedMethodInvocation-CF.ChainedMethodInvoc = BlockSymbol-CF LAYOUT?-CF MethodName-CF ArgumentWithParentheses-CF
+
+  CommandWithDoBlock-CF.CommandBlockSuper = SuperWithArgumentAndDoBlock-CF
+  CommandWithDoBlock-CF.CommandBlockNoPrim = MethodId-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+  CommandWithDoBlock-CF.CommandBlock = Primary-CF LAYOUT-NO-NEWLINE*-LEX BlockSymbol-CF LAYOUT?-CF MethodName-CF LAYOUT-NO-NEWLINE+-LEX ArgumentWithoutParentheses-CF LAYOUT?-CF DoBlock-CF
+
+  // Primary Expression Method definition
+
+  MethodDef-CF.MethodDef = "def" LAYOUT?-CF DefinedMethodName-CF LAYOUT-NO-NEWLINE*-LEX MethodParameters-CF LAYOUT?-CF BStmt-CF LAYOUT?-CF "end"
+
+  SingletonMethodDef-CF.SingletonMethodDef = "def" LAYOUT?-CF Singleton-CF LAYOUT?-CF SingSep-CF LAYOUT?-CF DefinedMethodName-CF LAYOUT-NO-NEWLINE*-LEX MethodParameters-CF LAYOUT?-CF BStmt-CF LAYOUT?-CF "end"
+
+  MethodParameters-CF.Params = ParamList?-CF LAYOUT-NO-NEWLINE*-LEX SEPARATOR-LEX SepListListExplicitEnd?-CF
+
+context-free syntax
+
+  DefinedMethodName.DefMethodName = MethodName
+  DefinedMethodName.AssignMethodName = ASSIGNMENT-LIKE-METHOD-IDENTIFIER
+
+  Singleton.Exp = <(<Exp>)>
+  Singleton.VarRef = Var
+  SingSep.Period = "."
+  SingSep.Colons = "::"
+
+  MethodParameters.ParamsWithParentheses = <( <ParamList?> )>
+
+  ParamList.MandatoryParams =<<MandatoryParams> <OptionalOpt?> <OptionalArray?> <OptionalProc?>>
+  ParamList.Optional = <<OptionalParams> <OptionalArray?> <OptionalProc?>>
+  ParamList.Array = <<ArrayParams> <OptionalProc?>>
+  ParamList.Proc = ProcParams
+
+  MandatoryParams.Params = {MandatoryParam ","}+
+  MandatoryParam.MandatoryParam = LOCAL-V-IDENTIFIER
+
+  OptionalParams.Params = {OptionalParam ","}+
+  OptionalParam.OptionalParam = <<OptionalParamName> = <Exp>>
+  OptionalParamName.Name = LOCAL-V-IDENTIFIER
+  OptionalOpt.OptionalOptionalParams = <, <OptionalParams>>
+
+  ArrayParams.ArrayParamsWithName = <* <ArrayParamName>>
+  ArrayParams.ArrayParamStar = "*"
+  ArrayParamName.Name = LOCAL-V-IDENTIFIER
+  OptionalArray.OptionalArray = <, <ArrayParams>>
+
+  ProcParams.ProcParam = <& <ProcParamName>>
+  ProcParamName.ProcNameLocal = LOCAL-V-IDENTIFIER
+  ProcParamName.ProcNameSym = Symbol
+  OptionalProc.OptionalProc = <, <ProcParams>>

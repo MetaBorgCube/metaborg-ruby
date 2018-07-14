@@ -1,0 +1,77 @@
+module PrimaryTest
+
+language Ruby
+
+start symbol Program
+
+// Grouping
+test Grouping exp [[(234)]] parse succeeds
+test Grouping cstmt[[(alias a b; alias b b;)]] parse succeeds
+
+// Break
+test Break without arguments [[break]] parse succeeds
+test Break with arguments [[break 123]] parse succeeds
+
+// Return
+test Return without arguments [[return]] parse succeeds
+test Return with arguments [[return 123]] parse succeeds
+
+// Next
+test Next without arguments [[next]] parse succeeds
+test Next with arguments [[next 123]] parse succeeds
+
+// Redo
+test Redo [[redo]] parse succeeds
+test Redo with arguments fails [[redo 123]] parse fails
+
+// Retry
+test Retry [[retry]] parse succeeds
+test Retry with arguments fails [[retry 123]] parse fails
+
+// Defined?
+test Defined? exp [[defined? something]] parse succeeds
+test Defined? opExp [[defined? 3 == 3]] parse succeeds
+
+// Method invoc
+test Primary method invoc [[methodName.method()]] parse succeeds
+test Primary method invoc args [[methodName.method(2)]] parse succeeds
+test Primary method block [[methodName { |a| a + 2 }]] parse succeeds
+test Primary method do block [[methodName do |a| a + 2 end]] parse succeeds
+test Primary method just a name [[methodName]] parse succeeds
+test Primary args + block [[methodName.something(3) { |a| a + 2 }]] parse succeeds
+test Primary module method [[someName :: someMethod.something(3)]] parse succeeds
+test Primary method with args [[method(3)]] parse succeeds
+test Primary method with args + block [[method(3) { |a| a + 2}]] parse succeeds
+  
+  // begin, BEGIN and END
+
+test Begin compound single statement [[BEGIN { alias a b }]] parse succeeds
+test Begin compound multipe statements [[
+  BEGIN {
+    alias a b;
+    alias c b;
+  }
+]] parse succeeds
+test Begin number [[BEGIN { 1 }]] parse succeeds
+test Begin token [[BEGIN { $ }]] parse fails
+test Begin symbol [[BEGIN { :testSymbol }]] parse succeeds
+test Begin lowercase [[begin { alias a b }]] parse fails
+  
+test End compound single statement [[END { alias a b }]] parse succeeds
+test End compound multipe statements [[
+  END {
+    alias a b;
+    alias c b;
+  }
+]] parse succeeds
+test End number [[END { 1 }]] parse succeeds
+test End token [[END { $ }]] parse fails
+test End symbol [[END { :testSymbol }]] parse succeeds
+test End lowercase [[end { alias a b }]] parse fails
+
+test Begin expression [[begin
+something
+end]] parse succeeds
+test Begin expression single line [[begin; something; end]] parse succeeds
+
+  

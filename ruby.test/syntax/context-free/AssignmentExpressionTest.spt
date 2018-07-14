@@ -1,0 +1,374 @@
+module AssignmentExpressionTest
+
+language Ruby
+
+start symbol Program
+
+fixture [[
+case something
+when [[...]];
+  somethingElse
+end
+]]
+
+test SingleVarAssignmentExp [[v = 42]] parse succeeds
+test SingleVarAssignmentExp no newline [[v 
+= 42]] parse fails
+
+test ScopedConstantAssignmentExp [[somePrim::CONST = 42]] parse succeeds
+test ScopedConstantAssignmentExp no whitespace [[somePrim ::CONST = 42]] parse succeeds
+test ScopedConstantAssignmentExp no new line [[somePrim 
+::CONST = 42]] parse succeeds
+test ScopedConstantAssignmentExp without prim [[::CONST = 42]] parse succeeds
+test ScopedConstantAssignmentExp without prim no newline [[::CONST 
+= 42]] parse fails
+
+test SingleIndexingAssignmentExp empty [[somePrim[] = 42]] parse succeeds
+test SingleIndexingAssignmentExp non-empty [[somePrim[some, another] = 42]] parse succeeds
+test SingleIndexingAssignmentExp empty no whitespace [[somePrim [] = 42]] parse fails
+test SingleIndexingAssignmentExp non-empty no whitespace [[somePrim [some] = 42]] parse fails
+test SingleIndexingAssignmentExp empty no newline [[somePrim
+[] = 42]] parse fails
+test SingleIndexingAssignmentExp non-empty no newline [[somePrim
+[some] = 42]] parse fails
+test SingleIndexingAssignmentExp empty, no newline before = [[somePrim[] 
+= 42]] parse fails
+test SingleIndexingAssignmentExp non-empty, no newline before = [[somePrim[some] 
+= 42]] parse fails
+test SingleIndexingAssignmentExp non-empty, no newlines/whitespaces [[somePrim 
+[some] 
+= 42]] parse fails
+
+test SingleMethodAssignmentExp invoc dot [[somePrim.varID = 42]] parse succeeds
+test SingleMethodAssignmentExp invoc dot no newline [[somePrim.varID 
+= 42]] parse fails
+test SingleMethodAssignmentExp invoc colons [[somePrim::varID = 42]] parse succeeds
+test SingleMethodAssignmentExp invoc colons no newline [[somePrim::varID 
+= 42]] parse fails
+test SingleMethodAssignmentExp cons [[somePrim::CONST = 42]] parse succeeds
+test SingleMethodAssignmentExp cons no newline [[somePrim::CONST 
+= 42]] parse fails
+
+test AbbreviatedVariableAssignmentExpression && [[v &&= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression || [[v ||= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression ^ [[v ^= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression & [[v &= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression | [[v |= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression << [[v <<= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression >> [[v >>= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression + [[v += 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression - [[v -= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression * [[v *= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression / [[v /= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression % [[v %= 42]] parse succeeds
+test AbbreviatedVariableAssignmentExpression ** [[v **= 42]] parse succeeds
+
+test AbbreviatedVariableAssignmentExpression no newline && [[v 
+&&= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline || [[v 
+||= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline ^ [[v 
+^= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline & [[v 
+&= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline | [[v 
+|= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline << [[v 
+<<= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline >> [[v 
+>>= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline + [[v 
++= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline - [[v 
+-= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline * [[v 
+*= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline / [[v 
+/= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline % [[v 
+%= 42]] parse fails
+test AbbreviatedVariableAssignmentExpression no newline ** [[v 
+**= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression && empty [[somePrim[] &&= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression && non-empty [[somePrim[some, some2] &&= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression && no white empty [[somePrim [] &&= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression && no white non-empty [[somePrim [some] &&= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression && no newline non-empty [[somePrim
+[] &&= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression && empty no newline assignOp [[somePrim[] 
+&&= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression && non-empty no newline assignOp [[somePrim[some] 
+&&= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression || empty [[somePrim[] ||= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression || non-empty [[somePrim[some, some2] ||= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression || no white empty [[somePrim [] ||= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression || no white non-empty [[somePrim [some] ||= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression || no newline non-empty [[somePrim
+[] ||= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression || empty no newline assignOp [[somePrim[] 
+||= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression || non-empty no newline assignOp [[somePrim[some] 
+||= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression ^ empty [[somePrim[] ^= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ^ non-empty [[somePrim[some, some2] ^= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ^ no white empty [[somePrim [] ^= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ no white non-empty [[somePrim [some] ^= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ no newline non-empty [[somePrim
+[] ^= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ empty no newline assignOp [[somePrim[] 
+^= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ^ non-empty no newline assignOp [[somePrim[some] 
+^= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression & empty [[somePrim[] &= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression & non-empty [[somePrim[some, some2] &= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression & no white empty [[somePrim [] &= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression & no white non-empty [[somePrim [some] &= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression & no newline non-empty [[somePrim
+[] &= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression & empty no newline assignOp [[somePrim[] 
+&= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression & non-empty no newline assignOp [[somePrim[some] 
+&= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression | empty [[somePrim[] |= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression | non-empty [[somePrim[some, some2] |= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression | no white empty [[somePrim [] |= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression | no white non-empty [[somePrim [some] |= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression | no newline non-empty [[somePrim
+[] |= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression | empty no newline assignOp [[somePrim[] 
+|= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression | non-empty no newline assignOp [[somePrim[some] 
+|= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression << empty [[somePrim[] <<= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression << non-empty [[somePrim[some, some2] <<= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression << no white empty [[somePrim [] <<= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression << no white non-empty [[somePrim [some] <<= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression << no newline non-empty [[somePrim
+[] <<= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression << empty no newline assignOp [[somePrim[] 
+<<= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression << non-empty no newline assignOp [[somePrim[some] 
+<<= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression >> empty [[somePrim[] >>= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression >> non-empty [[somePrim[some, some2] >>= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression >> no white empty [[somePrim [] >>= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> no white non-empty [[somePrim [some] >>= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> no newline non-empty [[somePrim
+[] >>= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> empty no newline assignOp [[somePrim[] 
+>>= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression >> non-empty no newline assignOp [[somePrim[some] 
+>>= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression + empty [[somePrim[] += 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression + non-empty [[somePrim[some, some2] += 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression + no white empty [[somePrim [] += 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression + no white non-empty [[somePrim [some] += 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression + no newline non-empty [[somePrim
+[] += 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression + empty no newline assignOp [[somePrim[] 
++= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression + non-empty no newline assignOp [[somePrim[some] 
++= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression ** empty [[somePrim[] **= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ** non-empty [[somePrim[some, some2] **= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression ** no white empty [[somePrim [] **= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** no white non-empty [[somePrim [some] **= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** no newline non-empty [[somePrim
+[] **= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** empty no newline assignOp [[somePrim[] 
+**= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression ** non-empty no newline assignOp [[somePrim[some] 
+**= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression - empty [[somePrim[] -= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression - non-empty [[somePrim[some, some2] -= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression - no white empty [[somePrim [] -= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression - no white non-empty [[somePrim [some] -= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression - no newline non-empty [[somePrim
+[] -= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression - empty no newline assignOp [[somePrim[] 
+-= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression - non-empty no newline assignOp [[somePrim[some] 
+-= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression * empty [[somePrim[] *= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression * non-empty [[somePrim[some, some2] *= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression * no white empty [[somePrim [] *= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression * no white non-empty [[somePrim [some] *= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression * no newline non-empty [[somePrim
+[] *= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression * empty no newline assignOp [[somePrim[] 
+*= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression * non-empty no newline assignOp [[somePrim[some] 
+*= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression / empty [[somePrim[] /= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression / non-empty [[somePrim[some, some2] /= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression / no white empty [[somePrim [] /= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression / no white non-empty [[somePrim [some] /= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression / no newline non-empty [[somePrim
+[] /= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression / empty no newline assignOp [[somePrim[] 
+/= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression / non-empty no newline assignOp [[somePrim[some] 
+/= 42]] parse fails
+
+test AbbreviatedIndexingAssignmentExpression % empty [[somePrim[] %= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression % non-empty [[somePrim[some, some2] %= 42]] parse succeeds
+test AbbreviatedIndexingAssignmentExpression % no white empty [[somePrim [] %= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression % no white non-empty [[somePrim [some] %= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression % no newline non-empty [[somePrim
+[] %= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression % empty no newline assignOp [[somePrim[] 
+%= 42]] parse fails
+test AbbreviatedIndexingAssignmentExpression % non-empty no newline assignOp [[somePrim[some] 
+%= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression && [[somePrim.localVar &&= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression && no-newline [[somePrim
+.localVar &&= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression && [[somePrim::localVar &&= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression && no-newline [[somePrim
+::localVar &&= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression && [[somePrim.CONST &&= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression && no-newline [[somePrim
+.CONST &&= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression || [[somePrim.localVar ||= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression || no-newline [[somePrim
+.localVar ||= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression || [[somePrim::localVar ||= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression || no-newline [[somePrim
+::localVar ||= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression || [[somePrim.CONST ||= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression || no-newline [[somePrim
+.CONST ||= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression ^ [[somePrim.localVar ^= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ^ no-newline [[somePrim
+.localVar ^= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression ^ [[somePrim::localVar ^= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ^ no-newline [[somePrim
+::localVar ^= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression ^ [[somePrim.CONST ^= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ^ no-newline [[somePrim
+.CONST ^= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression & [[somePrim.localVar &= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression & no-newline [[somePrim
+.localVar &= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression & [[somePrim::localVar &= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression & no-newline [[somePrim
+::localVar &= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression & [[somePrim.CONST &= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression & no-newline [[somePrim
+.CONST &= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression | [[somePrim.localVar |= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression | no-newline [[somePrim
+.localVar |= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression | [[somePrim::localVar |= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression | no-newline [[somePrim
+::localVar |= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression | [[somePrim.CONST |= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression | no-newline [[somePrim
+.CONST |= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression << [[somePrim.localVar <<= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression << no-newline [[somePrim
+.localVar <<= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression << [[somePrim::localVar <<= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression << no-newline [[somePrim
+::localVar <<= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression << [[somePrim.CONST <<= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression << no-newline [[somePrim
+.CONST <<= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression >> [[somePrim.localVar >>= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression >> no-newline [[somePrim
+.localVar >>= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression >> [[somePrim::localVar >>= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression >> no-newline [[somePrim
+::localVar >>= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression >> [[somePrim.CONST >>= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression >> no-newline [[somePrim
+.CONST >>= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression + [[somePrim.localVar += 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression + no-newline [[somePrim
+.localVar += 42]] parse fails
+test AbbreviatedMethodAssignmentExpression + [[somePrim::localVar += 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression + no-newline [[somePrim
+::localVar += 42]] parse fails
+test AbbreviatedMethodAssignmentExpression + [[somePrim.CONST += 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression + no-newline [[somePrim
+.CONST += 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression - [[somePrim.localVar -= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression - no-newline [[somePrim
+.localVar -= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression - [[somePrim::localVar -= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression - no-newline [[somePrim
+::localVar -= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression - [[somePrim.CONST -= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression - no-newline [[somePrim
+.CONST -= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression * [[somePrim.localVar *= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression * no-newline [[somePrim
+.localVar *= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression * [[somePrim::localVar *= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression * no-newline [[somePrim
+::localVar *= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression * [[somePrim.CONST *= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression * no-newline [[somePrim
+.CONST *= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression / [[somePrim.localVar /= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression / no-newline [[somePrim
+.localVar /= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression / [[somePrim::localVar /= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression / no-newline [[somePrim
+::localVar /= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression / [[somePrim.CONST /= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression / no-newline [[somePrim
+.CONST /= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression % [[somePrim.localVar %= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression % no-newline [[somePrim
+.localVar %= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression % [[somePrim::localVar %= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression % no-newline [[somePrim
+::localVar %= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression % [[somePrim.CONST %= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression % no-newline [[somePrim
+.CONST %= 42]] parse fails
+
+test AbbreviatedMethodAssignmentExpression ** [[somePrim.localVar **= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ** no-newline [[somePrim
+.localVar **= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression ** [[somePrim::localVar **= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ** no-newline [[somePrim
+::localVar **= 42]] parse fails
+test AbbreviatedMethodAssignmentExpression ** [[somePrim.CONST **= 42]] parse succeeds
+test AbbreviatedMethodAssignmentExpression ** no-newline [[somePrim
+.CONST **= 42]] parse fails
+
+test AssignmentWithRescueModifier [[var = 42 rescue 42]] parse succeeds
+test AssignmentWithRescueModifier  no newline = [[var 
+= 42 rescue 42]] parse fails
+test AssignmentWithRescueModifier no newline [[var = 42 
+rescue 42]] parse fails
+test AssignmentWithRescueModifier no newlines [[var
+ = 42 
+rescue 42]] parse fails
+

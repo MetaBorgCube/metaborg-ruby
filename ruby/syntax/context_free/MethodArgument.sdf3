@@ -1,0 +1,63 @@
+module MethodArgument
+
+imports
+
+  Command
+  Constructors
+  Method
+  Expression
+  Whitespace
+
+context-free syntax
+
+  MethodArgument.MethodArgWithoutPar = ArgumentWithoutParentheses
+//  MethodArgument.MethodArgWithPar =
+  MethodArgument.IndexArgList = IndexingArgumentList
+  
+  IndexingArgumentList = Command
+  IndexingArgumentList.SplatIndArgList = SplattingArgument
+  
+syntax
+  
+  IndexingArgumentList-CF.ExpIndArgList = ExpressionList-CF OptionalComma?-CF
+  IndexingArgumentList-CF.ExpSplatIndArgList = ExpressionList-CF LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF SplattingArgument-CF
+  IndexingArgumentList-CF.AssocIndArgList = AssociationList-CF OptionalComma?-CF
+  
+  OptionalComma-CF.Comma = LAYOUT-NO-NEWLINE*-LEX ","
+  
+context-free syntax
+  
+  ArgumentWithParentheses.Pars = "("")"
+  ArgumentWithParentheses.ArgList = <( <ArgumentList> )>
+  
+syntax
+  
+  ArgumentWithParentheses-CF.ExpList = "(" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF ChainedCommandWithDoBlock-CF LAYOUT?-CF ")"
+  
+context-free syntax
+  
+  ArgumentWithParentheses.ArgsParChained =
+    <( <ChainedCommandWithDoBlock> )>
+  
+  // TODO Lookahead not in { '{' } 
+  ArgumentWithoutParentheses.ArgWithoutPar = ArgumentList
+  
+  SplattingArgument.SplatArg = <* <Exp>>
+  BlockArgument.BlockArg = <& <Exp>>
+  
+  ArgumentList.BlockArgList =  <<BlockArgument>>
+  ArgumentList.CommandArgList = <<Command>>
+  
+syntax
+
+  ExpressionList-CF.ExpList = Exp-CF ExpressionArgumentOptionalList-CF
+  ExpressionArgumentOptionalList-CF.ListEnd =
+  ExpressionArgumentOptionalList-CF.ListItem = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF Exp-CF ExpressionArgumentOptionalList-CF
+  
+  ArgumentList-CF.SplatArgList = SplattingArgument-CF BlockArgumentOptional?-CF
+  ArgumentList-CF.ExpAssocArgList = ExpressionList-CF LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF AssociationList-CF SplattingArgumentOptional?-CF BlockArgumentOptional?-CF
+  ArgumentList-CF.ExpArgList = ExpressionList-CF SplattingArgumentOptional?-CF BlockArgumentOptional?-CF
+  ArgumentList-CF.AssocArgList = AssociationList-CF SplattingArgumentOptional?-CF BlockArgumentOptional?-CF
+  
+  SplattingArgumentOptional-CF.SplatArgOptional = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF SplattingArgument-CF
+  BlockArgumentOptional-CF.BlockArgOptional = LAYOUT-NO-NEWLINE*-LEX "," LAYOUT?-CF BlockArgument-CF

@@ -1,0 +1,26 @@
+module Class
+
+imports
+  BodyStatement
+  Expression
+  Identifier
+  Primary
+  Separator
+  Whitespace
+  CompoundStatement
+
+syntax
+
+  ClassDef-CF.Class = "class" LAYOUT?-CF ClassPath-CF LAYOUT-NO-NEWLINE*-LEX SuperClass?-CF LAYOUT-NO-NEWLINE*-LEX SepListListWhitespace-CF BStmt-CF LAYOUT?-CF "end"
+  
+  SingletonClassDef-CF.SingletonClass = "class" LAYOUT?-CF "<<" LAYOUT?-CF Exp-CF LAYOUT-NO-NEWLINE*-LEX SepListListWhitespace-CF BStmt-CF LAYOUT?-CF "end"
+
+context-free syntax
+
+  ClassPath.TopClassPath = <:: <ClassName>>
+  ClassPath.ClassName = ClassName
+  ClassName.ClassName = CONSTANT-IDENTIFIER
+  // TODO: no line separater between Primary and "::"
+  ClassPath.NestedClassPath = <<Primary> :: <ClassName>>
+  
+  SuperClass.Super = [ < [Exp]]

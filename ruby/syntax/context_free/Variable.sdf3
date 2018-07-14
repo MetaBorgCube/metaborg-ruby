@@ -1,0 +1,22 @@
+module Variable
+
+imports
+
+  Identifier
+  Primary
+	VarName
+	
+syntax
+
+  //TODO --> NO NEWLINE NO WHITESPACE between primary and ::
+  ScopedConstantReference-CF.ScopedPrimVarRef = Primary-CF "::" LAYOUT?-CF CONSTANT-IDENTIFIER
+
+context-free syntax
+	
+	Var.Var = <<VARNAME>>
+	Var.Null = <nil>
+	Var.Self = <self>
+	
+	ScopedConstantReference.ScopedVarRef = <:: <CONSTANT-IDENTIFIER>>
+	
+	

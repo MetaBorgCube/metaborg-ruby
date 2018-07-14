@@ -1,0 +1,30 @@
+module CompoundStatement
+
+imports
+
+	Statement
+	Expression
+	Separator
+	Whitespace
+	Primary
+	Variable
+
+syntax
+
+  CStmt-CF.CStmt = SepListListExplicitStartWhitespace?-CF StatementList-CF SepListListExplicitEnd?-CF
+  CStmt-CF.CStmtEmpty = SepListListExplicitStartEnd?-CF
+
+  StatementList-CF.StmtList = Stmt-CF StatementListEnd-CF
+  StatementListEnd-CF.StmtListEnd =
+  StatementListEnd-CF.StmtListItem = LAYOUT-NO-NEWLINE*-LEX SepListList-CF LAYOUT-NO-NEWLINE*-LEX Stmt-CF StatementListEnd-CF
+
+  SepListList-CF.SepListListH = SEPLIST-LEX SepListListEnd*-LEX
+  SepListListEnd-LEX.SepListListT = LAYOUT-NO-NEWLINE*-LEX SEPLIST-LEX
+
+  SepListListExplicitStart-CF.SepListListStart = SEPLIST-EXPLICIT-START-LEX SepListListEnd*-LEX
+  SepListListExplicitEnd-CF.SepListListEnd = SepListListEnd*-LEX LAYOUT-NO-NEWLINE*-LEX SEPLIST-EXPLICIT-END-LEX
+  
+  SepListListExplicitStartEnd-CF.SepListListStartEnd = SEPLIST-EXPLICIT-START-LEX SepListListExplicitEnd?-CF
+  
+  SepListListWhitespace-CF = SepListList-CF LAYOUT-NO-NEWLINE*-LEX
+  SepListListExplicitStartWhitespace-CF.SepListListStartWhitespace = SepListListExplicitStart-CF LAYOUT-NO-NEWLINE*-LEX

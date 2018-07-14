@@ -1,0 +1,26 @@
+module Statement
+
+imports
+
+	CompoundStatement
+	Expression
+	FunctionName
+	Method
+	Literal
+	Whitespace
+	
+	
+syntax 
+
+  WhileModifierStatement-CF.StmtWhileMod = Stmt-CF LAYOUT-NO-NEWLINE*-LEX "while" LAYOUT?-CF Exp-CF
+  UntilModifierStatement-CF.StmtUntilMod = Stmt-CF LAYOUT-NO-NEWLINE*-LEX "until" LAYOUT?-CF Exp-CF
+	
+context-free syntax
+
+	Stmt.StmtExp = Exp
+	Stmt.Alias = AliasStatement
+	Stmt.Undef = UndefStatement
+	
+	
+	
+	

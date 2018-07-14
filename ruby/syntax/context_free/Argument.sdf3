@@ -1,0 +1,11 @@
+module Argument
+
+imports
+  Command
+	LeftHandSide
+	MethodArgument
+	Primary
+
+context-free syntax
+
+	JumpArg.Jump = ArgumentList {avoid} //No line terminator before this term.

@@ -1,0 +1,53 @@
+module BinaryOperatorExpression
+
+imports
+
+  Expression
+
+context-free syntax
+
+  // Logical
+
+  Exp.BinOrExp = <<Exp> || <Exp>> {left}
+  Exp.BinAndExp = <<Exp> && <Exp>> {left}
+  Exp.BinKeyOrExp = <<Exp> or <Exp>> {left}
+  Exp.BinKeyAndExp = <<Exp> and <Exp>> {left}
+  
+  // Equality
+  
+  Exp.BinSpaceEqExp = Exp "<=>" Exp {non-assoc}
+  Exp.BinEqExp = Exp "==" Exp {non-assoc}
+  Exp.BinCaseEqExp = Exp "===" Exp {non-assoc}
+  Exp.BinNotEqExp = Exp "!=" Exp {non-assoc}
+  Exp.BinMatchExp = Exp "=~" Exp {non-assoc}
+  Exp.BinNotMatchExp = Exp "!~" Exp {non-assoc}
+  
+  // Relational
+  
+  Exp.BinGtExp = Exp ">" Exp {left}
+  Exp.BinGeqExp = Exp ">=" Exp {left}
+  Exp.BinLtExp = Exp "<" Exp {left}
+  Exp.BinLeqExp = Exp "<=" Exp {left}
+  
+  // Bitwise
+  
+  Exp.BinBitOrExp = Exp "|" Exp {left}
+  Exp.BinBitXOrExp = Exp "^" Exp {left}
+  
+  Exp.BinBitAndExp = Exp "&" Exp {left}
+  
+  Exp.BinBitLShiftExp = Exp "<<" Exp {left}
+  Exp.BinBitRShiftExp = Exp ">>" Exp {left}
+  
+  // Mathematical
+  
+  Exp.BinPlusExp = Exp "+" Exp {left}
+  Exp.BinMinExp = Exp "-" Exp {left}
+  
+  Exp.BinMulExp = Exp "*" Exp {left}
+  Exp.BinDivExp = Exp "/" Exp {left}
+  Exp.BinModExp = Exp "%" Exp {left}
+  
+  Exp.BinPowExp = <<Exp> ** <Exp>> {left}
+  
+  

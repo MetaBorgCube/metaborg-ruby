@@ -1,0 +1,3 @@
+def singl :: method()
+
+end

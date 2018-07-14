@@ -1,0 +1,91 @@
+module Priorities
+
+imports
+
+	Argument
+	BinaryOperatorExpression
+	Constructors
+	UnaryOperatorExpression
+	
+// Precedence source: http://ruby-doc.org/core-2.5.1/doc/syntax/precedence_rdoc.html
+// Associativity source: https://en.wikibooks.org/wiki/Ruby_Programming/Syntax/Operators
+	
+context-free priorities
+
+	{right: 
+	  Exp.UnNotExp
+		Exp.UnNotExp
+		Exp.UnBitNotExp
+		Exp.UnPlusExp
+		Exp.BinPowExp } >
+	{right:
+		Exp.UnMinExp } >
+	{left:
+		Exp.BinMulExp
+		Exp.BinDivExp
+		Exp.BinModExp } >
+	{left:
+		Exp.BinPlusExp
+		Exp.BinMinExp } >
+	{left:
+		Exp.BinBitLShiftExp
+		Exp.BinBitRShiftExp } >
+	{left:
+		Exp.BinBitAndExp } >
+	{left:
+		Exp.BinBitOrExp
+		Exp.BinBitXOrExp } >
+	{left:
+		Exp.BinLtExp
+		Exp.BinLeqExp
+		Exp.BinGtExp
+		Exp.BinGeqExp } >
+	{non-assoc:
+		Exp.BinEqExp
+		Exp.BinCaseEqExp
+		Exp.BinNotEqExp
+		Exp.BinMatchExp
+		Exp.BinNotMatchExp
+		Exp.BinSpaceEqExp } >
+	{left:
+		Exp.BinAndExp } >
+	{left:
+		Exp.BinOrExp } >
+	{non-assoc:
+		RangeConstructor.RangeInc
+		RangeConstructor.RangeEx } >
+//	{right:
+//		?: } >
+//	{left:
+//		rescue } >
+	{right:
+		//Arg.Assign
+		// **=
+		// *= 
+		// /=
+		// %=
+		// +=
+		// -=
+		// <<=
+		// >>=
+		// &&=
+		// &=
+		// ||=
+		// |=
+		// ^=	
+	} >
+	{non-assoc:
+		//Arg.Defined 
+		} >
+	{right:
+		Exp.UnKeyNotExp } >
+	{left:
+		Exp.BinKeyAndExp 
+		Exp.BinKeyOrExp } 
+//	{non-assoc
+//		if
+//		unless
+//		while
+//		until } >
+//	{
+//		{}-blocks }

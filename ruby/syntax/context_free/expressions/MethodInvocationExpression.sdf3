@@ -1,0 +1,10 @@
+module MethodInvocationExpression
+
+imports
+  Method
+  Identifier
+  
+context-free syntax
+  
+  MethodInvocationExpression = MethodInvocationWithoutParentheses
+  MethodInvocationExpression = LOCAL-V-IDENTIFIER

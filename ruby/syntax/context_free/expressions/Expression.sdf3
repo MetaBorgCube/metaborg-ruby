@@ -1,0 +1,20 @@
+module Expression
+
+imports
+
+	AssignmentExpression
+	BinaryOperatorExpression
+	UnaryOperatorExpression
+	Primary
+	Yield
+	MethodInvocationExpression
+
+context-free syntax
+	// General expression
+	Exp.AssignExp = AssignmentExpression
+	Exp.PrimaryExp = Primary
+	Exp.YieldExp = Yield
+	Exp.MethodInvocExp = MethodInvocationExpression
+
+  // This is ambiguous: an expression can also be a "( CSTMT )" which is a superset of "( Exp )"
+	// Exp = "(" Exp ")"    {bracket}

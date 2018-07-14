@@ -1,0 +1,28 @@
+module String
+
+imports
+
+  SingleQuotedString
+  DoubleQuotedString
+  QuotedNonExpandedLiteralString
+  QuotedExpandedLiteralString
+
+  Separator
+  Identifier
+  CompoundStatement
+  
+
+context-free syntax
+
+  // Sources:
+  // - https://github.com/ruby/ruby/blob/trunk/doc/syntax/literals.rdoc#strings
+  // - http://ruby-doc.org/core-2.5.0/doc/syntax/literals_rdoc.html#label-Strings
+  // - https://www.ipa.go.jp/files/000011432.pdf (chapter 8.7.6.3)
+  
+  // TODO: make all of this context-free, since it is dependent on CFG productions,
+  // and since we need more information for the dynamic semantics than just a plain string.
+
+  String.StrS = SingleQuotedString
+  String.StrD = DoubleQuotedString
+  String.StrQ = QuotedNonExpandedLiteralString
+  String.StrQE = QuotedExpandedLiteralString

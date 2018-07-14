@@ -1,0 +1,61 @@
+module Primary
+
+imports
+  BeginExpression
+  BodyStatement
+  Class
+  CompoundStatement
+  ConditionalExpression
+  Constructors
+  DefinedExpression
+	Identifier
+	IterationExpression
+	JumpExpression
+  Expression
+	Literal
+	Method
+	Module
+	Separator
+	Statement
+	Variable
+	Yield
+
+// Primary stands for the primary expressions in Ruby 
+context-free syntax
+
+	Primary.LiteralPrim = Literal
+	Primary.VarRefPrim = Var
+	Primary.ScopedVarRefPrim = ScopedConstantReference
+	Primary.ConstPrim = <<Primary> :: <ID>>
+	
+	// Iteration expression eg: while, for
+	Primary.IterationExp = IterationExpression
+	
+	// Conditional expression eg: case, if, unless
+	Primary.ConditionalExp = ConditionalExpression
+	
+	Primary.ClassPrim = ClassDef
+	Primary.SingletonClassPrim = SingletonClassDef
+	Primary.ModulePrim = ModuleDef
+	Primary.MethodPrim = MethodDef
+	Primary.SingletonMethodPrim = SingletonMethodDef
+	Primary.YieldPrim = YieldWithOptionalArgument
+	
+	// Jump Expression
+	Primary.JumpPrim = JumpExpression
+
+	// Constructors
+	Primary.ArrayPrim = ArrayConstructor
+	Primary.HashPrim = HashConstructor
+  Primary.RangePrim = RangeConstructor
+
+  Primary.DefinedPrim = DefinedWithParentheses
+  
+  Primary.BeginPrim = BeginExpression
+  Primary.BEGINPrim = BeginBodyExpression
+  Primary.ENDPrim = EndBodyExpression
+
+  // Primary allows grouping
+  Primary.GroupCStmt = <( <CStmt> )>
+
+  Primary.MethodInvocPrim = PrimaryMethodInvocation
